@@ -1,0 +1,24 @@
+{
+  "dpid": 16,
+  "table_id": 0,
+  "idle_timeout": 0,
+  "hard_timeout": 0,
+  "priority": 100,
+  "match":
+  {
+    "nw_src": "192.168.0.1",
+    "nw_dst": "192.168.0.2",
+    "dl_type": 2048
+  },
+  "actions":
+  [
+    {
+      "type":"METER",
+      "meter_id": 2
+    },
+    {
+      "type":"OUTPUT",
+      "port": 2
+    }
+  ]
+}

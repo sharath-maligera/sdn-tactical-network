@@ -1,0 +1,1 @@
+curl -X POST -d '{"port_name": "s1-eth1", "type": "linux-htb", "max_rate": "10000", "queues": [{"max_rate": "5000"}, {"min_rate": "8000"}]}' http://localhost:8080/qos/queue/0000000000000020

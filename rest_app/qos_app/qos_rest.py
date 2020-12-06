@@ -6,7 +6,7 @@ data = '"tcp:127.0.0.1:6633"'
 response = requests.put('http://192.168.1.102:8080/v1.0/conf/switches/0000000000000010/ovsdb_addr', data=data)
 
 
-data = '{"port_name": "s1-eth2", "type": "linux-htb", "max_rate": "1000000", "queues": [{"min_rate": "38400"}, {"min_rate": "19200"}, {"min_rate": "19200"}, {"min_rate": "4800"}]}'
+data = '{"port_name": "s1-eth2", "type": "linux-htb", "max_rate": "1000000", "queues": [{"min_rate": "4800"}, {"min_rate": "4800"}, {"min_rate": "4800"}, {"min_rate": "4800"}]}'
 requests.post('http://192.168.1.102:8080/qos/queue/0000000000000010', data=data)
 
 data = '{"match": {"ip_dscp":120}, "actions":{"queue": "0"}}'

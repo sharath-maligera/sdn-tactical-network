@@ -117,46 +117,29 @@ def myNet():
     stdin, stdout, stderr = ssh_to_ctrl_2.exec_command('python ~/sdn-tactical-network/rest_app/qos_app/qos_rest.py')
     print "STDOUT:\n%s\n\nSTDERR:\n%s\n" % (stdout.read(), stderr.read())
 
-    stdin, stdout, stderr = ssh_to_ctrl_2.exec_command('curl -X GET http://192.168.1.102:8080/stats/meterconfig/16/1')
-    print "STDOUT:\n%s\n\nSTDERR:\n%s\n" % (stdout.read(), stderr.read())
-
-    stdin, stdout, stderr = ssh_to_ctrl_2.exec_command('curl -X GET http://192.168.1.102:8080/stats/meterconfig/16/2')
-    print "STDOUT:\n%s\n\nSTDERR:\n%s\n" % (stdout.read(), stderr.read())
-
-    stdin, stdout, stderr = ssh_to_ctrl_2.exec_command('curl -X GET http://192.168.1.102:8080/stats/meterconfig/16/3')
-    print "STDOUT:\n%s\n\nSTDERR:\n%s\n" % (stdout.read(), stderr.read())
-
-    stdin, stdout, stderr = ssh_to_ctrl_2.exec_command('curl -X GET http://192.168.1.102:8080/stats/meterconfig/16/4')
-    print "STDOUT:\n%s\n\nSTDERR:\n%s\n" % (stdout.read(), stderr.read())
-
-    CLI(net)
     sleep(30)
     s1_s2_intf = s1.intf(intf = 's1-eth2')
 
     print "Changing bandwidth to 4.8 kbps\n"
     s1_s2_intf.config(bw=bandwidth_4_8_kbps, smooth_change=True)
-    #ssh_to_ctrl_2.exec_command('curl -X POST -d "{"dpid": 16, "table_id": 0, "idle_timeout": 0, "hard_timeout": 0, "priority": 100, "match":{"nw_src": "192.168.0.1", "nw_dst": "192.168.0.2", "dl_type": 2048}, "actions":[{"type":"METER", "meter_id": 2}, {"type":"OUTPUT", "port": 2}]}" http://192.168.1.102:8080/stats/flowentry/modify_strict')
-
+    ssh_to_ctrl_2.exec_command('curl -X POST -d \'{"dpid": 16, "table_id": 0, "idle_timeout": 0, "hard_timeout": 0, "priority": 100, "match":{"nw_src": "192.168.0.1", "nw_dst": "192.168.0.2", "dl_type": 2048}, "actions":[{"type":"METER", "meter_id": 2}, {"type":"OUTPUT", "port": 2}]}\' http://192.168.1.102:8080/stats/flowentry/modify_strict')
     sleep(30)
-    CLI(net)
+
 
     print "\nChanging bandwidth to 2.4 kbps\n"
     s1_s2_intf.config(bw=bandwidth_2_4_kbps, smooth_change=True)
-
+    ssh_to_ctrl_2.exec_command('curl -X POST -d \'{"dpid": 16, "table_id": 0, "idle_timeout": 0, "hard_timeout": 0, "priority": 100, "match":{"nw_src": "192.168.0.1", "nw_dst": "192.168.0.2", "dl_type": 2048}, "actions":[{"type":"METER", "meter_id": 3}, {"type":"OUTPUT", "port": 2}]}\' http://192.168.1.102:8080/stats/flowentry/modify_strict')
     sleep(30)
-    CLI(net)
 
     print "\nChanging bandwidth to 0.6 kbps\n"
     s1_s2_intf.config(bw=bandwidth_0_6_kbps, smooth_change=True)
-
+    ssh_to_ctrl_2.exec_command('curl -X POST -d \'{"dpid": 16, "table_id": 0, "idle_timeout": 0, "hard_timeout": 0, "priority": 100, "match":{"nw_src": "192.168.0.1", "nw_dst": "192.168.0.2", "dl_type": 2048}, "actions":[{"type":"METER", "meter_id": 4}, {"type":"OUTPUT", "port": 2}]}\' http://192.168.1.102:8080/stats/flowentry/modify_strict')
     sleep(30)
-    CLI(net)
 
     print "\nChanging bandwidth to 9.6 kbps\n"
     s1_s2_intf.config(bw=bandwidth_9_6_kbps, smooth_change=True)
+    ssh_to_ctrl_2.exec_command('curl -X POST -d \'{"dpid": 16, "table_id": 0, "idle_timeout": 0, "hard_timeout": 0, "priority": 100, "match":{"nw_src": "192.168.0.1", "nw_dst": "192.168.0.2", "dl_type": 2048}, "actions":[{"type":"METER", "meter_id": 1}, {"type":"OUTPUT", "port": 2}]}\' http://192.168.1.102:8080/stats/flowentry/modify_strict')
     sleep(30)
-    CLI(net)
-
 
     h1.cmdPrint('/sbin/tc -s -d qdisc show dev h1-eth0')
     h1.cmdPrint('/sbin/tc -s -d class show dev h1-eth0')

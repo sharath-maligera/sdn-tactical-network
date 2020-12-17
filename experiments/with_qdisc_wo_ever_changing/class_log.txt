@@ -1,12 +1,12 @@
-TIME:08:50:13
+TIME:16:04:59
 class htb 1:11 parent 1:1 leaf 11: prio 0 quantum 24000 rate 1920Kbit ceil 1920Kbit linklayer ethernet burst 240Kb/1 mpu 0b cburst 1599b/1 mpu 0b level 0 
- Sent 252 bytes 4 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
- lended: 4 borrowed: 0 giants: 0
+ Sent 70 bytes 1 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 5330b 5p requeues 0
+ lended: 1 borrowed: 0 giants: 0
  tokens: 15995442 ctokens: 99598
 
 class htb 1:1 root rate 2Mbit ceil 2Mbit linklayer ethernet burst 250Kb/1 mpu 0b cburst 1600b/1 mpu 0b level 7 
- Sent 252 bytes 4 pkt (dropped 0, overlimits 0 requeues 0) 
+ Sent 70 bytes 1 pkt (dropped 0, overlimits 0 requeues 0) 
  backlog 0b 0p requeues 0
  lended: 0 borrowed: 0 giants: 0
  tokens: 15995625 ctokens: 95625
@@ -16,427 +16,15 @@ class htb 1:12 parent 1:1 leaf 12: prio 0 quantum 1000 rate 80Kbit ceil 80Kbit l
  backlog 0b 0p requeues 0
  lended: 0 borrowed: 0 giants: 0
  tokens: 16000000 ctokens: 2500000
-
-class prio 12:1 parent 12: leaf 121: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 12:2 parent 12: leaf 122: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 12:3 parent 12: leaf 123: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 12:4 parent 12: leaf 124: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 11:1 parent 11: leaf 111: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 11:2 parent 11: leaf 112: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 11:3 parent 11: leaf 113: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 11:4 parent 11: leaf 114: 
- Sent 252 bytes 4 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-TIME:08:50:15
+TIME:16:05:01
 class htb 1:11 parent 1:1 leaf 11: prio 0 quantum 24000 rate 1920Kbit ceil 1920Kbit linklayer ethernet burst 240Kb/1 mpu 0b cburst 1599b/1 mpu 0b level 0 
- Sent 252 bytes 4 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
- lended: 4 borrowed: 0 giants: 0
- tokens: 15995442 ctokens: 99598
+ Sent 248448 bytes 234 pkt (dropped 0, overlimits 230 requeues 0) 
+ backlog 284622b 267p requeues 0
+ lended: 234 borrowed: 0 giants: 0
+ tokens: 15828719 ctokens: -67125
 
 class htb 1:1 root rate 2Mbit ceil 2Mbit linklayer ethernet burst 250Kb/1 mpu 0b cburst 1600b/1 mpu 0b level 7 
- Sent 252 bytes 4 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
- lended: 0 borrowed: 0 giants: 0
- tokens: 15995625 ctokens: 95625
-
-class htb 1:12 parent 1:1 leaf 12: prio 0 quantum 1000 rate 80Kbit ceil 80Kbit linklayer ethernet burst 10Kb/1 mpu 0b cburst 1600b/1 mpu 0b level 0 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
- lended: 0 borrowed: 0 giants: 0
- tokens: 16000000 ctokens: 2500000
-
-class prio 12:1 parent 12: leaf 121: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 12:2 parent 12: leaf 122: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 12:3 parent 12: leaf 123: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 12:4 parent 12: leaf 124: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 11:1 parent 11: leaf 111: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 11:2 parent 11: leaf 112: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 11:3 parent 11: leaf 113: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 11:4 parent 11: leaf 114: 
- Sent 252 bytes 4 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-TIME:08:50:17
-class htb 1:11 parent 1:1 leaf 11: prio 0 quantum 24000 rate 1920Kbit ceil 1920Kbit linklayer ethernet burst 240Kb/1 mpu 0b cburst 1599b/1 mpu 0b level 0 
- Sent 252 bytes 4 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
- lended: 4 borrowed: 0 giants: 0
- tokens: 15995442 ctokens: 99598
-
-class htb 1:1 root rate 2Mbit ceil 2Mbit linklayer ethernet burst 250Kb/1 mpu 0b cburst 1600b/1 mpu 0b level 7 
- Sent 252 bytes 4 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
- lended: 0 borrowed: 0 giants: 0
- tokens: 15995625 ctokens: 95625
-
-class htb 1:12 parent 1:1 leaf 12: prio 0 quantum 1000 rate 80Kbit ceil 80Kbit linklayer ethernet burst 10Kb/1 mpu 0b cburst 1600b/1 mpu 0b level 0 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
- lended: 0 borrowed: 0 giants: 0
- tokens: 16000000 ctokens: 2500000
-
-class prio 12:1 parent 12: leaf 121: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 12:2 parent 12: leaf 122: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 12:3 parent 12: leaf 123: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 12:4 parent 12: leaf 124: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 11:1 parent 11: leaf 111: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 11:2 parent 11: leaf 112: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 11:3 parent 11: leaf 113: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 11:4 parent 11: leaf 114: 
- Sent 252 bytes 4 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-TIME:08:50:19
-class htb 1:11 parent 1:1 leaf 11: prio 0 quantum 24000 rate 1920Kbit ceil 1920Kbit linklayer ethernet burst 240Kb/1 mpu 0b cburst 1599b/1 mpu 0b level 0 
- Sent 252 bytes 4 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
- lended: 4 borrowed: 0 giants: 0
- tokens: 15995442 ctokens: 99598
-
-class htb 1:1 root rate 2Mbit ceil 2Mbit linklayer ethernet burst 250Kb/1 mpu 0b cburst 1600b/1 mpu 0b level 7 
- Sent 252 bytes 4 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
- lended: 0 borrowed: 0 giants: 0
- tokens: 15995625 ctokens: 95625
-
-class htb 1:12 parent 1:1 leaf 12: prio 0 quantum 1000 rate 80Kbit ceil 80Kbit linklayer ethernet burst 10Kb/1 mpu 0b cburst 1600b/1 mpu 0b level 0 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
- lended: 0 borrowed: 0 giants: 0
- tokens: 16000000 ctokens: 2500000
-
-class prio 12:1 parent 12: leaf 121: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 12:2 parent 12: leaf 122: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 12:3 parent 12: leaf 123: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 12:4 parent 12: leaf 124: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 11:1 parent 11: leaf 111: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 11:2 parent 11: leaf 112: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 11:3 parent 11: leaf 113: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 11:4 parent 11: leaf 114: 
- Sent 252 bytes 4 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-TIME:08:50:21
-class htb 1:11 parent 1:1 leaf 11: prio 0 quantum 24000 rate 1920Kbit ceil 1920Kbit linklayer ethernet burst 240Kb/1 mpu 0b cburst 1599b/1 mpu 0b level 0 
- Sent 322 bytes 5 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
- lended: 5 borrowed: 0 giants: 0
- tokens: 15995442 ctokens: 99598
-
-class htb 1:1 root rate 2Mbit ceil 2Mbit linklayer ethernet burst 250Kb/1 mpu 0b cburst 1600b/1 mpu 0b level 7 
- Sent 322 bytes 5 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
- lended: 0 borrowed: 0 giants: 0
- tokens: 15995625 ctokens: 95625
-
-class htb 1:12 parent 1:1 leaf 12: prio 0 quantum 1000 rate 80Kbit ceil 80Kbit linklayer ethernet burst 10Kb/1 mpu 0b cburst 1600b/1 mpu 0b level 0 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
- lended: 0 borrowed: 0 giants: 0
- tokens: 16000000 ctokens: 2500000
-
-class prio 12:1 parent 12: leaf 121: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 12:2 parent 12: leaf 122: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 12:3 parent 12: leaf 123: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 12:4 parent 12: leaf 124: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 11:1 parent 11: leaf 111: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 11:2 parent 11: leaf 112: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 11:3 parent 11: leaf 113: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 11:4 parent 11: leaf 114: 
- Sent 322 bytes 5 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-TIME:08:50:23
-class htb 1:11 parent 1:1 leaf 11: prio 0 quantum 24000 rate 1920Kbit ceil 1920Kbit linklayer ethernet burst 240Kb/1 mpu 0b cburst 1599b/1 mpu 0b level 0 
- Sent 322 bytes 5 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
- lended: 5 borrowed: 0 giants: 0
- tokens: 15995442 ctokens: 99598
-
-class htb 1:1 root rate 2Mbit ceil 2Mbit linklayer ethernet burst 250Kb/1 mpu 0b cburst 1600b/1 mpu 0b level 7 
- Sent 322 bytes 5 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
- lended: 0 borrowed: 0 giants: 0
- tokens: 15995625 ctokens: 95625
-
-class htb 1:12 parent 1:1 leaf 12: prio 0 quantum 1000 rate 80Kbit ceil 80Kbit linklayer ethernet burst 10Kb/1 mpu 0b cburst 1600b/1 mpu 0b level 0 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
- lended: 0 borrowed: 0 giants: 0
- tokens: 16000000 ctokens: 2500000
-
-class prio 12:1 parent 12: leaf 121: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 12:2 parent 12: leaf 122: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 12:3 parent 12: leaf 123: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 12:4 parent 12: leaf 124: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 11:1 parent 11: leaf 111: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 11:2 parent 11: leaf 112: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 11:3 parent 11: leaf 113: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 11:4 parent 11: leaf 114: 
- Sent 322 bytes 5 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-TIME:08:50:25
-class htb 1:11 parent 1:1 leaf 11: prio 0 quantum 24000 rate 1920Kbit ceil 1920Kbit linklayer ethernet burst 240Kb/1 mpu 0b cburst 1599b/1 mpu 0b level 0 
- Sent 322 bytes 5 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
- lended: 5 borrowed: 0 giants: 0
- tokens: 15995442 ctokens: 99598
-
-class htb 1:1 root rate 2Mbit ceil 2Mbit linklayer ethernet burst 250Kb/1 mpu 0b cburst 1600b/1 mpu 0b level 7 
- Sent 322 bytes 5 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
- lended: 0 borrowed: 0 giants: 0
- tokens: 15995625 ctokens: 95625
-
-class htb 1:12 parent 1:1 leaf 12: prio 0 quantum 1000 rate 80Kbit ceil 80Kbit linklayer ethernet burst 10Kb/1 mpu 0b cburst 1600b/1 mpu 0b level 0 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
- lended: 0 borrowed: 0 giants: 0
- tokens: 16000000 ctokens: 2500000
-
-class prio 12:1 parent 12: leaf 121: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 12:2 parent 12: leaf 122: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 12:3 parent 12: leaf 123: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 12:4 parent 12: leaf 124: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 11:1 parent 11: leaf 111: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 11:2 parent 11: leaf 112: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 11:3 parent 11: leaf 113: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 11:4 parent 11: leaf 114: 
- Sent 322 bytes 5 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-TIME:08:50:27
-class htb 1:11 parent 1:1 leaf 11: prio 0 quantum 24000 rate 1920Kbit ceil 1920Kbit linklayer ethernet burst 240Kb/1 mpu 0b cburst 1599b/1 mpu 0b level 0 
- Sent 322 bytes 5 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
- lended: 5 borrowed: 0 giants: 0
- tokens: 15995442 ctokens: 99598
-
-class htb 1:1 root rate 2Mbit ceil 2Mbit linklayer ethernet burst 250Kb/1 mpu 0b cburst 1600b/1 mpu 0b level 7 
- Sent 322 bytes 5 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
- lended: 0 borrowed: 0 giants: 0
- tokens: 15995625 ctokens: 95625
-
-class htb 1:12 parent 1:1 leaf 12: prio 0 quantum 1000 rate 80Kbit ceil 80Kbit linklayer ethernet burst 10Kb/1 mpu 0b cburst 1600b/1 mpu 0b level 0 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
- lended: 0 borrowed: 0 giants: 0
- tokens: 16000000 ctokens: 2500000
-
-class prio 12:1 parent 12: leaf 121: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 12:2 parent 12: leaf 122: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 12:3 parent 12: leaf 123: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 12:4 parent 12: leaf 124: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 11:1 parent 11: leaf 111: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 11:2 parent 11: leaf 112: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 11:3 parent 11: leaf 113: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 11:4 parent 11: leaf 114: 
- Sent 322 bytes 5 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-TIME:08:50:29
-class htb 1:11 parent 1:1 leaf 11: prio 0 quantum 24000 rate 1920Kbit ceil 1920Kbit linklayer ethernet burst 240Kb/1 mpu 0b cburst 1599b/1 mpu 0b level 0 
- Sent 322 bytes 5 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
- lended: 5 borrowed: 0 giants: 0
- tokens: 15995442 ctokens: 99598
-
-class htb 1:1 root rate 2Mbit ceil 2Mbit linklayer ethernet burst 250Kb/1 mpu 0b cburst 1600b/1 mpu 0b level 7 
- Sent 322 bytes 5 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
- lended: 0 borrowed: 0 giants: 0
- tokens: 15995625 ctokens: 95625
-
-class htb 1:12 parent 1:1 leaf 12: prio 0 quantum 1000 rate 80Kbit ceil 80Kbit linklayer ethernet burst 10Kb/1 mpu 0b cburst 1600b/1 mpu 0b level 0 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
- lended: 0 borrowed: 0 giants: 0
- tokens: 16000000 ctokens: 2500000
-
-class prio 12:1 parent 12: leaf 121: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 12:2 parent 12: leaf 122: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 12:3 parent 12: leaf 123: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 12:4 parent 12: leaf 124: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 11:1 parent 11: leaf 111: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 11:2 parent 11: leaf 112: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 11:3 parent 11: leaf 113: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 11:4 parent 11: leaf 114: 
- Sent 322 bytes 5 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-TIME:08:50:31
-class htb 1:11 parent 1:1 leaf 11: prio 0 quantum 24000 rate 1920Kbit ceil 1920Kbit linklayer ethernet burst 240Kb/1 mpu 0b cburst 1599b/1 mpu 0b level 0 
- Sent 272152 bytes 260 pkt (dropped 0, overlimits 254 requeues 0) 
- backlog 247312b 232p requeues 0
- lended: 260 borrowed: 0 giants: 0
- tokens: 15831993 ctokens: -63851
-
-class htb 1:1 root rate 2Mbit ceil 2Mbit linklayer ethernet burst 250Kb/1 mpu 0b cburst 1600b/1 mpu 0b level 7 
- Sent 272152 bytes 260 pkt (dropped 0, overlimits 20 requeues 0) 
- backlog 0b 0p requeues 0
- lended: 0 borrowed: 0 giants: 0
- tokens: 15926808 ctokens: 26808
-
-class htb 1:12 parent 1:1 leaf 12: prio 0 quantum 1000 rate 80Kbit ceil 80Kbit linklayer ethernet burst 10Kb/1 mpu 0b cburst 1600b/1 mpu 0b level 0 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
- lended: 0 borrowed: 0 giants: 0
- tokens: 16000000 ctokens: 2500000
-
-class prio 12:1 parent 12: leaf 121: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 12:2 parent 12: leaf 122: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 12:3 parent 12: leaf 123: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 12:4 parent 12: leaf 124: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 11:1 parent 11: leaf 111: 
- Sent 106600 bytes 100 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 11:2 parent 11: leaf 112: 
- Sent 106600 bytes 100 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 11:3 parent 11: leaf 113: 
- Sent 57564 bytes 54 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 49036b 46p requeues 0
-class prio 11:4 parent 11: leaf 114: 
- Sent 1388 bytes 6 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 198276b 186p requeues 0
-TIME:08:50:33
-class htb 1:11 parent 1:1 leaf 11: prio 0 quantum 24000 rate 1920Kbit ceil 1920Kbit linklayer ethernet burst 240Kb/1 mpu 0b cburst 1599b/1 mpu 0b level 0 
- Sent 519464 bytes 492 pkt (dropped 0, overlimits 486 requeues 0) 
- backlog 0b 0p requeues 0
- lended: 492 borrowed: 0 giants: 0
- tokens: 15845539 ctokens: -50305
-
-class htb 1:1 root rate 2Mbit ceil 2Mbit linklayer ethernet burst 250Kb/1 mpu 0b cburst 1600b/1 mpu 0b level 7 
- Sent 519464 bytes 492 pkt (dropped 0, overlimits 23 requeues 0) 
+ Sent 248448 bytes 234 pkt (dropped 0, overlimits 24 requeues 0) 
  backlog 0b 0p requeues 0
  lended: 0 borrowed: 0 giants: 0
  tokens: 15933375 ctokens: 33375
@@ -446,372 +34,255 @@ class htb 1:12 parent 1:1 leaf 12: prio 0 quantum 1000 rate 80Kbit ceil 80Kbit l
  backlog 0b 0p requeues 0
  lended: 0 borrowed: 0 giants: 0
  tokens: 16000000 ctokens: 2500000
-
-class prio 12:1 parent 12: leaf 121: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 12:2 parent 12: leaf 122: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 12:3 parent 12: leaf 123: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 12:4 parent 12: leaf 124: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 11:1 parent 11: leaf 111: 
- Sent 106600 bytes 100 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 11:2 parent 11: leaf 112: 
- Sent 106600 bytes 100 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 11:3 parent 11: leaf 113: 
- Sent 106600 bytes 100 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 11:4 parent 11: leaf 114: 
- Sent 199664 bytes 192 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-TIME:08:50:35
+TIME:16:05:03
 class htb 1:11 parent 1:1 leaf 11: prio 0 quantum 24000 rate 1920Kbit ceil 1920Kbit linklayer ethernet burst 240Kb/1 mpu 0b cburst 1599b/1 mpu 0b level 0 
- Sent 519464 bytes 492 pkt (dropped 0, overlimits 486 requeues 0) 
+ Sent 533070 bytes 501 pkt (dropped 0, overlimits 494 requeues 0) 
  backlog 0b 0p requeues 0
- lended: 492 borrowed: 0 giants: 0
- tokens: 15845539 ctokens: -50305
+ lended: 501 borrowed: 0 giants: 0
+ tokens: 15830076 ctokens: -65768
 
 class htb 1:1 root rate 2Mbit ceil 2Mbit linklayer ethernet burst 250Kb/1 mpu 0b cburst 1600b/1 mpu 0b level 7 
- Sent 519464 bytes 492 pkt (dropped 0, overlimits 23 requeues 0) 
+ Sent 533070 bytes 501 pkt (dropped 0, overlimits 84 requeues 0) 
  backlog 0b 0p requeues 0
  lended: 0 borrowed: 0 giants: 0
- tokens: 15933375 ctokens: 33375
+ tokens: 15927237 ctokens: 27237
 
 class htb 1:12 parent 1:1 leaf 12: prio 0 quantum 1000 rate 80Kbit ceil 80Kbit linklayer ethernet burst 10Kb/1 mpu 0b cburst 1600b/1 mpu 0b level 0 
  Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
  backlog 0b 0p requeues 0
  lended: 0 borrowed: 0 giants: 0
  tokens: 16000000 ctokens: 2500000
-
-class prio 12:1 parent 12: leaf 121: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 12:2 parent 12: leaf 122: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 12:3 parent 12: leaf 123: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 12:4 parent 12: leaf 124: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 11:1 parent 11: leaf 111: 
- Sent 106600 bytes 100 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 11:2 parent 11: leaf 112: 
- Sent 106600 bytes 100 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 11:3 parent 11: leaf 113: 
- Sent 106600 bytes 100 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 11:4 parent 11: leaf 114: 
- Sent 199664 bytes 192 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-TIME:08:50:37
+TIME:16:05:05
 class htb 1:11 parent 1:1 leaf 11: prio 0 quantum 24000 rate 1920Kbit ceil 1920Kbit linklayer ethernet burst 240Kb/1 mpu 0b cburst 1599b/1 mpu 0b level 0 
- Sent 519506 bytes 493 pkt (dropped 0, overlimits 486 requeues 0) 
- backlog 0b 0p requeues 0
- lended: 493 borrowed: 0 giants: 0
- tokens: 15997265 ctokens: 101421
+ Sent 533070 bytes 501 pkt (dropped 0, overlimits 494 requeues 0) 
+ backlog 70b 1p requeues 0
+ lended: 501 borrowed: 0 giants: 0
+ tokens: 15830076 ctokens: -65768
 
 class htb 1:1 root rate 2Mbit ceil 2Mbit linklayer ethernet burst 250Kb/1 mpu 0b cburst 1600b/1 mpu 0b level 7 
- Sent 519506 bytes 493 pkt (dropped 0, overlimits 23 requeues 0) 
+ Sent 533070 bytes 501 pkt (dropped 0, overlimits 84 requeues 0) 
  backlog 0b 0p requeues 0
  lended: 0 borrowed: 0 giants: 0
- tokens: 15997375 ctokens: 97375
+ tokens: 15927237 ctokens: 27237
 
 class htb 1:12 parent 1:1 leaf 12: prio 0 quantum 1000 rate 80Kbit ceil 80Kbit linklayer ethernet burst 10Kb/1 mpu 0b cburst 1600b/1 mpu 0b level 0 
  Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
  backlog 0b 0p requeues 0
  lended: 0 borrowed: 0 giants: 0
  tokens: 16000000 ctokens: 2500000
-
-class prio 12:1 parent 12: leaf 121: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 12:2 parent 12: leaf 122: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 12:3 parent 12: leaf 123: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 12:4 parent 12: leaf 124: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 11:1 parent 11: leaf 111: 
- Sent 106600 bytes 100 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 11:2 parent 11: leaf 112: 
- Sent 106600 bytes 100 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 11:3 parent 11: leaf 113: 
- Sent 106600 bytes 100 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 11:4 parent 11: leaf 114: 
- Sent 199706 bytes 193 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-TIME:08:50:39
+TIME:16:05:07
 class htb 1:11 parent 1:1 leaf 11: prio 0 quantum 24000 rate 1920Kbit ceil 1920Kbit linklayer ethernet burst 240Kb/1 mpu 0b cburst 1599b/1 mpu 0b level 0 
- Sent 519506 bytes 493 pkt (dropped 0, overlimits 486 requeues 0) 
+ Sent 533140 bytes 502 pkt (dropped 0, overlimits 494 requeues 0) 
  backlog 0b 0p requeues 0
- lended: 493 borrowed: 0 giants: 0
- tokens: 15997265 ctokens: 101421
+ lended: 502 borrowed: 0 giants: 0
+ tokens: 15995442 ctokens: 99598
 
 class htb 1:1 root rate 2Mbit ceil 2Mbit linklayer ethernet burst 250Kb/1 mpu 0b cburst 1600b/1 mpu 0b level 7 
- Sent 519506 bytes 493 pkt (dropped 0, overlimits 23 requeues 0) 
+ Sent 533140 bytes 502 pkt (dropped 0, overlimits 84 requeues 0) 
  backlog 0b 0p requeues 0
  lended: 0 borrowed: 0 giants: 0
- tokens: 15997375 ctokens: 97375
+ tokens: 15995625 ctokens: 95625
 
 class htb 1:12 parent 1:1 leaf 12: prio 0 quantum 1000 rate 80Kbit ceil 80Kbit linklayer ethernet burst 10Kb/1 mpu 0b cburst 1600b/1 mpu 0b level 0 
  Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
  backlog 0b 0p requeues 0
  lended: 0 borrowed: 0 giants: 0
  tokens: 16000000 ctokens: 2500000
-
-class prio 12:1 parent 12: leaf 121: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 12:2 parent 12: leaf 122: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 12:3 parent 12: leaf 123: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 12:4 parent 12: leaf 124: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 11:1 parent 11: leaf 111: 
- Sent 106600 bytes 100 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 11:2 parent 11: leaf 112: 
- Sent 106600 bytes 100 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 11:3 parent 11: leaf 113: 
- Sent 106600 bytes 100 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 11:4 parent 11: leaf 114: 
- Sent 199706 bytes 193 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-TIME:08:50:41
+TIME:16:05:09
 class htb 1:11 parent 1:1 leaf 11: prio 0 quantum 24000 rate 1920Kbit ceil 1920Kbit linklayer ethernet burst 240Kb/1 mpu 0b cburst 1599b/1 mpu 0b level 0 
- Sent 519506 bytes 493 pkt (dropped 0, overlimits 486 requeues 0) 
+ Sent 533140 bytes 502 pkt (dropped 0, overlimits 494 requeues 0) 
  backlog 0b 0p requeues 0
- lended: 493 borrowed: 0 giants: 0
- tokens: 15997265 ctokens: 101421
+ lended: 502 borrowed: 0 giants: 0
+ tokens: 15995442 ctokens: 99598
 
 class htb 1:1 root rate 2Mbit ceil 2Mbit linklayer ethernet burst 250Kb/1 mpu 0b cburst 1600b/1 mpu 0b level 7 
- Sent 519506 bytes 493 pkt (dropped 0, overlimits 23 requeues 0) 
+ Sent 533140 bytes 502 pkt (dropped 0, overlimits 84 requeues 0) 
  backlog 0b 0p requeues 0
  lended: 0 borrowed: 0 giants: 0
- tokens: 15997375 ctokens: 97375
+ tokens: 15995625 ctokens: 95625
 
 class htb 1:12 parent 1:1 leaf 12: prio 0 quantum 1000 rate 80Kbit ceil 80Kbit linklayer ethernet burst 10Kb/1 mpu 0b cburst 1600b/1 mpu 0b level 0 
  Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
  backlog 0b 0p requeues 0
  lended: 0 borrowed: 0 giants: 0
  tokens: 16000000 ctokens: 2500000
-
-class prio 12:1 parent 12: leaf 121: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 12:2 parent 12: leaf 122: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 12:3 parent 12: leaf 123: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 12:4 parent 12: leaf 124: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 11:1 parent 11: leaf 111: 
- Sent 106600 bytes 100 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 11:2 parent 11: leaf 112: 
- Sent 106600 bytes 100 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 11:3 parent 11: leaf 113: 
- Sent 106600 bytes 100 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 11:4 parent 11: leaf 114: 
- Sent 199706 bytes 193 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-TIME:08:50:43
+TIME:16:05:11
 class htb 1:11 parent 1:1 leaf 11: prio 0 quantum 24000 rate 1920Kbit ceil 1920Kbit linklayer ethernet burst 240Kb/1 mpu 0b cburst 1599b/1 mpu 0b level 0 
- Sent 519506 bytes 493 pkt (dropped 0, overlimits 486 requeues 0) 
+ Sent 533140 bytes 502 pkt (dropped 0, overlimits 494 requeues 0) 
  backlog 0b 0p requeues 0
- lended: 493 borrowed: 0 giants: 0
- tokens: 15997265 ctokens: 101421
+ lended: 502 borrowed: 0 giants: 0
+ tokens: 15995442 ctokens: 99598
 
 class htb 1:1 root rate 2Mbit ceil 2Mbit linklayer ethernet burst 250Kb/1 mpu 0b cburst 1600b/1 mpu 0b level 7 
- Sent 519506 bytes 493 pkt (dropped 0, overlimits 23 requeues 0) 
+ Sent 533140 bytes 502 pkt (dropped 0, overlimits 84 requeues 0) 
  backlog 0b 0p requeues 0
  lended: 0 borrowed: 0 giants: 0
- tokens: 15997375 ctokens: 97375
+ tokens: 15995625 ctokens: 95625
 
 class htb 1:12 parent 1:1 leaf 12: prio 0 quantum 1000 rate 80Kbit ceil 80Kbit linklayer ethernet burst 10Kb/1 mpu 0b cburst 1600b/1 mpu 0b level 0 
  Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
  backlog 0b 0p requeues 0
  lended: 0 borrowed: 0 giants: 0
  tokens: 16000000 ctokens: 2500000
-
-class prio 12:1 parent 12: leaf 121: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 12:2 parent 12: leaf 122: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 12:3 parent 12: leaf 123: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 12:4 parent 12: leaf 124: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 11:1 parent 11: leaf 111: 
- Sent 106600 bytes 100 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 11:2 parent 11: leaf 112: 
- Sent 106600 bytes 100 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 11:3 parent 11: leaf 113: 
- Sent 106600 bytes 100 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 11:4 parent 11: leaf 114: 
- Sent 199706 bytes 193 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-TIME:08:50:45
+TIME:16:05:13
 class htb 1:11 parent 1:1 leaf 11: prio 0 quantum 24000 rate 1920Kbit ceil 1920Kbit linklayer ethernet burst 240Kb/1 mpu 0b cburst 1599b/1 mpu 0b level 0 
- Sent 519506 bytes 493 pkt (dropped 0, overlimits 486 requeues 0) 
+ Sent 533140 bytes 502 pkt (dropped 0, overlimits 494 requeues 0) 
  backlog 0b 0p requeues 0
- lended: 493 borrowed: 0 giants: 0
- tokens: 15997265 ctokens: 101421
+ lended: 502 borrowed: 0 giants: 0
+ tokens: 15995442 ctokens: 99598
 
 class htb 1:1 root rate 2Mbit ceil 2Mbit linklayer ethernet burst 250Kb/1 mpu 0b cburst 1600b/1 mpu 0b level 7 
- Sent 519506 bytes 493 pkt (dropped 0, overlimits 23 requeues 0) 
+ Sent 533140 bytes 502 pkt (dropped 0, overlimits 84 requeues 0) 
  backlog 0b 0p requeues 0
  lended: 0 borrowed: 0 giants: 0
- tokens: 15997375 ctokens: 97375
+ tokens: 15995625 ctokens: 95625
 
 class htb 1:12 parent 1:1 leaf 12: prio 0 quantum 1000 rate 80Kbit ceil 80Kbit linklayer ethernet burst 10Kb/1 mpu 0b cburst 1600b/1 mpu 0b level 0 
  Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
  backlog 0b 0p requeues 0
  lended: 0 borrowed: 0 giants: 0
  tokens: 16000000 ctokens: 2500000
-
-class prio 12:1 parent 12: leaf 121: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 12:2 parent 12: leaf 122: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 12:3 parent 12: leaf 123: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 12:4 parent 12: leaf 124: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 11:1 parent 11: leaf 111: 
- Sent 106600 bytes 100 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 11:2 parent 11: leaf 112: 
- Sent 106600 bytes 100 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 11:3 parent 11: leaf 113: 
- Sent 106600 bytes 100 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 11:4 parent 11: leaf 114: 
- Sent 199706 bytes 193 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-TIME:08:50:47
+TIME:16:05:15
 class htb 1:11 parent 1:1 leaf 11: prio 0 quantum 24000 rate 1920Kbit ceil 1920Kbit linklayer ethernet burst 240Kb/1 mpu 0b cburst 1599b/1 mpu 0b level 0 
- Sent 519506 bytes 493 pkt (dropped 0, overlimits 486 requeues 0) 
+ Sent 533140 bytes 502 pkt (dropped 0, overlimits 494 requeues 0) 
  backlog 0b 0p requeues 0
- lended: 493 borrowed: 0 giants: 0
- tokens: 15997265 ctokens: 101421
+ lended: 502 borrowed: 0 giants: 0
+ tokens: 15995442 ctokens: 99598
 
 class htb 1:1 root rate 2Mbit ceil 2Mbit linklayer ethernet burst 250Kb/1 mpu 0b cburst 1600b/1 mpu 0b level 7 
- Sent 519506 bytes 493 pkt (dropped 0, overlimits 23 requeues 0) 
+ Sent 533140 bytes 502 pkt (dropped 0, overlimits 84 requeues 0) 
  backlog 0b 0p requeues 0
  lended: 0 borrowed: 0 giants: 0
- tokens: 15997375 ctokens: 97375
+ tokens: 15995625 ctokens: 95625
 
 class htb 1:12 parent 1:1 leaf 12: prio 0 quantum 1000 rate 80Kbit ceil 80Kbit linklayer ethernet burst 10Kb/1 mpu 0b cburst 1600b/1 mpu 0b level 0 
  Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
  backlog 0b 0p requeues 0
  lended: 0 borrowed: 0 giants: 0
  tokens: 16000000 ctokens: 2500000
-
-class prio 12:1 parent 12: leaf 121: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 12:2 parent 12: leaf 122: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 12:3 parent 12: leaf 123: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 12:4 parent 12: leaf 124: 
- Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 11:1 parent 11: leaf 111: 
- Sent 106600 bytes 100 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 11:2 parent 11: leaf 112: 
- Sent 106600 bytes 100 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 11:3 parent 11: leaf 113: 
- Sent 106600 bytes 100 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-class prio 11:4 parent 11: leaf 114: 
- Sent 199706 bytes 193 pkt (dropped 0, overlimits 0 requeues 0) 
- backlog 0b 0p requeues 0
-TIME:08:50:49
+TIME:16:05:17
 class htb 1:11 parent 1:1 leaf 11: prio 0 quantum 24000 rate 1920Kbit ceil 1920Kbit linklayer ethernet burst 240Kb/1 mpu 0b cburst 1599b/1 mpu 0b level 0 
- Sent 519506 bytes 493 pkt (dropped 0, overlimits 486 requeues 0) 
+ Sent 533140 bytes 502 pkt (dropped 0, overlimits 494 requeues 0) 
  backlog 0b 0p requeues 0
- lended: 493 borrowed: 0 giants: 0
- tokens: 15997265 ctokens: 101421
+ lended: 502 borrowed: 0 giants: 0
+ tokens: 15995442 ctokens: 99598
 
 class htb 1:1 root rate 2Mbit ceil 2Mbit linklayer ethernet burst 250Kb/1 mpu 0b cburst 1600b/1 mpu 0b level 7 
- Sent 519506 bytes 493 pkt (dropped 0, overlimits 23 requeues 0) 
+ Sent 533140 bytes 502 pkt (dropped 0, overlimits 84 requeues 0) 
  backlog 0b 0p requeues 0
  lended: 0 borrowed: 0 giants: 0
- tokens: 15997375 ctokens: 97375
+ tokens: 15995625 ctokens: 95625
 
 class htb 1:12 parent 1:1 leaf 12: prio 0 quantum 1000 rate 80Kbit ceil 80Kbit linklayer ethernet burst 10Kb/1 mpu 0b cburst 1600b/1 mpu 0b level 0 
  Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
  backlog 0b 0p requeues 0
  lended: 0 borrowed: 0 giants: 0
  tokens: 16000000 ctokens: 2500000
+TIME:16:05:19
+class htb 1:11 parent 1:1 leaf 11: prio 0 quantum 24000 rate 1920Kbit ceil 1920Kbit linklayer ethernet burst 240Kb/1 mpu 0b cburst 1599b/1 mpu 0b level 0 
+ Sent 533140 bytes 502 pkt (dropped 0, overlimits 494 requeues 0) 
+ backlog 0b 0p requeues 0
+ lended: 502 borrowed: 0 giants: 0
+ tokens: 15995442 ctokens: 99598
 
-class prio 12:1 parent 12: leaf 121: 
+class htb 1:1 root rate 2Mbit ceil 2Mbit linklayer ethernet burst 250Kb/1 mpu 0b cburst 1600b/1 mpu 0b level 7 
+ Sent 533140 bytes 502 pkt (dropped 0, overlimits 84 requeues 0) 
+ backlog 0b 0p requeues 0
+ lended: 0 borrowed: 0 giants: 0
+ tokens: 15995625 ctokens: 95625
+
+class htb 1:12 parent 1:1 leaf 12: prio 0 quantum 1000 rate 80Kbit ceil 80Kbit linklayer ethernet burst 10Kb/1 mpu 0b cburst 1600b/1 mpu 0b level 0 
  Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
  backlog 0b 0p requeues 0
-class prio 12:2 parent 12: leaf 122: 
+ lended: 0 borrowed: 0 giants: 0
+ tokens: 16000000 ctokens: 2500000
+TIME:16:05:21
+class htb 1:11 parent 1:1 leaf 11: prio 0 quantum 24000 rate 1920Kbit ceil 1920Kbit linklayer ethernet burst 240Kb/1 mpu 0b cburst 1599b/1 mpu 0b level 0 
+ Sent 533140 bytes 502 pkt (dropped 0, overlimits 494 requeues 0) 
+ backlog 70b 1p requeues 0
+ lended: 502 borrowed: 0 giants: 0
+ tokens: 15995442 ctokens: 99598
+
+class htb 1:1 root rate 2Mbit ceil 2Mbit linklayer ethernet burst 250Kb/1 mpu 0b cburst 1600b/1 mpu 0b level 7 
+ Sent 533140 bytes 502 pkt (dropped 0, overlimits 84 requeues 0) 
+ backlog 0b 0p requeues 0
+ lended: 0 borrowed: 0 giants: 0
+ tokens: 15995625 ctokens: 95625
+
+class htb 1:12 parent 1:1 leaf 12: prio 0 quantum 1000 rate 80Kbit ceil 80Kbit linklayer ethernet burst 10Kb/1 mpu 0b cburst 1600b/1 mpu 0b level 0 
  Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
  backlog 0b 0p requeues 0
-class prio 12:3 parent 12: leaf 123: 
+ lended: 0 borrowed: 0 giants: 0
+ tokens: 16000000 ctokens: 2500000
+TIME:16:05:23
+class htb 1:11 parent 1:1 leaf 11: prio 0 quantum 24000 rate 1920Kbit ceil 1920Kbit linklayer ethernet burst 240Kb/1 mpu 0b cburst 1599b/1 mpu 0b level 0 
+ Sent 533210 bytes 503 pkt (dropped 0, overlimits 494 requeues 0) 
+ backlog 0b 0p requeues 0
+ lended: 503 borrowed: 0 giants: 0
+ tokens: 15995442 ctokens: 99598
+
+class htb 1:1 root rate 2Mbit ceil 2Mbit linklayer ethernet burst 250Kb/1 mpu 0b cburst 1600b/1 mpu 0b level 7 
+ Sent 533210 bytes 503 pkt (dropped 0, overlimits 84 requeues 0) 
+ backlog 0b 0p requeues 0
+ lended: 0 borrowed: 0 giants: 0
+ tokens: 15995625 ctokens: 95625
+
+class htb 1:12 parent 1:1 leaf 12: prio 0 quantum 1000 rate 80Kbit ceil 80Kbit linklayer ethernet burst 10Kb/1 mpu 0b cburst 1600b/1 mpu 0b level 0 
  Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
  backlog 0b 0p requeues 0
-class prio 12:4 parent 12: leaf 124: 
+ lended: 0 borrowed: 0 giants: 0
+ tokens: 16000000 ctokens: 2500000
+TIME:16:05:25
+class htb 1:11 parent 1:1 leaf 11: prio 0 quantum 24000 rate 1920Kbit ceil 1920Kbit linklayer ethernet burst 240Kb/1 mpu 0b cburst 1599b/1 mpu 0b level 0 
+ Sent 533210 bytes 503 pkt (dropped 0, overlimits 494 requeues 0) 
+ backlog 0b 0p requeues 0
+ lended: 503 borrowed: 0 giants: 0
+ tokens: 15995442 ctokens: 99598
+
+class htb 1:1 root rate 2Mbit ceil 2Mbit linklayer ethernet burst 250Kb/1 mpu 0b cburst 1600b/1 mpu 0b level 7 
+ Sent 533210 bytes 503 pkt (dropped 0, overlimits 84 requeues 0) 
+ backlog 0b 0p requeues 0
+ lended: 0 borrowed: 0 giants: 0
+ tokens: 15995625 ctokens: 95625
+
+class htb 1:12 parent 1:1 leaf 12: prio 0 quantum 1000 rate 80Kbit ceil 80Kbit linklayer ethernet burst 10Kb/1 mpu 0b cburst 1600b/1 mpu 0b level 0 
  Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
  backlog 0b 0p requeues 0
-class prio 11:1 parent 11: leaf 111: 
- Sent 106600 bytes 100 pkt (dropped 0, overlimits 0 requeues 0) 
+ lended: 0 borrowed: 0 giants: 0
+ tokens: 16000000 ctokens: 2500000
+TIME:16:05:27
+class htb 1:11 parent 1:1 leaf 11: prio 0 quantum 24000 rate 1920Kbit ceil 1920Kbit linklayer ethernet burst 240Kb/1 mpu 0b cburst 1599b/1 mpu 0b level 0 
+ Sent 533210 bytes 503 pkt (dropped 0, overlimits 494 requeues 0) 
  backlog 0b 0p requeues 0
-class prio 11:2 parent 11: leaf 112: 
- Sent 106600 bytes 100 pkt (dropped 0, overlimits 0 requeues 0) 
+ lended: 503 borrowed: 0 giants: 0
+ tokens: 15995442 ctokens: 99598
+
+class htb 1:1 root rate 2Mbit ceil 2Mbit linklayer ethernet burst 250Kb/1 mpu 0b cburst 1600b/1 mpu 0b level 7 
+ Sent 533210 bytes 503 pkt (dropped 0, overlimits 84 requeues 0) 
  backlog 0b 0p requeues 0
-class prio 11:3 parent 11: leaf 113: 
- Sent 106600 bytes 100 pkt (dropped 0, overlimits 0 requeues 0) 
+ lended: 0 borrowed: 0 giants: 0
+ tokens: 15995625 ctokens: 95625
+
+class htb 1:12 parent 1:1 leaf 12: prio 0 quantum 1000 rate 80Kbit ceil 80Kbit linklayer ethernet burst 10Kb/1 mpu 0b cburst 1600b/1 mpu 0b level 0 
+ Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
  backlog 0b 0p requeues 0
-class prio 11:4 parent 11: leaf 114: 
- Sent 199706 bytes 193 pkt (dropped 0, overlimits 0 requeues 0) 
+ lended: 0 borrowed: 0 giants: 0
+ tokens: 16000000 ctokens: 2500000
+TIME:16:05:29
+class htb 1:11 parent 1:1 leaf 11: prio 0 quantum 24000 rate 1920Kbit ceil 1920Kbit linklayer ethernet burst 240Kb/1 mpu 0b cburst 1599b/1 mpu 0b level 0 
+ Sent 533210 bytes 503 pkt (dropped 0, overlimits 494 requeues 0) 
  backlog 0b 0p requeues 0
+ lended: 503 borrowed: 0 giants: 0
+ tokens: 15995442 ctokens: 99598
+
+class htb 1:1 root rate 2Mbit ceil 2Mbit linklayer ethernet burst 250Kb/1 mpu 0b cburst 1600b/1 mpu 0b level 7 
+ Sent 533210 bytes 503 pkt (dropped 0, overlimits 84 requeues 0) 
+ backlog 0b 0p requeues 0
+ lended: 0 borrowed: 0 giants: 0
+ tokens: 15995625 ctokens: 95625
+
+class htb 1:12 parent 1:1 leaf 12: prio 0 quantum 1000 rate 80Kbit ceil 80Kbit linklayer ethernet burst 10Kb/1 mpu 0b cburst 1600b/1 mpu 0b level 0 
+ Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+ lended: 0 borrowed: 0 giants: 0
+ tokens: 16000000 ctokens: 2500000

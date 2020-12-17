@@ -1,4 +1,4 @@
-TIME:08:50:18
+TIME:16:04:58
 [ {
         "kind": "htb",
         "handle": "1:",
@@ -9,21 +9,28 @@ TIME:08:50:18
             "default": "0x11",
             "direct_packets_stat": 0,
             "ver": "3.17",
-            "direct_qlen": 1000
+            "direct_qlen": 10000
         },
-        "bytes": 252,
-        "packets": 4,
+        "bytes": 70,
+        "packets": 1,
         "drops": 0,
         "overlimits": 0,
         "requeues": 0,
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "122:",
         "parent": "12:2",
         "options": {
-            "limit": 100
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
         "bytes": 0,
         "packets": 0,
@@ -33,11 +40,18 @@ TIME:08:50:18
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "124:",
         "parent": "12:4",
         "options": {
-            "limit": 200
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
         "bytes": 0,
         "packets": 0,
@@ -47,11 +61,18 @@ TIME:08:50:18
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "113:",
         "parent": "11:3",
         "options": {
-            "limit": 100
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
         "bytes": 0,
         "packets": 0,
@@ -61,11 +82,18 @@ TIME:08:50:18
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "111:",
         "parent": "11:1",
         "options": {
-            "limit": 100
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
         "bytes": 0,
         "packets": 0,
@@ -91,11 +119,18 @@ TIME:08:50:18
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "121:",
         "parent": "12:1",
         "options": {
-            "limit": 100
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
         "bytes": 0,
         "packets": 0,
@@ -105,11 +140,18 @@ TIME:08:50:18
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "123:",
         "parent": "12:3",
         "options": {
-            "limit": 100
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
         "bytes": 0,
         "packets": 0,
@@ -119,11 +161,18 @@ TIME:08:50:18
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "112:",
         "parent": "11:2",
         "options": {
-            "limit": 100
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
         "bytes": 0,
         "packets": 0,
@@ -133,14 +182,21 @@ TIME:08:50:18
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "114:",
         "parent": "11:4",
         "options": {
-            "limit": 200
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
-        "bytes": 252,
-        "packets": 4,
+        "bytes": 70,
+        "packets": 1,
         "drops": 0,
         "overlimits": 0,
         "requeues": 0,
@@ -155,15 +211,15 @@ TIME:08:50:18
             "priomap": [ 3,3,2,3,0,3,1,3,3,3,3,3,3,3,3,3 ],
             "multiqueue": false
         },
-        "bytes": 252,
-        "packets": 4,
+        "bytes": 70,
+        "packets": 1,
         "drops": 0,
         "overlimits": 0,
         "requeues": 0,
         "backlog": 0,
         "qlen": 0
     } ]
-TIME:08:50:20
+TIME:16:05:00
 [ {
         "kind": "htb",
         "handle": "1:",
@@ -174,21 +230,28 @@ TIME:08:50:20
             "default": "0x11",
             "direct_packets_stat": 0,
             "ver": "3.17",
-            "direct_qlen": 1000
+            "direct_qlen": 10000
         },
-        "bytes": 252,
-        "packets": 4,
+        "bytes": 217534,
+        "packets": 205,
         "drops": 0,
-        "overlimits": 0,
+        "overlimits": 225,
         "requeues": 0,
-        "backlog": 0,
-        "qlen": 0
+        "backlog": 315536,
+        "qlen": 296
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "122:",
         "parent": "12:2",
         "options": {
-            "limit": 100
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
         "bytes": 0,
         "packets": 0,
@@ -198,11 +261,18 @@ TIME:08:50:20
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "124:",
         "parent": "12:4",
         "options": {
-            "limit": 200
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
         "bytes": 0,
         "packets": 0,
@@ -212,11 +282,55 @@ TIME:08:50:20
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "113:",
         "parent": "11:3",
         "options": {
-            "limit": 100
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
+        },
+        "bytes": 24518,
+        "packets": 23,
+        "drops": 0,
+        "overlimits": 0,
+        "requeues": 0,
+        "backlog": 82082,
+        "qlen": 77
+    },{
+        "kind": "netem",
+        "handle": "111:",
+        "parent": "11:1",
+        "options": {
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
+        },
+        "bytes": 95940,
+        "packets": 90,
+        "drops": 0,
+        "overlimits": 0,
+        "requeues": 0,
+        "backlog": 10660,
+        "qlen": 10
+    },{
+        "kind": "prio",
+        "handle": "12:",
+        "parent": "1:12",
+        "options": {
+            "bands": 4,
+            "priomap": [ 3,3,2,3,0,3,1,3,3,3,3,3,3,3,3,3 ],
+            "multiqueue": false
         },
         "bytes": 0,
         "packets": 0,
@@ -226,14 +340,205 @@ TIME:08:50:20
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
-        "handle": "111:",
-        "parent": "11:1",
+        "kind": "netem",
+        "handle": "121:",
+        "parent": "12:1",
         "options": {
-            "limit": 100
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
         "bytes": 0,
         "packets": 0,
+        "drops": 0,
+        "overlimits": 0,
+        "requeues": 0,
+        "backlog": 0,
+        "qlen": 0
+    },{
+        "kind": "netem",
+        "handle": "123:",
+        "parent": "12:3",
+        "options": {
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
+        },
+        "bytes": 0,
+        "packets": 0,
+        "drops": 0,
+        "overlimits": 0,
+        "requeues": 0,
+        "backlog": 0,
+        "qlen": 0
+    },{
+        "kind": "netem",
+        "handle": "112:",
+        "parent": "11:2",
+        "options": {
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
+        },
+        "bytes": 95940,
+        "packets": 90,
+        "drops": 0,
+        "overlimits": 0,
+        "requeues": 0,
+        "backlog": 10660,
+        "qlen": 10
+    },{
+        "kind": "netem",
+        "handle": "114:",
+        "parent": "11:4",
+        "options": {
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
+        },
+        "bytes": 1136,
+        "packets": 2,
+        "drops": 0,
+        "overlimits": 0,
+        "requeues": 0,
+        "backlog": 212134,
+        "qlen": 199
+    },{
+        "kind": "prio",
+        "handle": "11:",
+        "parent": "1:11",
+        "options": {
+            "bands": 4,
+            "priomap": [ 3,3,2,3,0,3,1,3,3,3,3,3,3,3,3,3 ],
+            "multiqueue": false
+        },
+        "bytes": 217534,
+        "packets": 205,
+        "drops": 0,
+        "overlimits": 0,
+        "requeues": 0,
+        "backlog": 315536,
+        "qlen": 296
+    } ]
+TIME:16:05:02
+[ {
+        "kind": "htb",
+        "handle": "1:",
+        "root": true,
+        "refcnt": 2,
+        "options": {
+            "r2q": 10,
+            "default": "0x11",
+            "direct_packets_stat": 0,
+            "ver": "3.17",
+            "direct_qlen": 10000
+        },
+        "bytes": 533070,
+        "packets": 501,
+        "drops": 0,
+        "overlimits": 578,
+        "requeues": 0,
+        "backlog": 0,
+        "qlen": 0
+    },{
+        "kind": "netem",
+        "handle": "122:",
+        "parent": "12:2",
+        "options": {
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
+        },
+        "bytes": 0,
+        "packets": 0,
+        "drops": 0,
+        "overlimits": 0,
+        "requeues": 0,
+        "backlog": 0,
+        "qlen": 0
+    },{
+        "kind": "netem",
+        "handle": "124:",
+        "parent": "12:4",
+        "options": {
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
+        },
+        "bytes": 0,
+        "packets": 0,
+        "drops": 0,
+        "overlimits": 0,
+        "requeues": 0,
+        "backlog": 0,
+        "qlen": 0
+    },{
+        "kind": "netem",
+        "handle": "113:",
+        "parent": "11:3",
+        "options": {
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
+        },
+        "bytes": 106600,
+        "packets": 100,
+        "drops": 0,
+        "overlimits": 0,
+        "requeues": 0,
+        "backlog": 0,
+        "qlen": 0
+    },{
+        "kind": "netem",
+        "handle": "111:",
+        "parent": "11:1",
+        "options": {
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
+        },
+        "bytes": 106600,
+        "packets": 100,
         "drops": 0,
         "overlimits": 0,
         "requeues": 0,
@@ -256,11 +561,18 @@ TIME:08:50:20
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "121:",
         "parent": "12:1",
         "options": {
-            "limit": 100
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
         "bytes": 0,
         "packets": 0,
@@ -270,11 +582,18 @@ TIME:08:50:20
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "123:",
         "parent": "12:3",
         "options": {
-            "limit": 100
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
         "bytes": 0,
         "packets": 0,
@@ -284,28 +603,42 @@ TIME:08:50:20
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "112:",
         "parent": "11:2",
         "options": {
-            "limit": 100
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
-        "bytes": 0,
-        "packets": 0,
+        "bytes": 106600,
+        "packets": 100,
         "drops": 0,
         "overlimits": 0,
         "requeues": 0,
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "114:",
         "parent": "11:4",
         "options": {
-            "limit": 200
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
-        "bytes": 252,
-        "packets": 4,
+        "bytes": 213270,
+        "packets": 201,
         "drops": 0,
         "overlimits": 0,
         "requeues": 0,
@@ -320,15 +653,15 @@ TIME:08:50:20
             "priomap": [ 3,3,2,3,0,3,1,3,3,3,3,3,3,3,3,3 ],
             "multiqueue": false
         },
-        "bytes": 252,
-        "packets": 4,
+        "bytes": 533070,
+        "packets": 501,
         "drops": 0,
         "overlimits": 0,
         "requeues": 0,
         "backlog": 0,
         "qlen": 0
     } ]
-TIME:08:50:22
+TIME:16:05:04
 [ {
         "kind": "htb",
         "handle": "1:",
@@ -339,21 +672,28 @@ TIME:08:50:22
             "default": "0x11",
             "direct_packets_stat": 0,
             "ver": "3.17",
-            "direct_qlen": 1000
+            "direct_qlen": 10000
         },
-        "bytes": 322,
-        "packets": 5,
+        "bytes": 533070,
+        "packets": 501,
         "drops": 0,
-        "overlimits": 0,
+        "overlimits": 578,
         "requeues": 0,
-        "backlog": 0,
-        "qlen": 0
+        "backlog": 70,
+        "qlen": 1
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "122:",
         "parent": "12:2",
         "options": {
-            "limit": 100
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
         "bytes": 0,
         "packets": 0,
@@ -363,11 +703,18 @@ TIME:08:50:22
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "124:",
         "parent": "12:4",
         "options": {
-            "limit": 200
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
         "bytes": 0,
         "packets": 0,
@@ -377,28 +724,42 @@ TIME:08:50:22
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "113:",
         "parent": "11:3",
         "options": {
-            "limit": 100
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
-        "bytes": 0,
-        "packets": 0,
+        "bytes": 106600,
+        "packets": 100,
         "drops": 0,
         "overlimits": 0,
         "requeues": 0,
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "111:",
         "parent": "11:1",
         "options": {
-            "limit": 100
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
-        "bytes": 0,
-        "packets": 0,
+        "bytes": 106600,
+        "packets": 100,
         "drops": 0,
         "overlimits": 0,
         "requeues": 0,
@@ -421,11 +782,18 @@ TIME:08:50:22
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "121:",
         "parent": "12:1",
         "options": {
-            "limit": 100
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
         "bytes": 0,
         "packets": 0,
@@ -435,11 +803,18 @@ TIME:08:50:22
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "123:",
         "parent": "12:3",
         "options": {
-            "limit": 100
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
         "bytes": 0,
         "packets": 0,
@@ -449,11 +824,97 @@ TIME:08:50:22
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "112:",
         "parent": "11:2",
         "options": {
-            "limit": 100
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
+        },
+        "bytes": 106600,
+        "packets": 100,
+        "drops": 0,
+        "overlimits": 0,
+        "requeues": 0,
+        "backlog": 0,
+        "qlen": 0
+    },{
+        "kind": "netem",
+        "handle": "114:",
+        "parent": "11:4",
+        "options": {
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
+        },
+        "bytes": 213270,
+        "packets": 201,
+        "drops": 0,
+        "overlimits": 0,
+        "requeues": 0,
+        "backlog": 70,
+        "qlen": 1
+    },{
+        "kind": "prio",
+        "handle": "11:",
+        "parent": "1:11",
+        "options": {
+            "bands": 4,
+            "priomap": [ 3,3,2,3,0,3,1,3,3,3,3,3,3,3,3,3 ],
+            "multiqueue": false
+        },
+        "bytes": 533070,
+        "packets": 501,
+        "drops": 0,
+        "overlimits": 0,
+        "requeues": 0,
+        "backlog": 70,
+        "qlen": 1
+    } ]
+TIME:16:05:07
+[ {
+        "kind": "htb",
+        "handle": "1:",
+        "root": true,
+        "refcnt": 2,
+        "options": {
+            "r2q": 10,
+            "default": "0x11",
+            "direct_packets_stat": 0,
+            "ver": "3.17",
+            "direct_qlen": 10000
+        },
+        "bytes": 533140,
+        "packets": 502,
+        "drops": 0,
+        "overlimits": 578,
+        "requeues": 0,
+        "backlog": 0,
+        "qlen": 0
+    },{
+        "kind": "netem",
+        "handle": "122:",
+        "parent": "12:2",
+        "options": {
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
         "bytes": 0,
         "packets": 0,
@@ -463,14 +924,163 @@ TIME:08:50:22
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
+        "handle": "124:",
+        "parent": "12:4",
+        "options": {
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
+        },
+        "bytes": 0,
+        "packets": 0,
+        "drops": 0,
+        "overlimits": 0,
+        "requeues": 0,
+        "backlog": 0,
+        "qlen": 0
+    },{
+        "kind": "netem",
+        "handle": "113:",
+        "parent": "11:3",
+        "options": {
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
+        },
+        "bytes": 106600,
+        "packets": 100,
+        "drops": 0,
+        "overlimits": 0,
+        "requeues": 0,
+        "backlog": 0,
+        "qlen": 0
+    },{
+        "kind": "netem",
+        "handle": "111:",
+        "parent": "11:1",
+        "options": {
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
+        },
+        "bytes": 106600,
+        "packets": 100,
+        "drops": 0,
+        "overlimits": 0,
+        "requeues": 0,
+        "backlog": 0,
+        "qlen": 0
+    },{
+        "kind": "prio",
+        "handle": "12:",
+        "parent": "1:12",
+        "options": {
+            "bands": 4,
+            "priomap": [ 3,3,2,3,0,3,1,3,3,3,3,3,3,3,3,3 ],
+            "multiqueue": false
+        },
+        "bytes": 0,
+        "packets": 0,
+        "drops": 0,
+        "overlimits": 0,
+        "requeues": 0,
+        "backlog": 0,
+        "qlen": 0
+    },{
+        "kind": "netem",
+        "handle": "121:",
+        "parent": "12:1",
+        "options": {
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
+        },
+        "bytes": 0,
+        "packets": 0,
+        "drops": 0,
+        "overlimits": 0,
+        "requeues": 0,
+        "backlog": 0,
+        "qlen": 0
+    },{
+        "kind": "netem",
+        "handle": "123:",
+        "parent": "12:3",
+        "options": {
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
+        },
+        "bytes": 0,
+        "packets": 0,
+        "drops": 0,
+        "overlimits": 0,
+        "requeues": 0,
+        "backlog": 0,
+        "qlen": 0
+    },{
+        "kind": "netem",
+        "handle": "112:",
+        "parent": "11:2",
+        "options": {
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
+        },
+        "bytes": 106600,
+        "packets": 100,
+        "drops": 0,
+        "overlimits": 0,
+        "requeues": 0,
+        "backlog": 0,
+        "qlen": 0
+    },{
+        "kind": "netem",
         "handle": "114:",
         "parent": "11:4",
         "options": {
-            "limit": 200
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
-        "bytes": 322,
-        "packets": 5,
+        "bytes": 213340,
+        "packets": 202,
         "drops": 0,
         "overlimits": 0,
         "requeues": 0,
@@ -485,15 +1095,15 @@ TIME:08:50:22
             "priomap": [ 3,3,2,3,0,3,1,3,3,3,3,3,3,3,3,3 ],
             "multiqueue": false
         },
-        "bytes": 322,
-        "packets": 5,
+        "bytes": 533140,
+        "packets": 502,
         "drops": 0,
         "overlimits": 0,
         "requeues": 0,
         "backlog": 0,
         "qlen": 0
     } ]
-TIME:08:50:24
+TIME:16:05:09
 [ {
         "kind": "htb",
         "handle": "1:",
@@ -504,21 +1114,28 @@ TIME:08:50:24
             "default": "0x11",
             "direct_packets_stat": 0,
             "ver": "3.17",
-            "direct_qlen": 1000
+            "direct_qlen": 10000
         },
-        "bytes": 322,
-        "packets": 5,
+        "bytes": 533140,
+        "packets": 502,
         "drops": 0,
-        "overlimits": 0,
+        "overlimits": 578,
         "requeues": 0,
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "122:",
         "parent": "12:2",
         "options": {
-            "limit": 100
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
         "bytes": 0,
         "packets": 0,
@@ -528,11 +1145,18 @@ TIME:08:50:24
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "124:",
         "parent": "12:4",
         "options": {
-            "limit": 200
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
         "bytes": 0,
         "packets": 0,
@@ -542,28 +1166,42 @@ TIME:08:50:24
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "113:",
         "parent": "11:3",
         "options": {
-            "limit": 100
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
-        "bytes": 0,
-        "packets": 0,
+        "bytes": 106600,
+        "packets": 100,
         "drops": 0,
         "overlimits": 0,
         "requeues": 0,
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "111:",
         "parent": "11:1",
         "options": {
-            "limit": 100
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
-        "bytes": 0,
-        "packets": 0,
+        "bytes": 106600,
+        "packets": 100,
         "drops": 0,
         "overlimits": 0,
         "requeues": 0,
@@ -586,11 +1224,18 @@ TIME:08:50:24
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "121:",
         "parent": "12:1",
         "options": {
-            "limit": 100
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
         "bytes": 0,
         "packets": 0,
@@ -600,11 +1245,18 @@ TIME:08:50:24
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "123:",
         "parent": "12:3",
         "options": {
-            "limit": 100
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
         "bytes": 0,
         "packets": 0,
@@ -614,28 +1266,42 @@ TIME:08:50:24
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "112:",
         "parent": "11:2",
         "options": {
-            "limit": 100
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
-        "bytes": 0,
-        "packets": 0,
+        "bytes": 106600,
+        "packets": 100,
         "drops": 0,
         "overlimits": 0,
         "requeues": 0,
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "114:",
         "parent": "11:4",
         "options": {
-            "limit": 200
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
-        "bytes": 322,
-        "packets": 5,
+        "bytes": 213340,
+        "packets": 202,
         "drops": 0,
         "overlimits": 0,
         "requeues": 0,
@@ -650,15 +1316,15 @@ TIME:08:50:24
             "priomap": [ 3,3,2,3,0,3,1,3,3,3,3,3,3,3,3,3 ],
             "multiqueue": false
         },
-        "bytes": 322,
-        "packets": 5,
+        "bytes": 533140,
+        "packets": 502,
         "drops": 0,
         "overlimits": 0,
         "requeues": 0,
         "backlog": 0,
         "qlen": 0
     } ]
-TIME:08:50:26
+TIME:16:05:11
 [ {
         "kind": "htb",
         "handle": "1:",
@@ -669,21 +1335,28 @@ TIME:08:50:26
             "default": "0x11",
             "direct_packets_stat": 0,
             "ver": "3.17",
-            "direct_qlen": 1000
+            "direct_qlen": 10000
         },
-        "bytes": 322,
-        "packets": 5,
+        "bytes": 533140,
+        "packets": 502,
         "drops": 0,
-        "overlimits": 0,
+        "overlimits": 578,
         "requeues": 0,
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "122:",
         "parent": "12:2",
         "options": {
-            "limit": 100
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
         "bytes": 0,
         "packets": 0,
@@ -693,11 +1366,18 @@ TIME:08:50:26
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "124:",
         "parent": "12:4",
         "options": {
-            "limit": 200
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
         "bytes": 0,
         "packets": 0,
@@ -707,28 +1387,42 @@ TIME:08:50:26
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "113:",
         "parent": "11:3",
         "options": {
-            "limit": 100
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
-        "bytes": 0,
-        "packets": 0,
+        "bytes": 106600,
+        "packets": 100,
         "drops": 0,
         "overlimits": 0,
         "requeues": 0,
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "111:",
         "parent": "11:1",
         "options": {
-            "limit": 100
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
-        "bytes": 0,
-        "packets": 0,
+        "bytes": 106600,
+        "packets": 100,
         "drops": 0,
         "overlimits": 0,
         "requeues": 0,
@@ -751,11 +1445,18 @@ TIME:08:50:26
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "121:",
         "parent": "12:1",
         "options": {
-            "limit": 100
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
         "bytes": 0,
         "packets": 0,
@@ -765,11 +1466,18 @@ TIME:08:50:26
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "123:",
         "parent": "12:3",
         "options": {
-            "limit": 100
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
         "bytes": 0,
         "packets": 0,
@@ -779,28 +1487,42 @@ TIME:08:50:26
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "112:",
         "parent": "11:2",
         "options": {
-            "limit": 100
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
-        "bytes": 0,
-        "packets": 0,
+        "bytes": 106600,
+        "packets": 100,
         "drops": 0,
         "overlimits": 0,
         "requeues": 0,
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "114:",
         "parent": "11:4",
         "options": {
-            "limit": 200
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
-        "bytes": 322,
-        "packets": 5,
+        "bytes": 213340,
+        "packets": 202,
         "drops": 0,
         "overlimits": 0,
         "requeues": 0,
@@ -815,15 +1537,15 @@ TIME:08:50:26
             "priomap": [ 3,3,2,3,0,3,1,3,3,3,3,3,3,3,3,3 ],
             "multiqueue": false
         },
-        "bytes": 322,
-        "packets": 5,
+        "bytes": 533140,
+        "packets": 502,
         "drops": 0,
         "overlimits": 0,
         "requeues": 0,
         "backlog": 0,
         "qlen": 0
     } ]
-TIME:08:50:28
+TIME:16:05:13
 [ {
         "kind": "htb",
         "handle": "1:",
@@ -834,21 +1556,28 @@ TIME:08:50:28
             "default": "0x11",
             "direct_packets_stat": 0,
             "ver": "3.17",
-            "direct_qlen": 1000
+            "direct_qlen": 10000
         },
-        "bytes": 322,
-        "packets": 5,
+        "bytes": 533140,
+        "packets": 502,
         "drops": 0,
-        "overlimits": 0,
+        "overlimits": 578,
         "requeues": 0,
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "122:",
         "parent": "12:2",
         "options": {
-            "limit": 100
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
         "bytes": 0,
         "packets": 0,
@@ -858,11 +1587,18 @@ TIME:08:50:28
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "124:",
         "parent": "12:4",
         "options": {
-            "limit": 200
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
         "bytes": 0,
         "packets": 0,
@@ -872,28 +1608,42 @@ TIME:08:50:28
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "113:",
         "parent": "11:3",
         "options": {
-            "limit": 100
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
-        "bytes": 0,
-        "packets": 0,
+        "bytes": 106600,
+        "packets": 100,
         "drops": 0,
         "overlimits": 0,
         "requeues": 0,
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "111:",
         "parent": "11:1",
         "options": {
-            "limit": 100
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
-        "bytes": 0,
-        "packets": 0,
+        "bytes": 106600,
+        "packets": 100,
         "drops": 0,
         "overlimits": 0,
         "requeues": 0,
@@ -916,11 +1666,18 @@ TIME:08:50:28
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "121:",
         "parent": "12:1",
         "options": {
-            "limit": 100
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
         "bytes": 0,
         "packets": 0,
@@ -930,11 +1687,18 @@ TIME:08:50:28
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "123:",
         "parent": "12:3",
         "options": {
-            "limit": 100
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
         "bytes": 0,
         "packets": 0,
@@ -944,28 +1708,42 @@ TIME:08:50:28
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "112:",
         "parent": "11:2",
         "options": {
-            "limit": 100
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
-        "bytes": 0,
-        "packets": 0,
+        "bytes": 106600,
+        "packets": 100,
         "drops": 0,
         "overlimits": 0,
         "requeues": 0,
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "114:",
         "parent": "11:4",
         "options": {
-            "limit": 200
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
-        "bytes": 322,
-        "packets": 5,
+        "bytes": 213340,
+        "packets": 202,
         "drops": 0,
         "overlimits": 0,
         "requeues": 0,
@@ -980,15 +1758,15 @@ TIME:08:50:28
             "priomap": [ 3,3,2,3,0,3,1,3,3,3,3,3,3,3,3,3 ],
             "multiqueue": false
         },
-        "bytes": 322,
-        "packets": 5,
+        "bytes": 533140,
+        "packets": 502,
         "drops": 0,
         "overlimits": 0,
         "requeues": 0,
         "backlog": 0,
         "qlen": 0
     } ]
-TIME:08:50:30
+TIME:16:05:15
 [ {
         "kind": "htb",
         "handle": "1:",
@@ -999,21 +1777,28 @@ TIME:08:50:30
             "default": "0x11",
             "direct_packets_stat": 0,
             "ver": "3.17",
-            "direct_qlen": 1000
+            "direct_qlen": 10000
         },
-        "bytes": 322,
-        "packets": 5,
+        "bytes": 533140,
+        "packets": 502,
         "drops": 0,
-        "overlimits": 0,
+        "overlimits": 578,
         "requeues": 0,
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "122:",
         "parent": "12:2",
         "options": {
-            "limit": 100
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
         "bytes": 0,
         "packets": 0,
@@ -1023,11 +1808,18 @@ TIME:08:50:30
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "124:",
         "parent": "12:4",
         "options": {
-            "limit": 200
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
         "bytes": 0,
         "packets": 0,
@@ -1037,28 +1829,42 @@ TIME:08:50:30
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "113:",
         "parent": "11:3",
         "options": {
-            "limit": 100
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
-        "bytes": 0,
-        "packets": 0,
+        "bytes": 106600,
+        "packets": 100,
         "drops": 0,
         "overlimits": 0,
         "requeues": 0,
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "111:",
         "parent": "11:1",
         "options": {
-            "limit": 100
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
-        "bytes": 0,
-        "packets": 0,
+        "bytes": 106600,
+        "packets": 100,
         "drops": 0,
         "overlimits": 0,
         "requeues": 0,
@@ -1081,11 +1887,18 @@ TIME:08:50:30
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "121:",
         "parent": "12:1",
         "options": {
-            "limit": 100
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
         "bytes": 0,
         "packets": 0,
@@ -1095,11 +1908,18 @@ TIME:08:50:30
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "123:",
         "parent": "12:3",
         "options": {
-            "limit": 100
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
         "bytes": 0,
         "packets": 0,
@@ -1109,28 +1929,42 @@ TIME:08:50:30
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "112:",
         "parent": "11:2",
         "options": {
-            "limit": 100
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
-        "bytes": 0,
-        "packets": 0,
+        "bytes": 106600,
+        "packets": 100,
         "drops": 0,
         "overlimits": 0,
         "requeues": 0,
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "114:",
         "parent": "11:4",
         "options": {
-            "limit": 200
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
-        "bytes": 322,
-        "packets": 5,
+        "bytes": 213340,
+        "packets": 202,
         "drops": 0,
         "overlimits": 0,
         "requeues": 0,
@@ -1145,15 +1979,15 @@ TIME:08:50:30
             "priomap": [ 3,3,2,3,0,3,1,3,3,3,3,3,3,3,3,3 ],
             "multiqueue": false
         },
-        "bytes": 322,
-        "packets": 5,
+        "bytes": 533140,
+        "packets": 502,
         "drops": 0,
         "overlimits": 0,
         "requeues": 0,
         "backlog": 0,
         "qlen": 0
     } ]
-TIME:08:50:32
+TIME:16:05:17
 [ {
         "kind": "htb",
         "handle": "1:",
@@ -1164,21 +1998,28 @@ TIME:08:50:32
             "default": "0x11",
             "direct_packets_stat": 0,
             "ver": "3.17",
-            "direct_qlen": 1000
+            "direct_qlen": 10000
         },
-        "bytes": 427788,
-        "packets": 406,
+        "bytes": 533140,
+        "packets": 502,
         "drops": 0,
-        "overlimits": 423,
+        "overlimits": 578,
         "requeues": 0,
-        "backlog": 91676,
-        "qlen": 86
+        "backlog": 0,
+        "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "122:",
         "parent": "12:2",
         "options": {
-            "limit": 100
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
         "bytes": 0,
         "packets": 0,
@@ -1188,11 +2029,18 @@ TIME:08:50:32
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "124:",
         "parent": "12:4",
         "options": {
-            "limit": 200
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
         "bytes": 0,
         "packets": 0,
@@ -1202,11 +2050,18 @@ TIME:08:50:32
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "113:",
         "parent": "11:3",
         "options": {
-            "limit": 100
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
         "bytes": 106600,
         "packets": 100,
@@ -1216,11 +2071,18 @@ TIME:08:50:32
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "111:",
         "parent": "11:1",
         "options": {
-            "limit": 100
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
         "bytes": 106600,
         "packets": 100,
@@ -1246,11 +2108,18 @@ TIME:08:50:32
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "121:",
         "parent": "12:1",
         "options": {
-            "limit": 100
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
         "bytes": 0,
         "packets": 0,
@@ -1260,11 +2129,18 @@ TIME:08:50:32
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "123:",
         "parent": "12:3",
         "options": {
-            "limit": 100
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
         "bytes": 0,
         "packets": 0,
@@ -1274,11 +2150,18 @@ TIME:08:50:32
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "112:",
         "parent": "11:2",
         "options": {
-            "limit": 100
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
         "bytes": 106600,
         "packets": 100,
@@ -1288,179 +2171,21 @@ TIME:08:50:32
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "114:",
         "parent": "11:4",
         "options": {
-            "limit": 200
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
-        "bytes": 107988,
-        "packets": 106,
-        "drops": 0,
-        "overlimits": 0,
-        "requeues": 0,
-        "backlog": 91676,
-        "qlen": 86
-    },{
-        "kind": "prio",
-        "handle": "11:",
-        "parent": "1:11",
-        "options": {
-            "bands": 4,
-            "priomap": [ 3,3,2,3,0,3,1,3,3,3,3,3,3,3,3,3 ],
-            "multiqueue": false
-        },
-        "bytes": 427788,
-        "packets": 406,
-        "drops": 0,
-        "overlimits": 0,
-        "requeues": 0,
-        "backlog": 91676,
-        "qlen": 86
-    } ]
-TIME:08:50:34
-[ {
-        "kind": "htb",
-        "handle": "1:",
-        "root": true,
-        "refcnt": 2,
-        "options": {
-            "r2q": 10,
-            "default": "0x11",
-            "direct_packets_stat": 0,
-            "ver": "3.17",
-            "direct_qlen": 1000
-        },
-        "bytes": 519464,
-        "packets": 492,
-        "drops": 0,
-        "overlimits": 509,
-        "requeues": 0,
-        "backlog": 0,
-        "qlen": 0
-    },{
-        "kind": "pfifo",
-        "handle": "122:",
-        "parent": "12:2",
-        "options": {
-            "limit": 100
-        },
-        "bytes": 0,
-        "packets": 0,
-        "drops": 0,
-        "overlimits": 0,
-        "requeues": 0,
-        "backlog": 0,
-        "qlen": 0
-    },{
-        "kind": "pfifo",
-        "handle": "124:",
-        "parent": "12:4",
-        "options": {
-            "limit": 200
-        },
-        "bytes": 0,
-        "packets": 0,
-        "drops": 0,
-        "overlimits": 0,
-        "requeues": 0,
-        "backlog": 0,
-        "qlen": 0
-    },{
-        "kind": "pfifo",
-        "handle": "113:",
-        "parent": "11:3",
-        "options": {
-            "limit": 100
-        },
-        "bytes": 106600,
-        "packets": 100,
-        "drops": 0,
-        "overlimits": 0,
-        "requeues": 0,
-        "backlog": 0,
-        "qlen": 0
-    },{
-        "kind": "pfifo",
-        "handle": "111:",
-        "parent": "11:1",
-        "options": {
-            "limit": 100
-        },
-        "bytes": 106600,
-        "packets": 100,
-        "drops": 0,
-        "overlimits": 0,
-        "requeues": 0,
-        "backlog": 0,
-        "qlen": 0
-    },{
-        "kind": "prio",
-        "handle": "12:",
-        "parent": "1:12",
-        "options": {
-            "bands": 4,
-            "priomap": [ 3,3,2,3,0,3,1,3,3,3,3,3,3,3,3,3 ],
-            "multiqueue": false
-        },
-        "bytes": 0,
-        "packets": 0,
-        "drops": 0,
-        "overlimits": 0,
-        "requeues": 0,
-        "backlog": 0,
-        "qlen": 0
-    },{
-        "kind": "pfifo",
-        "handle": "121:",
-        "parent": "12:1",
-        "options": {
-            "limit": 100
-        },
-        "bytes": 0,
-        "packets": 0,
-        "drops": 0,
-        "overlimits": 0,
-        "requeues": 0,
-        "backlog": 0,
-        "qlen": 0
-    },{
-        "kind": "pfifo",
-        "handle": "123:",
-        "parent": "12:3",
-        "options": {
-            "limit": 100
-        },
-        "bytes": 0,
-        "packets": 0,
-        "drops": 0,
-        "overlimits": 0,
-        "requeues": 0,
-        "backlog": 0,
-        "qlen": 0
-    },{
-        "kind": "pfifo",
-        "handle": "112:",
-        "parent": "11:2",
-        "options": {
-            "limit": 100
-        },
-        "bytes": 106600,
-        "packets": 100,
-        "drops": 0,
-        "overlimits": 0,
-        "requeues": 0,
-        "backlog": 0,
-        "qlen": 0
-    },{
-        "kind": "pfifo",
-        "handle": "114:",
-        "parent": "11:4",
-        "options": {
-            "limit": 200
-        },
-        "bytes": 199664,
-        "packets": 192,
+        "bytes": 213340,
+        "packets": 202,
         "drops": 0,
         "overlimits": 0,
         "requeues": 0,
@@ -1475,15 +2200,15 @@ TIME:08:50:34
             "priomap": [ 3,3,2,3,0,3,1,3,3,3,3,3,3,3,3,3 ],
             "multiqueue": false
         },
-        "bytes": 519464,
-        "packets": 492,
+        "bytes": 533140,
+        "packets": 502,
         "drops": 0,
         "overlimits": 0,
         "requeues": 0,
         "backlog": 0,
         "qlen": 0
     } ]
-TIME:08:50:36
+TIME:16:05:19
 [ {
         "kind": "htb",
         "handle": "1:",
@@ -1494,21 +2219,28 @@ TIME:08:50:36
             "default": "0x11",
             "direct_packets_stat": 0,
             "ver": "3.17",
-            "direct_qlen": 1000
+            "direct_qlen": 10000
         },
-        "bytes": 519506,
-        "packets": 493,
+        "bytes": 533140,
+        "packets": 502,
         "drops": 0,
-        "overlimits": 509,
+        "overlimits": 578,
         "requeues": 0,
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "122:",
         "parent": "12:2",
         "options": {
-            "limit": 100
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
         "bytes": 0,
         "packets": 0,
@@ -1518,11 +2250,18 @@ TIME:08:50:36
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "124:",
         "parent": "12:4",
         "options": {
-            "limit": 200
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
         "bytes": 0,
         "packets": 0,
@@ -1532,11 +2271,18 @@ TIME:08:50:36
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "113:",
         "parent": "11:3",
         "options": {
-            "limit": 100
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
         "bytes": 106600,
         "packets": 100,
@@ -1546,11 +2292,18 @@ TIME:08:50:36
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "111:",
         "parent": "11:1",
         "options": {
-            "limit": 100
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
         "bytes": 106600,
         "packets": 100,
@@ -1576,11 +2329,18 @@ TIME:08:50:36
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "121:",
         "parent": "12:1",
         "options": {
-            "limit": 100
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
         "bytes": 0,
         "packets": 0,
@@ -1590,11 +2350,18 @@ TIME:08:50:36
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "123:",
         "parent": "12:3",
         "options": {
-            "limit": 100
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
         "bytes": 0,
         "packets": 0,
@@ -1604,11 +2371,18 @@ TIME:08:50:36
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "112:",
         "parent": "11:2",
         "options": {
-            "limit": 100
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
         "bytes": 106600,
         "packets": 100,
@@ -1618,14 +2392,21 @@ TIME:08:50:36
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "114:",
         "parent": "11:4",
         "options": {
-            "limit": 200
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
-        "bytes": 199706,
-        "packets": 193,
+        "bytes": 213340,
+        "packets": 202,
         "drops": 0,
         "overlimits": 0,
         "requeues": 0,
@@ -1640,15 +2421,15 @@ TIME:08:50:36
             "priomap": [ 3,3,2,3,0,3,1,3,3,3,3,3,3,3,3,3 ],
             "multiqueue": false
         },
-        "bytes": 519506,
-        "packets": 493,
+        "bytes": 533140,
+        "packets": 502,
         "drops": 0,
         "overlimits": 0,
         "requeues": 0,
         "backlog": 0,
         "qlen": 0
     } ]
-TIME:08:50:38
+TIME:16:05:21
 [ {
         "kind": "htb",
         "handle": "1:",
@@ -1659,21 +2440,28 @@ TIME:08:50:38
             "default": "0x11",
             "direct_packets_stat": 0,
             "ver": "3.17",
-            "direct_qlen": 1000
+            "direct_qlen": 10000
         },
-        "bytes": 519506,
-        "packets": 493,
+        "bytes": 533140,
+        "packets": 502,
         "drops": 0,
-        "overlimits": 509,
+        "overlimits": 578,
         "requeues": 0,
-        "backlog": 0,
-        "qlen": 0
+        "backlog": 70,
+        "qlen": 1
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "122:",
         "parent": "12:2",
         "options": {
-            "limit": 100
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
         "bytes": 0,
         "packets": 0,
@@ -1683,11 +2471,18 @@ TIME:08:50:38
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "124:",
         "parent": "12:4",
         "options": {
-            "limit": 200
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
         "bytes": 0,
         "packets": 0,
@@ -1697,11 +2492,18 @@ TIME:08:50:38
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "113:",
         "parent": "11:3",
         "options": {
-            "limit": 100
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
         "bytes": 106600,
         "packets": 100,
@@ -1711,11 +2513,18 @@ TIME:08:50:38
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "111:",
         "parent": "11:1",
         "options": {
-            "limit": 100
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
         "bytes": 106600,
         "packets": 100,
@@ -1741,11 +2550,18 @@ TIME:08:50:38
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "121:",
         "parent": "12:1",
         "options": {
-            "limit": 100
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
         "bytes": 0,
         "packets": 0,
@@ -1755,11 +2571,18 @@ TIME:08:50:38
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "123:",
         "parent": "12:3",
         "options": {
-            "limit": 100
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
         "bytes": 0,
         "packets": 0,
@@ -1769,11 +2592,18 @@ TIME:08:50:38
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "112:",
         "parent": "11:2",
         "options": {
-            "limit": 100
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
         "bytes": 106600,
         "packets": 100,
@@ -1783,14 +2613,242 @@ TIME:08:50:38
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "114:",
         "parent": "11:4",
         "options": {
-            "limit": 200
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
-        "bytes": 199706,
-        "packets": 193,
+        "bytes": 213340,
+        "packets": 202,
+        "drops": 0,
+        "overlimits": 0,
+        "requeues": 0,
+        "backlog": 70,
+        "qlen": 1
+    },{
+        "kind": "prio",
+        "handle": "11:",
+        "parent": "1:11",
+        "options": {
+            "bands": 4,
+            "priomap": [ 3,3,2,3,0,3,1,3,3,3,3,3,3,3,3,3 ],
+            "multiqueue": false
+        },
+        "bytes": 533140,
+        "packets": 502,
+        "drops": 0,
+        "overlimits": 0,
+        "requeues": 0,
+        "backlog": 70,
+        "qlen": 1
+    } ]
+TIME:16:05:23
+[ {
+        "kind": "htb",
+        "handle": "1:",
+        "root": true,
+        "refcnt": 2,
+        "options": {
+            "r2q": 10,
+            "default": "0x11",
+            "direct_packets_stat": 0,
+            "ver": "3.17",
+            "direct_qlen": 10000
+        },
+        "bytes": 533210,
+        "packets": 503,
+        "drops": 0,
+        "overlimits": 578,
+        "requeues": 0,
+        "backlog": 0,
+        "qlen": 0
+    },{
+        "kind": "netem",
+        "handle": "122:",
+        "parent": "12:2",
+        "options": {
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
+        },
+        "bytes": 0,
+        "packets": 0,
+        "drops": 0,
+        "overlimits": 0,
+        "requeues": 0,
+        "backlog": 0,
+        "qlen": 0
+    },{
+        "kind": "netem",
+        "handle": "124:",
+        "parent": "12:4",
+        "options": {
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
+        },
+        "bytes": 0,
+        "packets": 0,
+        "drops": 0,
+        "overlimits": 0,
+        "requeues": 0,
+        "backlog": 0,
+        "qlen": 0
+    },{
+        "kind": "netem",
+        "handle": "113:",
+        "parent": "11:3",
+        "options": {
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
+        },
+        "bytes": 106600,
+        "packets": 100,
+        "drops": 0,
+        "overlimits": 0,
+        "requeues": 0,
+        "backlog": 0,
+        "qlen": 0
+    },{
+        "kind": "netem",
+        "handle": "111:",
+        "parent": "11:1",
+        "options": {
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
+        },
+        "bytes": 106600,
+        "packets": 100,
+        "drops": 0,
+        "overlimits": 0,
+        "requeues": 0,
+        "backlog": 0,
+        "qlen": 0
+    },{
+        "kind": "prio",
+        "handle": "12:",
+        "parent": "1:12",
+        "options": {
+            "bands": 4,
+            "priomap": [ 3,3,2,3,0,3,1,3,3,3,3,3,3,3,3,3 ],
+            "multiqueue": false
+        },
+        "bytes": 0,
+        "packets": 0,
+        "drops": 0,
+        "overlimits": 0,
+        "requeues": 0,
+        "backlog": 0,
+        "qlen": 0
+    },{
+        "kind": "netem",
+        "handle": "121:",
+        "parent": "12:1",
+        "options": {
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
+        },
+        "bytes": 0,
+        "packets": 0,
+        "drops": 0,
+        "overlimits": 0,
+        "requeues": 0,
+        "backlog": 0,
+        "qlen": 0
+    },{
+        "kind": "netem",
+        "handle": "123:",
+        "parent": "12:3",
+        "options": {
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
+        },
+        "bytes": 0,
+        "packets": 0,
+        "drops": 0,
+        "overlimits": 0,
+        "requeues": 0,
+        "backlog": 0,
+        "qlen": 0
+    },{
+        "kind": "netem",
+        "handle": "112:",
+        "parent": "11:2",
+        "options": {
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
+        },
+        "bytes": 106600,
+        "packets": 100,
+        "drops": 0,
+        "overlimits": 0,
+        "requeues": 0,
+        "backlog": 0,
+        "qlen": 0
+    },{
+        "kind": "netem",
+        "handle": "114:",
+        "parent": "11:4",
+        "options": {
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
+        },
+        "bytes": 213410,
+        "packets": 203,
         "drops": 0,
         "overlimits": 0,
         "requeues": 0,
@@ -1805,15 +2863,15 @@ TIME:08:50:38
             "priomap": [ 3,3,2,3,0,3,1,3,3,3,3,3,3,3,3,3 ],
             "multiqueue": false
         },
-        "bytes": 519506,
-        "packets": 493,
+        "bytes": 533210,
+        "packets": 503,
         "drops": 0,
         "overlimits": 0,
         "requeues": 0,
         "backlog": 0,
         "qlen": 0
     } ]
-TIME:08:50:40
+TIME:16:05:25
 [ {
         "kind": "htb",
         "handle": "1:",
@@ -1824,21 +2882,28 @@ TIME:08:50:40
             "default": "0x11",
             "direct_packets_stat": 0,
             "ver": "3.17",
-            "direct_qlen": 1000
+            "direct_qlen": 10000
         },
-        "bytes": 519506,
-        "packets": 493,
+        "bytes": 533210,
+        "packets": 503,
         "drops": 0,
-        "overlimits": 509,
+        "overlimits": 578,
         "requeues": 0,
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "122:",
         "parent": "12:2",
         "options": {
-            "limit": 100
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
         "bytes": 0,
         "packets": 0,
@@ -1848,11 +2913,18 @@ TIME:08:50:40
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "124:",
         "parent": "12:4",
         "options": {
-            "limit": 200
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
         "bytes": 0,
         "packets": 0,
@@ -1862,11 +2934,18 @@ TIME:08:50:40
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "113:",
         "parent": "11:3",
         "options": {
-            "limit": 100
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
         "bytes": 106600,
         "packets": 100,
@@ -1876,11 +2955,18 @@ TIME:08:50:40
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "111:",
         "parent": "11:1",
         "options": {
-            "limit": 100
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
         "bytes": 106600,
         "packets": 100,
@@ -1906,11 +2992,18 @@ TIME:08:50:40
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "121:",
         "parent": "12:1",
         "options": {
-            "limit": 100
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
         "bytes": 0,
         "packets": 0,
@@ -1920,11 +3013,18 @@ TIME:08:50:40
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "123:",
         "parent": "12:3",
         "options": {
-            "limit": 100
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
         "bytes": 0,
         "packets": 0,
@@ -1934,11 +3034,18 @@ TIME:08:50:40
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "112:",
         "parent": "11:2",
         "options": {
-            "limit": 100
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
         "bytes": 106600,
         "packets": 100,
@@ -1948,14 +3055,21 @@ TIME:08:50:40
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "114:",
         "parent": "11:4",
         "options": {
-            "limit": 200
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
-        "bytes": 199706,
-        "packets": 193,
+        "bytes": 213410,
+        "packets": 203,
         "drops": 0,
         "overlimits": 0,
         "requeues": 0,
@@ -1970,15 +3084,15 @@ TIME:08:50:40
             "priomap": [ 3,3,2,3,0,3,1,3,3,3,3,3,3,3,3,3 ],
             "multiqueue": false
         },
-        "bytes": 519506,
-        "packets": 493,
+        "bytes": 533210,
+        "packets": 503,
         "drops": 0,
         "overlimits": 0,
         "requeues": 0,
         "backlog": 0,
         "qlen": 0
     } ]
-TIME:08:50:42
+TIME:16:05:27
 [ {
         "kind": "htb",
         "handle": "1:",
@@ -1989,21 +3103,28 @@ TIME:08:50:42
             "default": "0x11",
             "direct_packets_stat": 0,
             "ver": "3.17",
-            "direct_qlen": 1000
+            "direct_qlen": 10000
         },
-        "bytes": 519506,
-        "packets": 493,
+        "bytes": 533210,
+        "packets": 503,
         "drops": 0,
-        "overlimits": 509,
+        "overlimits": 578,
         "requeues": 0,
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "122:",
         "parent": "12:2",
         "options": {
-            "limit": 100
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
         "bytes": 0,
         "packets": 0,
@@ -2013,11 +3134,18 @@ TIME:08:50:42
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "124:",
         "parent": "12:4",
         "options": {
-            "limit": 200
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
         "bytes": 0,
         "packets": 0,
@@ -2027,11 +3155,18 @@ TIME:08:50:42
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "113:",
         "parent": "11:3",
         "options": {
-            "limit": 100
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
         "bytes": 106600,
         "packets": 100,
@@ -2041,11 +3176,18 @@ TIME:08:50:42
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "111:",
         "parent": "11:1",
         "options": {
-            "limit": 100
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
         "bytes": 106600,
         "packets": 100,
@@ -2071,11 +3213,18 @@ TIME:08:50:42
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "121:",
         "parent": "12:1",
         "options": {
-            "limit": 100
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
         "bytes": 0,
         "packets": 0,
@@ -2085,11 +3234,18 @@ TIME:08:50:42
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "123:",
         "parent": "12:3",
         "options": {
-            "limit": 100
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
         "bytes": 0,
         "packets": 0,
@@ -2099,11 +3255,18 @@ TIME:08:50:42
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "112:",
         "parent": "11:2",
         "options": {
-            "limit": 100
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
         "bytes": 106600,
         "packets": 100,
@@ -2113,14 +3276,21 @@ TIME:08:50:42
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "114:",
         "parent": "11:4",
         "options": {
-            "limit": 200
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
-        "bytes": 199706,
-        "packets": 193,
+        "bytes": 213410,
+        "packets": 203,
         "drops": 0,
         "overlimits": 0,
         "requeues": 0,
@@ -2135,15 +3305,15 @@ TIME:08:50:42
             "priomap": [ 3,3,2,3,0,3,1,3,3,3,3,3,3,3,3,3 ],
             "multiqueue": false
         },
-        "bytes": 519506,
-        "packets": 493,
+        "bytes": 533210,
+        "packets": 503,
         "drops": 0,
         "overlimits": 0,
         "requeues": 0,
         "backlog": 0,
         "qlen": 0
     } ]
-TIME:08:50:44
+TIME:16:05:29
 [ {
         "kind": "htb",
         "handle": "1:",
@@ -2154,21 +3324,28 @@ TIME:08:50:44
             "default": "0x11",
             "direct_packets_stat": 0,
             "ver": "3.17",
-            "direct_qlen": 1000
+            "direct_qlen": 10000
         },
-        "bytes": 519506,
-        "packets": 493,
+        "bytes": 533210,
+        "packets": 503,
         "drops": 0,
-        "overlimits": 509,
+        "overlimits": 578,
         "requeues": 0,
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "122:",
         "parent": "12:2",
         "options": {
-            "limit": 100
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
         "bytes": 0,
         "packets": 0,
@@ -2178,11 +3355,18 @@ TIME:08:50:44
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "124:",
         "parent": "12:4",
         "options": {
-            "limit": 200
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
         "bytes": 0,
         "packets": 0,
@@ -2192,11 +3376,18 @@ TIME:08:50:44
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "113:",
         "parent": "11:3",
         "options": {
-            "limit": 100
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
         "bytes": 106600,
         "packets": 100,
@@ -2206,11 +3397,18 @@ TIME:08:50:44
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "111:",
         "parent": "11:1",
         "options": {
-            "limit": 100
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
         "bytes": 106600,
         "packets": 100,
@@ -2236,11 +3434,18 @@ TIME:08:50:44
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "121:",
         "parent": "12:1",
         "options": {
-            "limit": 100
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
         "bytes": 0,
         "packets": 0,
@@ -2250,11 +3455,18 @@ TIME:08:50:44
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "123:",
         "parent": "12:3",
         "options": {
-            "limit": 100
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
         "bytes": 0,
         "packets": 0,
@@ -2264,11 +3476,18 @@ TIME:08:50:44
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "112:",
         "parent": "11:2",
         "options": {
-            "limit": 100
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
         "bytes": 106600,
         "packets": 100,
@@ -2278,14 +3497,21 @@ TIME:08:50:44
         "backlog": 0,
         "qlen": 0
     },{
-        "kind": "pfifo",
+        "kind": "netem",
         "handle": "114:",
         "parent": "11:4",
         "options": {
-            "limit": 200
+            "limit": 1000,
+            "delay": {
+                "delay": 1,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
         },
-        "bytes": 199706,
-        "packets": 193,
+        "bytes": 213410,
+        "packets": 203,
         "drops": 0,
         "overlimits": 0,
         "requeues": 0,
@@ -2300,833 +3526,8 @@ TIME:08:50:44
             "priomap": [ 3,3,2,3,0,3,1,3,3,3,3,3,3,3,3,3 ],
             "multiqueue": false
         },
-        "bytes": 519506,
-        "packets": 493,
-        "drops": 0,
-        "overlimits": 0,
-        "requeues": 0,
-        "backlog": 0,
-        "qlen": 0
-    } ]
-TIME:08:50:46
-[ {
-        "kind": "htb",
-        "handle": "1:",
-        "root": true,
-        "refcnt": 2,
-        "options": {
-            "r2q": 10,
-            "default": "0x11",
-            "direct_packets_stat": 0,
-            "ver": "3.17",
-            "direct_qlen": 1000
-        },
-        "bytes": 519506,
-        "packets": 493,
-        "drops": 0,
-        "overlimits": 509,
-        "requeues": 0,
-        "backlog": 0,
-        "qlen": 0
-    },{
-        "kind": "pfifo",
-        "handle": "122:",
-        "parent": "12:2",
-        "options": {
-            "limit": 100
-        },
-        "bytes": 0,
-        "packets": 0,
-        "drops": 0,
-        "overlimits": 0,
-        "requeues": 0,
-        "backlog": 0,
-        "qlen": 0
-    },{
-        "kind": "pfifo",
-        "handle": "124:",
-        "parent": "12:4",
-        "options": {
-            "limit": 200
-        },
-        "bytes": 0,
-        "packets": 0,
-        "drops": 0,
-        "overlimits": 0,
-        "requeues": 0,
-        "backlog": 0,
-        "qlen": 0
-    },{
-        "kind": "pfifo",
-        "handle": "113:",
-        "parent": "11:3",
-        "options": {
-            "limit": 100
-        },
-        "bytes": 106600,
-        "packets": 100,
-        "drops": 0,
-        "overlimits": 0,
-        "requeues": 0,
-        "backlog": 0,
-        "qlen": 0
-    },{
-        "kind": "pfifo",
-        "handle": "111:",
-        "parent": "11:1",
-        "options": {
-            "limit": 100
-        },
-        "bytes": 106600,
-        "packets": 100,
-        "drops": 0,
-        "overlimits": 0,
-        "requeues": 0,
-        "backlog": 0,
-        "qlen": 0
-    },{
-        "kind": "prio",
-        "handle": "12:",
-        "parent": "1:12",
-        "options": {
-            "bands": 4,
-            "priomap": [ 3,3,2,3,0,3,1,3,3,3,3,3,3,3,3,3 ],
-            "multiqueue": false
-        },
-        "bytes": 0,
-        "packets": 0,
-        "drops": 0,
-        "overlimits": 0,
-        "requeues": 0,
-        "backlog": 0,
-        "qlen": 0
-    },{
-        "kind": "pfifo",
-        "handle": "121:",
-        "parent": "12:1",
-        "options": {
-            "limit": 100
-        },
-        "bytes": 0,
-        "packets": 0,
-        "drops": 0,
-        "overlimits": 0,
-        "requeues": 0,
-        "backlog": 0,
-        "qlen": 0
-    },{
-        "kind": "pfifo",
-        "handle": "123:",
-        "parent": "12:3",
-        "options": {
-            "limit": 100
-        },
-        "bytes": 0,
-        "packets": 0,
-        "drops": 0,
-        "overlimits": 0,
-        "requeues": 0,
-        "backlog": 0,
-        "qlen": 0
-    },{
-        "kind": "pfifo",
-        "handle": "112:",
-        "parent": "11:2",
-        "options": {
-            "limit": 100
-        },
-        "bytes": 106600,
-        "packets": 100,
-        "drops": 0,
-        "overlimits": 0,
-        "requeues": 0,
-        "backlog": 0,
-        "qlen": 0
-    },{
-        "kind": "pfifo",
-        "handle": "114:",
-        "parent": "11:4",
-        "options": {
-            "limit": 200
-        },
-        "bytes": 199706,
-        "packets": 193,
-        "drops": 0,
-        "overlimits": 0,
-        "requeues": 0,
-        "backlog": 0,
-        "qlen": 0
-    },{
-        "kind": "prio",
-        "handle": "11:",
-        "parent": "1:11",
-        "options": {
-            "bands": 4,
-            "priomap": [ 3,3,2,3,0,3,1,3,3,3,3,3,3,3,3,3 ],
-            "multiqueue": false
-        },
-        "bytes": 519506,
-        "packets": 493,
-        "drops": 0,
-        "overlimits": 0,
-        "requeues": 0,
-        "backlog": 0,
-        "qlen": 0
-    } ]
-TIME:08:50:48
-[ {
-        "kind": "htb",
-        "handle": "1:",
-        "root": true,
-        "refcnt": 2,
-        "options": {
-            "r2q": 10,
-            "default": "0x11",
-            "direct_packets_stat": 0,
-            "ver": "3.17",
-            "direct_qlen": 1000
-        },
-        "bytes": 519506,
-        "packets": 493,
-        "drops": 0,
-        "overlimits": 509,
-        "requeues": 0,
-        "backlog": 0,
-        "qlen": 0
-    },{
-        "kind": "pfifo",
-        "handle": "122:",
-        "parent": "12:2",
-        "options": {
-            "limit": 100
-        },
-        "bytes": 0,
-        "packets": 0,
-        "drops": 0,
-        "overlimits": 0,
-        "requeues": 0,
-        "backlog": 0,
-        "qlen": 0
-    },{
-        "kind": "pfifo",
-        "handle": "124:",
-        "parent": "12:4",
-        "options": {
-            "limit": 200
-        },
-        "bytes": 0,
-        "packets": 0,
-        "drops": 0,
-        "overlimits": 0,
-        "requeues": 0,
-        "backlog": 0,
-        "qlen": 0
-    },{
-        "kind": "pfifo",
-        "handle": "113:",
-        "parent": "11:3",
-        "options": {
-            "limit": 100
-        },
-        "bytes": 106600,
-        "packets": 100,
-        "drops": 0,
-        "overlimits": 0,
-        "requeues": 0,
-        "backlog": 0,
-        "qlen": 0
-    },{
-        "kind": "pfifo",
-        "handle": "111:",
-        "parent": "11:1",
-        "options": {
-            "limit": 100
-        },
-        "bytes": 106600,
-        "packets": 100,
-        "drops": 0,
-        "overlimits": 0,
-        "requeues": 0,
-        "backlog": 0,
-        "qlen": 0
-    },{
-        "kind": "prio",
-        "handle": "12:",
-        "parent": "1:12",
-        "options": {
-            "bands": 4,
-            "priomap": [ 3,3,2,3,0,3,1,3,3,3,3,3,3,3,3,3 ],
-            "multiqueue": false
-        },
-        "bytes": 0,
-        "packets": 0,
-        "drops": 0,
-        "overlimits": 0,
-        "requeues": 0,
-        "backlog": 0,
-        "qlen": 0
-    },{
-        "kind": "pfifo",
-        "handle": "121:",
-        "parent": "12:1",
-        "options": {
-            "limit": 100
-        },
-        "bytes": 0,
-        "packets": 0,
-        "drops": 0,
-        "overlimits": 0,
-        "requeues": 0,
-        "backlog": 0,
-        "qlen": 0
-    },{
-        "kind": "pfifo",
-        "handle": "123:",
-        "parent": "12:3",
-        "options": {
-            "limit": 100
-        },
-        "bytes": 0,
-        "packets": 0,
-        "drops": 0,
-        "overlimits": 0,
-        "requeues": 0,
-        "backlog": 0,
-        "qlen": 0
-    },{
-        "kind": "pfifo",
-        "handle": "112:",
-        "parent": "11:2",
-        "options": {
-            "limit": 100
-        },
-        "bytes": 106600,
-        "packets": 100,
-        "drops": 0,
-        "overlimits": 0,
-        "requeues": 0,
-        "backlog": 0,
-        "qlen": 0
-    },{
-        "kind": "pfifo",
-        "handle": "114:",
-        "parent": "11:4",
-        "options": {
-            "limit": 200
-        },
-        "bytes": 199706,
-        "packets": 193,
-        "drops": 0,
-        "overlimits": 0,
-        "requeues": 0,
-        "backlog": 0,
-        "qlen": 0
-    },{
-        "kind": "prio",
-        "handle": "11:",
-        "parent": "1:11",
-        "options": {
-            "bands": 4,
-            "priomap": [ 3,3,2,3,0,3,1,3,3,3,3,3,3,3,3,3 ],
-            "multiqueue": false
-        },
-        "bytes": 519506,
-        "packets": 493,
-        "drops": 0,
-        "overlimits": 0,
-        "requeues": 0,
-        "backlog": 0,
-        "qlen": 0
-    } ]
-TIME:08:50:50
-[ {
-        "kind": "htb",
-        "handle": "1:",
-        "root": true,
-        "refcnt": 2,
-        "options": {
-            "r2q": 10,
-            "default": "0x11",
-            "direct_packets_stat": 0,
-            "ver": "3.17",
-            "direct_qlen": 1000
-        },
-        "bytes": 519506,
-        "packets": 493,
-        "drops": 0,
-        "overlimits": 509,
-        "requeues": 0,
-        "backlog": 0,
-        "qlen": 0
-    },{
-        "kind": "pfifo",
-        "handle": "122:",
-        "parent": "12:2",
-        "options": {
-            "limit": 100
-        },
-        "bytes": 0,
-        "packets": 0,
-        "drops": 0,
-        "overlimits": 0,
-        "requeues": 0,
-        "backlog": 0,
-        "qlen": 0
-    },{
-        "kind": "pfifo",
-        "handle": "124:",
-        "parent": "12:4",
-        "options": {
-            "limit": 200
-        },
-        "bytes": 0,
-        "packets": 0,
-        "drops": 0,
-        "overlimits": 0,
-        "requeues": 0,
-        "backlog": 0,
-        "qlen": 0
-    },{
-        "kind": "pfifo",
-        "handle": "113:",
-        "parent": "11:3",
-        "options": {
-            "limit": 100
-        },
-        "bytes": 106600,
-        "packets": 100,
-        "drops": 0,
-        "overlimits": 0,
-        "requeues": 0,
-        "backlog": 0,
-        "qlen": 0
-    },{
-        "kind": "pfifo",
-        "handle": "111:",
-        "parent": "11:1",
-        "options": {
-            "limit": 100
-        },
-        "bytes": 106600,
-        "packets": 100,
-        "drops": 0,
-        "overlimits": 0,
-        "requeues": 0,
-        "backlog": 0,
-        "qlen": 0
-    },{
-        "kind": "prio",
-        "handle": "12:",
-        "parent": "1:12",
-        "options": {
-            "bands": 4,
-            "priomap": [ 3,3,2,3,0,3,1,3,3,3,3,3,3,3,3,3 ],
-            "multiqueue": false
-        },
-        "bytes": 0,
-        "packets": 0,
-        "drops": 0,
-        "overlimits": 0,
-        "requeues": 0,
-        "backlog": 0,
-        "qlen": 0
-    },{
-        "kind": "pfifo",
-        "handle": "121:",
-        "parent": "12:1",
-        "options": {
-            "limit": 100
-        },
-        "bytes": 0,
-        "packets": 0,
-        "drops": 0,
-        "overlimits": 0,
-        "requeues": 0,
-        "backlog": 0,
-        "qlen": 0
-    },{
-        "kind": "pfifo",
-        "handle": "123:",
-        "parent": "12:3",
-        "options": {
-            "limit": 100
-        },
-        "bytes": 0,
-        "packets": 0,
-        "drops": 0,
-        "overlimits": 0,
-        "requeues": 0,
-        "backlog": 0,
-        "qlen": 0
-    },{
-        "kind": "pfifo",
-        "handle": "112:",
-        "parent": "11:2",
-        "options": {
-            "limit": 100
-        },
-        "bytes": 106600,
-        "packets": 100,
-        "drops": 0,
-        "overlimits": 0,
-        "requeues": 0,
-        "backlog": 0,
-        "qlen": 0
-    },{
-        "kind": "pfifo",
-        "handle": "114:",
-        "parent": "11:4",
-        "options": {
-            "limit": 200
-        },
-        "bytes": 199706,
-        "packets": 193,
-        "drops": 0,
-        "overlimits": 0,
-        "requeues": 0,
-        "backlog": 0,
-        "qlen": 0
-    },{
-        "kind": "prio",
-        "handle": "11:",
-        "parent": "1:11",
-        "options": {
-            "bands": 4,
-            "priomap": [ 3,3,2,3,0,3,1,3,3,3,3,3,3,3,3,3 ],
-            "multiqueue": false
-        },
-        "bytes": 519506,
-        "packets": 493,
-        "drops": 0,
-        "overlimits": 0,
-        "requeues": 0,
-        "backlog": 0,
-        "qlen": 0
-    } ]
-TIME:08:50:52
-[ {
-        "kind": "htb",
-        "handle": "1:",
-        "root": true,
-        "refcnt": 2,
-        "options": {
-            "r2q": 10,
-            "default": "0x11",
-            "direct_packets_stat": 0,
-            "ver": "3.17",
-            "direct_qlen": 1000
-        },
-        "bytes": 519506,
-        "packets": 493,
-        "drops": 0,
-        "overlimits": 509,
-        "requeues": 0,
-        "backlog": 0,
-        "qlen": 0
-    },{
-        "kind": "pfifo",
-        "handle": "122:",
-        "parent": "12:2",
-        "options": {
-            "limit": 100
-        },
-        "bytes": 0,
-        "packets": 0,
-        "drops": 0,
-        "overlimits": 0,
-        "requeues": 0,
-        "backlog": 0,
-        "qlen": 0
-    },{
-        "kind": "pfifo",
-        "handle": "124:",
-        "parent": "12:4",
-        "options": {
-            "limit": 200
-        },
-        "bytes": 0,
-        "packets": 0,
-        "drops": 0,
-        "overlimits": 0,
-        "requeues": 0,
-        "backlog": 0,
-        "qlen": 0
-    },{
-        "kind": "pfifo",
-        "handle": "113:",
-        "parent": "11:3",
-        "options": {
-            "limit": 100
-        },
-        "bytes": 106600,
-        "packets": 100,
-        "drops": 0,
-        "overlimits": 0,
-        "requeues": 0,
-        "backlog": 0,
-        "qlen": 0
-    },{
-        "kind": "pfifo",
-        "handle": "111:",
-        "parent": "11:1",
-        "options": {
-            "limit": 100
-        },
-        "bytes": 106600,
-        "packets": 100,
-        "drops": 0,
-        "overlimits": 0,
-        "requeues": 0,
-        "backlog": 0,
-        "qlen": 0
-    },{
-        "kind": "prio",
-        "handle": "12:",
-        "parent": "1:12",
-        "options": {
-            "bands": 4,
-            "priomap": [ 3,3,2,3,0,3,1,3,3,3,3,3,3,3,3,3 ],
-            "multiqueue": false
-        },
-        "bytes": 0,
-        "packets": 0,
-        "drops": 0,
-        "overlimits": 0,
-        "requeues": 0,
-        "backlog": 0,
-        "qlen": 0
-    },{
-        "kind": "pfifo",
-        "handle": "121:",
-        "parent": "12:1",
-        "options": {
-            "limit": 100
-        },
-        "bytes": 0,
-        "packets": 0,
-        "drops": 0,
-        "overlimits": 0,
-        "requeues": 0,
-        "backlog": 0,
-        "qlen": 0
-    },{
-        "kind": "pfifo",
-        "handle": "123:",
-        "parent": "12:3",
-        "options": {
-            "limit": 100
-        },
-        "bytes": 0,
-        "packets": 0,
-        "drops": 0,
-        "overlimits": 0,
-        "requeues": 0,
-        "backlog": 0,
-        "qlen": 0
-    },{
-        "kind": "pfifo",
-        "handle": "112:",
-        "parent": "11:2",
-        "options": {
-            "limit": 100
-        },
-        "bytes": 106600,
-        "packets": 100,
-        "drops": 0,
-        "overlimits": 0,
-        "requeues": 0,
-        "backlog": 0,
-        "qlen": 0
-    },{
-        "kind": "pfifo",
-        "handle": "114:",
-        "parent": "11:4",
-        "options": {
-            "limit": 200
-        },
-        "bytes": 199706,
-        "packets": 193,
-        "drops": 0,
-        "overlimits": 0,
-        "requeues": 0,
-        "backlog": 0,
-        "qlen": 0
-    },{
-        "kind": "prio",
-        "handle": "11:",
-        "parent": "1:11",
-        "options": {
-            "bands": 4,
-            "priomap": [ 3,3,2,3,0,3,1,3,3,3,3,3,3,3,3,3 ],
-            "multiqueue": false
-        },
-        "bytes": 519506,
-        "packets": 493,
-        "drops": 0,
-        "overlimits": 0,
-        "requeues": 0,
-        "backlog": 0,
-        "qlen": 0
-    } ]
-TIME:08:50:54
-[ {
-        "kind": "htb",
-        "handle": "1:",
-        "root": true,
-        "refcnt": 2,
-        "options": {
-            "r2q": 10,
-            "default": "0x11",
-            "direct_packets_stat": 0,
-            "ver": "3.17",
-            "direct_qlen": 1000
-        },
-        "bytes": 519506,
-        "packets": 493,
-        "drops": 0,
-        "overlimits": 509,
-        "requeues": 0,
-        "backlog": 0,
-        "qlen": 0
-    },{
-        "kind": "pfifo",
-        "handle": "122:",
-        "parent": "12:2",
-        "options": {
-            "limit": 100
-        },
-        "bytes": 0,
-        "packets": 0,
-        "drops": 0,
-        "overlimits": 0,
-        "requeues": 0,
-        "backlog": 0,
-        "qlen": 0
-    },{
-        "kind": "pfifo",
-        "handle": "124:",
-        "parent": "12:4",
-        "options": {
-            "limit": 200
-        },
-        "bytes": 0,
-        "packets": 0,
-        "drops": 0,
-        "overlimits": 0,
-        "requeues": 0,
-        "backlog": 0,
-        "qlen": 0
-    },{
-        "kind": "pfifo",
-        "handle": "113:",
-        "parent": "11:3",
-        "options": {
-            "limit": 100
-        },
-        "bytes": 106600,
-        "packets": 100,
-        "drops": 0,
-        "overlimits": 0,
-        "requeues": 0,
-        "backlog": 0,
-        "qlen": 0
-    },{
-        "kind": "pfifo",
-        "handle": "111:",
-        "parent": "11:1",
-        "options": {
-            "limit": 100
-        },
-        "bytes": 106600,
-        "packets": 100,
-        "drops": 0,
-        "overlimits": 0,
-        "requeues": 0,
-        "backlog": 0,
-        "qlen": 0
-    },{
-        "kind": "prio",
-        "handle": "12:",
-        "parent": "1:12",
-        "options": {
-            "bands": 4,
-            "priomap": [ 3,3,2,3,0,3,1,3,3,3,3,3,3,3,3,3 ],
-            "multiqueue": false
-        },
-        "bytes": 0,
-        "packets": 0,
-        "drops": 0,
-        "overlimits": 0,
-        "requeues": 0,
-        "backlog": 0,
-        "qlen": 0
-    },{
-        "kind": "pfifo",
-        "handle": "121:",
-        "parent": "12:1",
-        "options": {
-            "limit": 100
-        },
-        "bytes": 0,
-        "packets": 0,
-        "drops": 0,
-        "overlimits": 0,
-        "requeues": 0,
-        "backlog": 0,
-        "qlen": 0
-    },{
-        "kind": "pfifo",
-        "handle": "123:",
-        "parent": "12:3",
-        "options": {
-            "limit": 100
-        },
-        "bytes": 0,
-        "packets": 0,
-        "drops": 0,
-        "overlimits": 0,
-        "requeues": 0,
-        "backlog": 0,
-        "qlen": 0
-    },{
-        "kind": "pfifo",
-        "handle": "112:",
-        "parent": "11:2",
-        "options": {
-            "limit": 100
-        },
-        "bytes": 106600,
-        "packets": 100,
-        "drops": 0,
-        "overlimits": 0,
-        "requeues": 0,
-        "backlog": 0,
-        "qlen": 0
-    },{
-        "kind": "pfifo",
-        "handle": "114:",
-        "parent": "11:4",
-        "options": {
-            "limit": 200
-        },
-        "bytes": 199706,
-        "packets": 193,
-        "drops": 0,
-        "overlimits": 0,
-        "requeues": 0,
-        "backlog": 0,
-        "qlen": 0
-    },{
-        "kind": "prio",
-        "handle": "11:",
-        "parent": "1:11",
-        "options": {
-            "bands": 4,
-            "priomap": [ 3,3,2,3,0,3,1,3,3,3,3,3,3,3,3,3 ],
-            "multiqueue": false
-        },
-        "bytes": 519506,
-        "packets": 493,
+        "bytes": 533210,
+        "packets": 503,
         "drops": 0,
         "overlimits": 0,
         "requeues": 0,

@@ -49,8 +49,8 @@ theme_get()
 theme_set(theme_bw())
 print(gg)
 
-ggsave(filename = "./with_and_without_qdisc.png", units = "cm", 
-       width = 29.7, height = 21, dpi = 600)
+ggsave(filename = "./with_and_without_qdisc", plot=last_plot(), device="png", units = "mm", 
+       width = 300, height = 200, dpi = 600)
 
 
 prio_df <- read.csv(file = 'data_with_qdisc.csv')

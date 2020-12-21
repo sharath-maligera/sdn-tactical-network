@@ -24,7 +24,7 @@ gg <- gg + geom_line(data = data_df, mapping = aes(x = packet_seq_no, y = packet
 gg <- gg + geom_point(data = data_df, mapping = aes(x = packet_seq_no, y = packet_delay_in_secs, color=Messages, shape=Messages), size = 3, stroke=1.3, alpha = 1)
 gg <- gg + scale_linetype_manual(values=c("longdash", "twodash", "dashed","dotdash","dotted"))
 gg <- gg + scale_shape_manual(values=c(1, 2, 3, 4, 5))
-gg <- gg + scale_color_manual(values=c('grey40','tomato4', 'tomato', 'goldenrod', 'gainsboro'))
+gg <- gg + scale_color_manual(values=c('grey40','tomato4', 'tomato', 'goldenrod', 'LightGoldenrod1'))
 gg <- gg + coord_cartesian()
 gg <- gg + xlab("Packet")
 gg <- gg + ylab("End-to-End Delay (sec)")

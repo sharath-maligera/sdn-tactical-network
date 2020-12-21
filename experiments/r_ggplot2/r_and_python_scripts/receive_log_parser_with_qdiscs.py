@@ -12,10 +12,10 @@ import matplotlib.dates as md
 from pathlib import Path
 
 
-def end_to_end_delay_with_qdisc(receive_events_wo_qdisc=None):
-    if receive_events_wo_qdisc is not None:
-        event_wo_qdisc_dict = defaultdict(list)
-        for event in receive_events_wo_qdisc:
+def end_to_end_delay_with_qdisc(receive_events_with_qdisc=None):
+    if receive_events_with_qdisc is not None:
+        event_with_qdisc_dict = defaultdict(list)
+        for event in receive_events_with_qdisc:
             if len(event) >= 9:
                 packet_received_timestamp = datetime.datetime.strptime(event[0], "%H:%M:%S.%f").time()
                 protocol = parse_protocol_string(protocol_str=event[2])
@@ -26,24 +26,24 @@ def end_to_end_delay_with_qdisc(receive_events_wo_qdisc=None):
                 packet_sent_timestamp = parse_timestamp(timestamp_str=event[7])
                 packet_size = parse_packet_size(packet_size_str=event[8])
 
-                event_wo_qdisc_dict['packet_received'].append(packet_received_timestamp)
-                event_wo_qdisc_dict['protocol'].append(protocol)
-                event_wo_qdisc_dict['flow_id'].append(int(flow_id))
-                event_wo_qdisc_dict['packet_seq_no'].append(int(packet_seq_id))
-                event_wo_qdisc_dict['source_ip'].append(source_ip)
-                event_wo_qdisc_dict['destination_ip'].append(destination_ip)
-                event_wo_qdisc_dict['packet_sent'].append(packet_sent_timestamp)
-                event_wo_qdisc_dict['packet_size'].append(packet_size)
+                event_with_qdisc_dict['packet_received'].append(packet_received_timestamp)
+                event_with_qdisc_dict['protocol'].append(protocol)
+                event_with_qdisc_dict['flow_id'].append(int(flow_id))
+                event_with_qdisc_dict['packet_seq_no'].append(int(packet_seq_id))
+                event_with_qdisc_dict['source_ip'].append(source_ip)
+                event_with_qdisc_dict['destination_ip'].append(destination_ip)
+                event_with_qdisc_dict['packet_sent'].append(packet_sent_timestamp)
+                event_with_qdisc_dict['packet_size'].append(packet_size)
 
 
-        data_wo_qdisc = pd.DataFrame.from_dict(event_wo_qdisc_dict)
-        wo_qdisc_packet_delay_timestamp = [datetime.datetime.combine(datetime.date.today(), t1) - datetime.datetime.combine(datetime.date.today(), t2) for t1, t2 in zip(data_wo_qdisc["packet_received"], data_wo_qdisc["packet_sent"]) if not (t1!=t1 or t2!=t2)]
-        wo_qdisc_packet_delay_in_secs = [delay.total_seconds() for delay in wo_qdisc_packet_delay_timestamp]
-        data_wo_qdisc.insert(8, "packet_delay_in_secs", wo_qdisc_packet_delay_in_secs, True)
-        data_wo_qdisc['packet_seq_no'] += 1
+        data_with_qdisc = pd.DataFrame.from_dict(event_with_qdisc_dict)
+        with_qdisc_packet_delay_timestamp = [datetime.datetime.combine(datetime.date.today(), t1) - datetime.datetime.combine(datetime.date.today(), t2) for t1, t2 in zip(data_with_qdisc["packet_received"], data_with_qdisc["packet_sent"]) if not (t1!=t1 or t2!=t2)]
+        with_qdisc_packet_delay_in_secs = [delay.total_seconds() for delay in with_qdisc_packet_delay_timestamp]
+        data_with_qdisc.insert(8, "packet_delay_in_secs", with_qdisc_packet_delay_in_secs, True)
+        data_with_qdisc['packet_seq_no'] += 1
 
-        df_wo_qdisc = pd.DataFrame(data_wo_qdisc, columns=['packet_seq_no', 'packet_delay_in_secs', 'flow_id'])
-        df_wo_qdisc.to_csv(os.path.join(os.path.dirname(__file__), 'data_with_qdiscs_0_6_kbps.csv'), index=False, header=True)
+        df_with_qdisc = pd.DataFrame(data_with_qdisc, columns=['packet_seq_no', 'packet_delay_in_secs', 'flow_id'])
+        df_with_qdisc.to_csv(os.path.join(os.path.dirname(__file__), 'data_with_qdiscs_9_6_0_6_kbps.csv'), index=False, header=True)
 
 def parse_protocol_string(protocol_str=None):
     if protocol_str is not None:
@@ -113,17 +113,17 @@ def parse_packet_size(packet_size_str=None):
 
 def plot_with_qdiscs():
     experiments_folder = Path(__file__).resolve().parents[1]
-    receive_log_wo_qdisc = os.path.join(experiments_folder, os.path.join('data', os.path.join('with_shaping_and_scheduling_wo_everchanging','receive_log_0_6_kbps.txt')))
-    receive_events_wo_qdisc = []
+    receive_log_with_qdisc = os.path.join(experiments_folder, os.path.join('data', os.path.join('with_shaping_and_scheduling_with_changing','receive_log_9_6_0_6_kbps.txt')))
+    receive_events_with_qdisc = []
 
-    with open(receive_log_wo_qdisc, 'r', encoding='utf-8') as fin:
+    with open(receive_log_with_qdisc, 'r', encoding='utf-8') as fin:
         lines = fin.readlines()
         for line in lines:
             value_list = line.split()
             if 'START' not in value_list and 'LISTEN' not in value_list:
-                receive_events_wo_qdisc.append(value_list)
+                receive_events_with_qdisc.append(value_list)
 
-    end_to_end_delay_with_qdisc(receive_events_wo_qdisc=receive_events_wo_qdisc)
+    end_to_end_delay_with_qdisc(receive_events_with_qdisc=receive_events_with_qdisc)
 
 
 if __name__ == '__main__':

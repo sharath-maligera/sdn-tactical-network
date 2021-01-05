@@ -12,7 +12,7 @@ library(wesanderson)
 #display.brewer.all(type="div")
 
 
-data_df <- read.csv(file = 'C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/data/with_shaping_and_scheduling_with_changing/data_with_qdiscs_9_6_0_6_kbps.csv')
+data_df <- read.csv(file = 'C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/data/with_shaping_and_ets_scheduling/data_with_ets_qdiscs_9_6_kbps.csv')
 
 data_df$flow_id <- factor(data_df$flow_id, levels = c("1", "2", "3", "4", "5"), 
                           labels = c("Medical Evacuation", "Obstacle Alert", "Picture", "Chat", "FFT"))
@@ -33,7 +33,8 @@ gg <- gg + theme(axis.text = element_text(size = 20),
                  axis.title.y = element_text(margin = margin(t = 0, r = 10, b = 0, l = 0)),
                  axis.title.x = element_text(margin = margin(t = 10, r = 0, b = 0, l = 0)),
                  strip.text = element_text(face = "bold", size = 20),
-                 legend.position = c(0.85, 0.8),
+                 #legend.position = c(0.85, 0.8),
+                 legend.position = "right",
                  legend.background = element_rect(fill="transparent"),
                  legend.title = element_text(size = 22, face = "bold", colour = "black"),
                  legend.text=element_text(size=20, colour = "black"),
@@ -43,6 +44,6 @@ theme_get()
 theme_set(theme_bw())
 print(gg)
 
-ggsave(filename = "C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/plots/with_qdisc_9_6_0_6.png",plot=last_plot(), device="png", units = "mm", width = 400, height = 200, dpi = 600)
-ggsave(filename = "C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/plots/with_qdisc_9_6_0_6.eps",plot=last_plot(), device="eps", units = "mm", width = 400, height = 200, dpi = 600)
+ggsave(filename = "C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/plots/with_ets_qdisc_9_6.png",plot=last_plot(), device="png", units = "mm", width = 400, height = 200, dpi = 600)
+ggsave(filename = "C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/plots/with_ets_qdisc_9_6.eps",plot=last_plot(), device="eps", units = "mm", width = 400, height = 200, dpi = 600)
 

@@ -22,7 +22,7 @@ from mininet.term import cleanUpScreens, makeTerm
 
 def myNet():
 
-    ctl ='192.168.1.101'
+    ctl ='192.168.1.102'
     net = Mininet( topo=None, link=TCLink, build=False)
 
     # Create nodes
@@ -66,8 +66,6 @@ def myNet():
     h1.cmd('ifconfig h1-eth0 txqueuelen 10000')
     sleep(2)
 
-    CLI(net)
-
     """
     to shape data at    9.6kbps -> 76800bit -> 76.8kbit
                         4.8kbps -> 38400bit -> 38.4kbit
@@ -81,13 +79,12 @@ def myNet():
            '/sbin/tc class add dev h1-eth0 parent 1: classid 1:1 htb rate 2000kbit ceil 2000kbit burst 250kb && '
            '/sbin/tc class add dev h1-eth0 parent 1:1 classid 1:11 htb rate 76.8kbit ceil 76.8kbit burst 10kb && '
            '/sbin/tc class add dev h1-eth0 parent 1:1 classid 1:12 htb rate 1920kbit ceil 1920kbit burst 240kb && '
-           '/sbin/tc qdisc add dev h1-eth0 parent 1:11 handle 11: ets strict 2 quanta 600 600 priomap 3 3 2 3 0 3 1 3 3 3 3 3 3 3 3 3 && '
+           '/sbin/tc qdisc add dev h1-eth0 parent 1:11 handle 11: prio bands 4 priomap 3 3 2 3 0 3 1 3 3 3 3 3 3 3 3 3 && '
            '/sbin/tc qdisc add dev h1-eth0 parent 1:12 handle 12: prio bands 4 priomap 3 3 2 3 0 3 1 3 3 3 3 3 3 3 3 3 && '
            '/sbin/tc qdisc add dev h1-eth0 parent 11:1 handle 111: netem limit 1000 delay 5ms && '
            '/sbin/tc qdisc add dev h1-eth0 parent 11:2 handle 112: netem limit 1000 delay 5ms && '
            '/sbin/tc qdisc add dev h1-eth0 parent 11:3 handle 113: netem limit 1000 delay 5ms && '
            '/sbin/tc qdisc add dev h1-eth0 parent 11:4 handle 114: netem limit 1000 delay 5ms && '
-           '/sbin/tc qdisc add dev h1-eth0 parent 11:5 handle 115: netem limit 1000 delay 5ms && '
            '/sbin/tc qdisc add dev h1-eth0 parent 12:1 handle 121: netem limit 1000 delay 5ms && '
            '/sbin/tc qdisc add dev h1-eth0 parent 12:2 handle 122: netem limit 1000 delay 5ms && '
            '/sbin/tc qdisc add dev h1-eth0 parent 12:3 handle 123: netem limit 1000 delay 5ms && '
@@ -100,8 +97,7 @@ def myNet():
            '/sbin/tc filter add dev h1-eth0 parent 11:1 protocol ip prio 1 u32 match ip dsfield 0x1e 0x1e flowid 111: && '
            '/sbin/tc filter add dev h1-eth0 parent 11:2 protocol ip prio 1 u32 match ip dsfield 0x16 0x1e flowid 112: && ' #match ip tos 0x58 0xff match ip protocol 0x11 0xff
            '/sbin/tc filter add dev h1-eth0 parent 11:3 protocol ip prio 1 u32 match ip dsfield 0x0e 0x1e flowid 113: && '
-           '/sbin/tc filter add dev h1-eth0 parent 11:4 protocol ip prio 1 u32 match ip dsfield 0x04 0x1e flowid 114: && '
-           '/sbin/tc filter add dev h1-eth0 parent 11:4 protocol ip prio 1 u32 match ip dsfield 0x00 0x1e flowid 115: && '
+           '/sbin/tc filter add dev h1-eth0 parent 11:4 protocol ip prio 1 u32 match ip dsfield 0x04 0x1e match ip dsfield 0x00 0x1e flowid 114: && '
            '/sbin/tc filter add dev h1-eth0 parent 12:1 protocol ip prio 1 u32 match ip dsfield 0x1e 0x1e flowid 121: && '
            '/sbin/tc filter add dev h1-eth0 parent 12:2 protocol ip prio 1 u32 match ip dsfield 0x16 0x1e flowid 122: && '
            '/sbin/tc filter add dev h1-eth0 parent 12:3 protocol ip prio 1 u32 match ip dsfield 0x0e 0x1e flowid 123: && '
@@ -111,16 +107,13 @@ def myNet():
     sleep(3)
     makeTerm(h2, title='mgen receiver', cmd="mgen input receive.mgn output receive_log.txt")
     makeTerm(h1, title='class statistics', cmd="watch -dc tc -s -d -j class show dev h1-eth0")
-    makeTerm(h1, title='qdisc statistics', cmd="watch -dc tc -s -d qdisc show dev h1-eth0")
-    # makeTerm(h2, title='packet sniffer receiver', cmd="sudo python packet_sniffer_receiver.py")
-    # makeTerm(h1, title='packet sniffer sender', cmd="sudo python packet_sniffer_sender.py")
     sleep(1)
     s1_interface = s1.intf(intf='s1-eth2')
-    # target_bw = 0.0048  # 0.6 kBps => 0.0048 Mbit/s
+    target_bw = 0.0048  # 0.6 kBps => 0.0048 Mbit/s
     # target_bw = 0.0096  # 1.2 kBps => 0.0096 Mbit/s
     # target_bw = 0.0192  # 2.4 kBps => 0.0192 Mbit/s
     # target_bw = 0.0384  # 4.8 kBps => 0.0384 Mbit/s
-    target_bw = 0.0768  # 9.6 kBps => 0.0768 Mbit/s
+    # target_bw = 0.0768  # 9.6 kBps => 0.0768 Mbit/s
     info("Setting BW Limit for Interface " + str(s1_interface) + " to " + str(target_bw) + "\n")
     # change the bandwidth of link to target bandwidth
     s1_interface.config(bw=target_bw, smooth_change=True)

@@ -21,7 +21,9 @@ from ryu.ofproto import ofproto_v1_3
 from ryu.lib.packet import packet
 from ryu.lib.packet import ethernet
 from ryu.lib.packet import ether_types
-
+from ryu import utils
+import binascii
+from ryu.lib.packet import ipv4
 
 class SimpleSwitch13(app_manager.RyuApp):
     OFP_VERSIONS = [ofproto_v1_3.OFP_VERSION]
@@ -79,6 +81,18 @@ class SimpleSwitch13(app_manager.RyuApp):
         pkt = packet.Packet(msg.data)
         eth = pkt.get_protocols(ethernet.ethernet)[0]
 
+        self.logger.debug("Ethernet type is %s", eth.ethertype)
+        if eth.ethertype == ether_types.ETH_TYPE_IP:
+            ip = pkt.get_protocol(ipv4.ipv4)
+            #payload_as_byte = bytearray.fromhex(payload_as_hex)
+            #print('decoded payload is = %s' % pkt.data.decode('hex','strict'))
+            #print('hex_str(pkt.data)=%s' % binary_str(pkt.data).decode('hex','strict')) #utils.hex_array(msg.data)
+            payload_as_hex_array = utils.hex_array(pkt.data)
+            payload_as_hex_str = utils.binary_str(payload_as_hex_array)
+            #payload_as_str = payload_as_hex_str.strip().decode('hex','strict')
+            payload_as_str = binascii.hexlify(bytearray(pkt.data)).decode('utf-8')
+            print('data=%s' % payload_as_hex_array.strip().decode('utf-8','strict'))
+
         if eth.ethertype == ether_types.ETH_TYPE_LLDP:
             # ignore lldp packet
             return
@@ -88,7 +102,7 @@ class SimpleSwitch13(app_manager.RyuApp):
         dpid = datapath.id
         self.mac_to_port.setdefault(dpid, {})
 
-  #     self.logger.info("packet in %s %s %s %s", dpid, src, dst, in_port)
+        self.logger.info("packet in %s %s %s %s", dpid, src, dst, in_port)
 
         # learn a mac address to avoid FLOOD next time.
         self.mac_to_port[dpid][src] = in_port

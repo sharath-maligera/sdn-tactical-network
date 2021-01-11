@@ -12,7 +12,7 @@
 # implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
+import pyshark
 from ryu.base import app_manager
 from ryu.controller import ofp_event
 from ryu.controller.handler import HANDSHAKE_DISPATCHER # for Exchange of HELLO message
@@ -24,11 +24,14 @@ from ryu.ofproto import ofproto_v1_3
 from ryu.lib.packet import packet
 from ryu.lib.packet import ethernet
 from ryu.lib.packet import ether_types
-from ryu.lib.packet import ipv4
+from ryu.lib.packet import ipv4, udp
 from ryu.topology import event, switches
 from ryu import utils
 import binascii
 from ryu.lib.packet import bfd
+from ryu.lib import hub
+from ryu.lib.packet import stream_parser
+import base64
 """
 In order to implement 'debug_qos_simple_switch_13.py' as a Ryu application, 
 ryu.base.app_manager.RyuApp is inherited in the SimpleSwitch13 class.
@@ -45,6 +48,14 @@ class SimpleSwitch13(app_manager.RyuApp):
         self.mac_to_port = {}
         self.datapath_list = {}
         self.sender_switch = 16
+        self.capture_live_packets()
+        # import mgen
+        # self.mgen = mgen
+        # self.set_mgen_receive_event = False
+        # self.dpid = 16
+        # self.tos = None
+        # self.receiver = mgen.Controller("receiver")
+        # self.monitor_thread = self._monitor_mgen
 
     """
     -   set_ev_cls specifies the event class supporting the received message and the state of the OpenFlow switch for the argument.
@@ -110,6 +121,8 @@ class SimpleSwitch13(app_manager.RyuApp):
                               ev.msg.msg_len, ev.msg.total_len)
         msg = ev.msg
         datapath = msg.datapath
+        dpid = datapath.id
+
         ofproto = datapath.ofproto
         parser = datapath.ofproto_parser
         #actions = []
@@ -122,19 +135,44 @@ class SimpleSwitch13(app_manager.RyuApp):
         self.logger.debug("Ethernet type is %s",eth.ethertype)
         if eth.ethertype == ether_types.ETH_TYPE_IP:
             ip = pkt.get_protocol(ipv4.ipv4)
+            udp_pkt = pkt.get_protocol(udp.udp)
             if ip.tos != 0:
-                payload_as_str = utils.binary_str(pkt[3])
-                #bytes_object = bytes.fromhex(payload_as_str)
-                #ascii_string = bytes_object.decode("ASCII")
-                #print('data=%s' % payload_as_hex_array.strip().decode('utf-8', 'strict'))
-                #data = binascii.hexlify(bytearray(pkt[3])) # string format
-                data = binascii.hexlify(pkt[3])
-                ascii_string = bytearray.fromhex(data).decode('utf-8', 'ignore')
-                # bytes_object = bytes.fromhex(data)
-                # ascii_string = bytes_object.decode("ASCII")
-                # udp_payload = pkt[3]
-                # data = bfd.bfd.parser(udp_payload)
-                print('data=%s' % ascii_string)
+                payload_as_hex_str = ''.join('%02x' % byte for byte in bytearray(pkt.data))
+                payload_as_ascii = payload_as_hex_str.decode('hex','strict')
+                payload_as_hex_array = bytearray(pkt.data)
+                # another = "".join(map(chr, payload_as_hex_array))
+                # for payload_byte in payload_as_hex_array:
+                #     s = binascii.unhexlify(payload_byte)
+                #     print s
+                len_of_array = len(payload_as_hex_array)
+                # get the hexadecimal representation of the binary data
+                #payload_as_hex = binascii.hexlify(bytearray(pkt.data))
+                #text_string = bytearray.fromhex(payload_as_hex).decode('utf8', 'ignore')
+                # payload_as_ascii = binascii.unhexlify(payload_as_hex)
+                # bytes_object = base64.b16decode(payload_as_hex)
+                # text_object = bytes_object.decode('latin1')
+
+                pass
+                # self.tos = ip.tos
+                # for line in self.receiver:
+                #     event = self.mgen.Event(line)
+                #     print "Received MGEN event"
+                #     print self.tos, event.rx_time, event.size
+                # for line in self.receiver:
+                #     print line
+                # payload_as_str = utils.binary_str(pkt[3])
+                # #bytes_object = bytes.fromhex(payload_as_str)
+                # #ascii_string = bytes_object.decode("ASCII")
+                # #print('data=%s' % payload_as_hex_array.strip().decode('utf-8', 'strict'))
+                # #data = binascii.hexlify(bytearray(pkt[3])) # string format
+                # data = binascii.hexlify(pkt[3])
+                # ascii_string = bytearray.fromhex(data).decode('utf-8', 'ignore')
+                # # bytes_object = bytes.fromhex(data)
+                # # ascii_string = bytes_object.decode("ASCII")
+                # # udp_payload = pkt[3]
+                # # data = bfd.bfd.parser(udp_payload)
+                # print('data=%s' % ascii_string)
+                # messages = stream_parser.StreamParser.parse(pkt.data)
             # actions.append()
             src_ip = ip.src
             dst_ip = ip.dst
@@ -152,7 +190,6 @@ class SimpleSwitch13(app_manager.RyuApp):
 
         # In order to support connection with multiple OpenFlow switches, the MAC address table is so designed to be
         # managed for each OpenFlow switch. The data path ID is used to identify OpenFlow switches.
-        dpid = datapath.id
         self.mac_to_port.setdefault(dpid, {})
 
         self.logger.info("packet in %s %s %s %s", dpid, src, dst, in_port)
@@ -205,3 +242,43 @@ class SimpleSwitch13(app_manager.RyuApp):
             self.datapath_list[switch.dp.id] = switch
         if switch.dp.id == self.sender_switch:
             pass
+
+    def _monitor_mgen(self):
+        self.receiver.send_event("listen udp 1024-65535")
+        self.set_mgen_receive_event = True
+        while True:
+            for line in self.receiver:
+                event = self.mgen.Event(line)
+                print "Received MGEN event"
+                print self.tos, event.rx_time, event.size
+
+    def capture_live_packets(self):
+            try:
+                cap = pyshark.LiveCapture(interface='enp0s8',
+                                          bpf_filter='host 192.168.0.1 and not arp', only_summaries=False,
+                                          use_json=False)  # bpf_filter='host 192.168.0.2 and not arp',,capture_filter='host 192.168.0.2 and not arp'
+
+                cap.set_debug()
+                while True:
+                    for packet in cap.sniff_continuously():
+                        if 'ipv6' in packet:
+                            pass
+                        else:
+                            try:
+                                self.logger.info('Packet Just arrived:')
+                                packet_sniff_time = packet.sniff_time.strftime('%b %d, %Y %H:%M:%S.%f')
+
+                                packet_msg = '\nPacket Data:\t' \
+                                             + 'packet_id: ' + str(packet.number) + '\n\t\t' \
+                                             + 'packet_timestamp: ' + packet_sniff_time + '\n\t\t' \
+                                             + 'source_ip: ' + str(packet.ip.src_host) + '\n\t\t' \
+                                             + 'destination_ip: ' + str(packet.ip.dst_host) + '\n\t\t' \
+                                             + 'protocol: ' + str(packet.transport_layer) + '\n\t\t' \
+                                             + 'dsfield: ' + str(packet.ip.dsfield) + '\n\t\t' \
+                                             + 'packet_length: ' + str(packet.length)
+                                self.logger.info(packet_msg)
+                            except Exception as exception:
+                                pass
+
+            except Exception as exception:
+                pass

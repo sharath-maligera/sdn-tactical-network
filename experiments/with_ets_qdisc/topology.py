@@ -60,10 +60,21 @@ def myNet():
     h1, h2, h3, s1, s2, s3 = net.getNodeByName('h1', 'h2', 'h3', 's1', 's2', 's3')
 
     s1.cmdPrint('ovs-vsctl show')
+    #s1.cmdPrint('ovs-vsctl set bridge s1 protocols=OpenFlow10, OpenFlow13')
+    s1.cmdPrint('ovs-vsctl set bridge s1 protocols=OpenFlow13')
 
     h1.cmd('/sbin/tc qdisc del dev h1-eth0 root')
     sleep(3)
     h1.cmd('ifconfig h1-eth0 txqueuelen 10000')
+    sleep(2)
+
+    CLI(net)
+
+    ssh_to_ctrl_1 = paramiko.SSHClient()
+    ssh_to_ctrl_1.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+    ssh_to_ctrl_1.connect(hostname=ctl, username='vagrant', password='vagrant', allow_agent=False, look_for_keys=False)
+    stdin, stdout, stderr = ssh_to_ctrl_1.exec_command('python ~/sdn-tactical-network/rest_app/qos_app/qos_rest.py')
+    print "STDOUT:\n%s\n\nSTDERR:\n%s\n" % (stdout.read(), stderr.read())
     sleep(2)
 
     CLI(net)
@@ -112,8 +123,8 @@ def myNet():
     makeTerm(h2, title='mgen receiver', cmd="mgen input receive.mgn output receive_log.txt")
     makeTerm(h1, title='class statistics', cmd="watch -dc tc -s -d -j class show dev h1-eth0")
     makeTerm(h1, title='qdisc statistics', cmd="watch -dc tc -s -d qdisc show dev h1-eth0")
-    # makeTerm(h2, title='packet sniffer receiver', cmd="sudo python packet_sniffer_receiver.py")
-    # makeTerm(h1, title='packet sniffer sender', cmd="sudo python packet_sniffer_sender.py")
+    makeTerm(h2, title='packet sniffer receiver', cmd="sudo python packet_sniffer_receiver.py")
+    makeTerm(h1, title='packet sniffer sender', cmd="sudo python packet_sniffer_sender.py")
     sleep(1)
     s1_interface = s1.intf(intf='s1-eth2')
     # target_bw = 0.0048  # 0.6 kBps => 0.0048 Mbit/s

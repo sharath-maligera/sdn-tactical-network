@@ -60,7 +60,6 @@ def myNet():
     h1, h2, h3, s1, s2, s3 = net.getNodeByName('h1', 'h2', 'h3', 's1', 's2', 's3')
 
     s1.cmdPrint('ovs-vsctl show')
-    #s1.cmdPrint('ovs-vsctl set bridge s1 protocols=OpenFlow10, OpenFlow13')
     s1.cmdPrint('ovs-vsctl set bridge s1 protocols=OpenFlow13')
 
     h1.cmd('/sbin/tc qdisc del dev h1-eth0 root')
@@ -68,7 +67,7 @@ def myNet():
     h1.cmd('ifconfig h1-eth0 txqueuelen 10000')
     sleep(2)
 
-    CLI(net)
+    # CLI(net)
 
     ssh_to_ctrl_1 = paramiko.SSHClient()
     ssh_to_ctrl_1.set_missing_host_key_policy(paramiko.AutoAddPolicy())
@@ -77,7 +76,7 @@ def myNet():
     print "STDOUT:\n%s\n\nSTDERR:\n%s\n" % (stdout.read(), stderr.read())
     sleep(2)
 
-    CLI(net)
+    # CLI(net)
 
     """
     to shape data at    9.6kbps -> 76800bit -> 76.8kbit
@@ -90,15 +89,14 @@ def myNet():
     """
     h1.cmd('/sbin/tc qdisc add dev h1-eth0 root handle 1: htb default 11 && '
            '/sbin/tc class add dev h1-eth0 parent 1: classid 1:1 htb rate 2000kbit ceil 2000kbit burst 250kb && '
-           '/sbin/tc class add dev h1-eth0 parent 1:1 classid 1:11 htb rate 76.8kbit ceil 76.8kbit burst 10kb && '
+           '/sbin/tc class add dev h1-eth0 parent 1:1 classid 1:11 htb rate 9.6kbit ceil 9.6kbit burst 10kb && '
            '/sbin/tc class add dev h1-eth0 parent 1:1 classid 1:12 htb rate 1920kbit ceil 1920kbit burst 240kb && '
-           '/sbin/tc qdisc add dev h1-eth0 parent 1:11 handle 11: ets strict 2 quanta 600 600 priomap 3 3 2 3 0 3 1 3 3 3 3 3 3 3 3 3 && '
-           '/sbin/tc qdisc add dev h1-eth0 parent 1:12 handle 12: prio bands 4 priomap 3 3 2 3 0 3 1 3 3 3 3 3 3 3 3 3 && '
+           '/sbin/tc qdisc add dev h1-eth0 parent 1:11 handle 11: ets strict 2 quanta 900 600 priomap 3 3 2 1 0 1 1 1 1 1 1 1 1 1 1 1 && '
+           '/sbin/tc qdisc add dev h1-eth0 parent 1:12 handle 12: ets strict 2 quanta 900 600 priomap 3 3 2 1 0 1 1 1 1 1 1 1 1 1 1 1 && '
            '/sbin/tc qdisc add dev h1-eth0 parent 11:1 handle 111: netem limit 1000 delay 5ms && '
            '/sbin/tc qdisc add dev h1-eth0 parent 11:2 handle 112: netem limit 1000 delay 5ms && '
            '/sbin/tc qdisc add dev h1-eth0 parent 11:3 handle 113: netem limit 1000 delay 5ms && '
            '/sbin/tc qdisc add dev h1-eth0 parent 11:4 handle 114: netem limit 1000 delay 5ms && '
-           '/sbin/tc qdisc add dev h1-eth0 parent 11:5 handle 115: netem limit 1000 delay 5ms && '
            '/sbin/tc qdisc add dev h1-eth0 parent 12:1 handle 121: netem limit 1000 delay 5ms && '
            '/sbin/tc qdisc add dev h1-eth0 parent 12:2 handle 122: netem limit 1000 delay 5ms && '
            '/sbin/tc qdisc add dev h1-eth0 parent 12:3 handle 123: netem limit 1000 delay 5ms && '
@@ -107,16 +105,7 @@ def myNet():
            '/sbin/tc filter add dev h1-eth0 parent 1:1 protocol ip prio 1 u32 match ip dst 192.168.0.2 flowid 1:11 && '
            '/sbin/tc filter add dev h1-eth0 parent 1:1 protocol ip prio 1 u32 match ip dst 192.168.0.3 flowid 1:12 && '
            '/sbin/tc filter add dev h1-eth0 parent 1:11 protocol ip prio 1 u32 match ip dst 192.168.0.2 flowid 11: && '
-           '/sbin/tc filter add dev h1-eth0 parent 1:12 protocol ip prio 1 u32 match ip dst 192.168.0.3 flowid 12: && '
-           '/sbin/tc filter add dev h1-eth0 parent 11:1 protocol ip prio 1 u32 match ip dsfield 0x1e 0x1e flowid 111: && '
-           '/sbin/tc filter add dev h1-eth0 parent 11:2 protocol ip prio 1 u32 match ip dsfield 0x16 0x1e flowid 112: && ' #match ip tos 0x58 0xff match ip protocol 0x11 0xff
-           '/sbin/tc filter add dev h1-eth0 parent 11:3 protocol ip prio 1 u32 match ip dsfield 0x0e 0x1e flowid 113: && '
-           '/sbin/tc filter add dev h1-eth0 parent 11:4 protocol ip prio 1 u32 match ip dsfield 0x04 0x1e flowid 114: && '
-           '/sbin/tc filter add dev h1-eth0 parent 11:4 protocol ip prio 1 u32 match ip dsfield 0x00 0x1e flowid 115: && '
-           '/sbin/tc filter add dev h1-eth0 parent 12:1 protocol ip prio 1 u32 match ip dsfield 0x1e 0x1e flowid 121: && '
-           '/sbin/tc filter add dev h1-eth0 parent 12:2 protocol ip prio 1 u32 match ip dsfield 0x16 0x1e flowid 122: && '
-           '/sbin/tc filter add dev h1-eth0 parent 12:3 protocol ip prio 1 u32 match ip dsfield 0x0e 0x1e flowid 123: && '
-           '/sbin/tc filter add dev h1-eth0 parent 12:4 protocol ip prio 1 u32 match ip dsfield 0x04 0x1e match ip dsfield 0x00 0x1e flowid 124:'
+           '/sbin/tc filter add dev h1-eth0 parent 1:12 protocol ip prio 1 u32 match ip dst 192.168.0.3 flowid 12:'
            )
 
     sleep(3)
@@ -128,10 +117,10 @@ def myNet():
     sleep(1)
     s1_interface = s1.intf(intf='s1-eth2')
     # target_bw = 0.0048  # 0.6 kBps => 0.0048 Mbit/s
-    # target_bw = 0.0096  # 1.2 kBps => 0.0096 Mbit/s
+    target_bw = 0.0096  # 1.2 kBps => 0.0096 Mbit/s
     # target_bw = 0.0192  # 2.4 kBps => 0.0192 Mbit/s
     # target_bw = 0.0384  # 4.8 kBps => 0.0384 Mbit/s
-    target_bw = 0.0768  # 9.6 kBps => 0.0768 Mbit/s
+    # target_bw = 0.0768  # 9.6 kBps => 0.0768 Mbit/s
     info("Setting BW Limit for Interface " + str(s1_interface) + " to " + str(target_bw) + "\n")
     # change the bandwidth of link to target bandwidth
     s1_interface.config(bw=target_bw, smooth_change=True)

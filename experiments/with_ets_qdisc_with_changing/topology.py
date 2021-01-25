@@ -22,7 +22,7 @@ from mininet.term import cleanUpScreens, makeTerm
 
 def myNet():
 
-    ctl ='192.168.1.102'
+    ctl ='192.168.1.101'
     net = Mininet( topo=None, link=TCLink, build=False)
 
     # Create nodes
@@ -76,11 +76,11 @@ def myNet():
                         250kbps -> 2000000bit -> 2000kbit
     """
     h1.cmd('/sbin/tc qdisc add dev h1-eth0 root handle 1: htb default 11 && '
-           '/sbin/tc class add dev h1-eth0 parent 1: classid 1:1 htb rate 2000kbit ceil 2000kbit burst 250kb && '
-           '/sbin/tc class add dev h1-eth0 parent 1:1 classid 1:11 htb rate 76.8kbit ceil 76.8kbit burst 10kb && '
-           '/sbin/tc class add dev h1-eth0 parent 1:1 classid 1:12 htb rate 1920kbit ceil 1920kbit burst 240kb && '
-           '/sbin/tc qdisc add dev h1-eth0 parent 1:11 handle 11: prio bands 4 priomap 3 3 2 3 0 3 1 3 3 3 3 3 3 3 3 3 && '
-           '/sbin/tc qdisc add dev h1-eth0 parent 1:12 handle 12: prio bands 4 priomap 3 3 2 3 0 3 1 3 3 3 3 3 3 3 3 3 && '
+           '/sbin/tc class add dev h1-eth0 parent 1: classid 1:1 htb rate 250kbit ceil 250kbit burst 250kb && '
+           '/sbin/tc class add dev h1-eth0 parent 1:1 classid 1:11 htb rate 9.6kbit ceil 9.6kbit burst 10kb && '
+           '/sbin/tc class add dev h1-eth0 parent 1:1 classid 1:12 htb rate 240kbit ceil 240kbit burst 240kb && '
+           '/sbin/tc qdisc add dev h1-eth0 parent 1:11 handle 11: ets strict 2 quanta 900 600 priomap 3 3 2 1 0 1 1 1 1 1 1 1 1 1 1 1 && '
+           '/sbin/tc qdisc add dev h1-eth0 parent 1:12 handle 12: ets strict 2 quanta 900 600 priomap 3 3 2 1 0 1 1 1 1 1 1 1 1 1 1 1 && '
            '/sbin/tc qdisc add dev h1-eth0 parent 11:1 handle 111: netem limit 1000 delay 5ms && '
            '/sbin/tc qdisc add dev h1-eth0 parent 11:2 handle 112: netem limit 1000 delay 5ms && '
            '/sbin/tc qdisc add dev h1-eth0 parent 11:3 handle 113: netem limit 1000 delay 5ms && '
@@ -93,32 +93,38 @@ def myNet():
            '/sbin/tc filter add dev h1-eth0 parent 1:1 protocol ip prio 1 u32 match ip dst 192.168.0.2 flowid 1:11 && '
            '/sbin/tc filter add dev h1-eth0 parent 1:1 protocol ip prio 1 u32 match ip dst 192.168.0.3 flowid 1:12 && '
            '/sbin/tc filter add dev h1-eth0 parent 1:11 protocol ip prio 1 u32 match ip dst 192.168.0.2 flowid 11: && '
-           '/sbin/tc filter add dev h1-eth0 parent 1:12 protocol ip prio 1 u32 match ip dst 192.168.0.3 flowid 12: && '
-           '/sbin/tc filter add dev h1-eth0 parent 11:1 protocol ip prio 1 u32 match ip dsfield 0x1e 0x1e flowid 111: && '
-           '/sbin/tc filter add dev h1-eth0 parent 11:2 protocol ip prio 1 u32 match ip dsfield 0x16 0x1e flowid 112: && ' #match ip tos 0x58 0xff match ip protocol 0x11 0xff
-           '/sbin/tc filter add dev h1-eth0 parent 11:3 protocol ip prio 1 u32 match ip dsfield 0x0e 0x1e flowid 113: && '
-           '/sbin/tc filter add dev h1-eth0 parent 11:4 protocol ip prio 1 u32 match ip dsfield 0x04 0x1e match ip dsfield 0x00 0x1e flowid 114: && '
-           '/sbin/tc filter add dev h1-eth0 parent 12:1 protocol ip prio 1 u32 match ip dsfield 0x1e 0x1e flowid 121: && '
-           '/sbin/tc filter add dev h1-eth0 parent 12:2 protocol ip prio 1 u32 match ip dsfield 0x16 0x1e flowid 122: && '
-           '/sbin/tc filter add dev h1-eth0 parent 12:3 protocol ip prio 1 u32 match ip dsfield 0x0e 0x1e flowid 123: && '
-           '/sbin/tc filter add dev h1-eth0 parent 12:4 protocol ip prio 1 u32 match ip dsfield 0x04 0x1e match ip dsfield 0x00 0x1e flowid 124:'
+           '/sbin/tc filter add dev h1-eth0 parent 1:12 protocol ip prio 1 u32 match ip dst 192.168.0.3 flowid 12:'
            )
 
     sleep(3)
-    makeTerm(h2, title='mgen receiver', cmd="mgen input receive.mgn output receive_log.txt")
+    makeTerm(h2, title='mgen receiver h2', cmd="mgen input receive_h2.mgn output receive_log_h2.txt")
+    makeTerm(h3, title='mgen receiver h3', cmd="mgen input receive_h3.mgn output receive_log_h3.txt")
     makeTerm(h1, title='class statistics', cmd="watch -dc tc -s -d -j class show dev h1-eth0")
+    makeTerm(h1, title='qdisc statistics', cmd="watch -dc tc -s -d qdisc show dev h1-eth0")
+    makeTerm(h2, title='packet sniffer receiver', cmd="sudo python packet_sniffer_receiver.py")
+    makeTerm(h1, title='packet sniffer sender', cmd="sudo python packet_sniffer_sender.py")
     sleep(1)
-    s1_interface = s1.intf(intf='s1-eth2')
-    target_bw = 0.0048  # 0.6 kBps => 0.0048 Mbit/s
-    # target_bw = 0.0096  # 1.2 kBps => 0.0096 Mbit/s
-    # target_bw = 0.0192  # 2.4 kBps => 0.0192 Mbit/s
-    # target_bw = 0.0384  # 4.8 kBps => 0.0384 Mbit/s
-    # target_bw = 0.0768  # 9.6 kBps => 0.0768 Mbit/s
-    info("Setting BW Limit for Interface " + str(s1_interface) + " to " + str(target_bw) + "\n")
+    s1_s2_interface = s1.intf(intf='s1-eth2')
+    s1_s3_interface = s1.intf(intf='s1-eth3')
+    # target_bw_s1_to_s2 = 0.0006  # 0.6 kbps => 0.0006 Mbit/s
+    # target_bw_s1_to_s2 = 0.0012  # 1.2 kbps => 0.0012 Mbit/s
+    # target_bw_s1_to_s2 = 0.0024  # 2.4 kbps => 0.0024 Mbit/s
+    # target_bw_s1_to_s2 = 0.0048  # 4.8 kbps => 0.0048 Mbit/s
+    target_bw_s1_to_s2 = 0.0096  # 9.6 kbps => 0.0096 Mbit/s
+    # target_bw_s1_to_s3 = 0.015  # 15 kbps => 0.015 Mbit/s
+    # target_bw_s1_to_s3 = 0.03  # 30 kbps => 0.03 Mbit/s
+    # target_bw_s1_to_s3 = 0.06  # 60 kbps => 0.06 Mbit/s
+    # target_bw_s1_to_s3 = 0.12  # 120 kbps => 0.12 Mbit/s
+    target_bw_s1_to_s3 = 0.24  # 240 kbps => 0.24 Mbit/s
+    info("Setting BW Limit for Interface " + str(s1_s2_interface) + " to " + str(target_bw_s1_to_s2) + "\n")
+    info("Setting BW Limit for Interface " + str(s1_s3_interface) + " to " + str(target_bw_s1_to_s3) + "\n")
     # change the bandwidth of link to target bandwidth
-    s1_interface.config(bw=target_bw, smooth_change=True)
+    s1_s2_interface.config(bw=target_bw_s1_to_s2, smooth_change=True)
+    sleep(1)
+    s1_s3_interface.config(bw=target_bw_s1_to_s3, smooth_change=True)
     sleep(2)
-    makeTerm(h1, title='mgen sender', cmd="mgen input send.mgn")
+    makeTerm(h1, title='mgen sender to h2', cmd="mgen input send_h2.mgn")
+    makeTerm(h1, title='mgen sender to h3', cmd="mgen input send_h3.mgn")
     sleep(1)
 
     CLI(net)

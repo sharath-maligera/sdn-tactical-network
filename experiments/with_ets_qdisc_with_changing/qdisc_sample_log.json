@@ -1,0 +1,222 @@
+[ {
+        "kind": "htb",
+        "handle": "1:",
+        "root": true,
+        "refcnt": 2,
+        "options": {
+            "r2q": 10,
+            "default": "0x12",
+            "direct_packets_stat": 0,
+            "ver": "3.17",
+            "direct_qlen": 10000
+        },
+        "bytes": 561964,
+        "packets": 530,
+        "drops": 0,
+        "overlimits": 557,
+        "requeues": 0,
+        "backlog": 504218,
+        "qlen": 473
+    },{
+        "kind": "netem",
+        "handle": "122:",
+        "parent": "12:2",
+        "options": {
+            "limit": 1000,
+            "delay": {
+                "delay": 0.005,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
+        },
+        "bytes": 106600,
+        "packets": 100,
+        "drops": 0,
+        "overlimits": 0,
+        "requeues": 0,
+        "backlog": 0,
+        "qlen": 0
+    },{
+        "kind": "netem",
+        "handle": "124:",
+        "parent": "12:4",
+        "options": {
+            "limit": 1000,
+            "delay": {
+                "delay": 0.005,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
+        },
+        "bytes": 213382,
+        "packets": 203,
+        "drops": 0,
+        "overlimits": 0,
+        "requeues": 0,
+        "backlog": 0,
+        "qlen": 0
+    },{
+        "kind": "netem",
+        "handle": "113:",
+        "parent": "11:3",
+        "options": {
+            "limit": 1000,
+            "delay": {
+                "delay": 0.005,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
+        },
+        "bytes": 0,
+        "packets": 0,
+        "drops": 0,
+        "overlimits": 0,
+        "requeues": 0,
+        "backlog": 106600,
+        "qlen": 100
+    },{
+        "kind": "netem",
+        "handle": "111:",
+        "parent": "11:1",
+        "options": {
+            "limit": 1000,
+            "delay": {
+                "delay": 0.005,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
+        },
+        "bytes": 27716,
+        "packets": 26,
+        "drops": 0,
+        "overlimits": 0,
+        "requeues": 0,
+        "backlog": 78884,
+        "qlen": 74
+    },{
+        "kind": "ets",
+        "handle": "12:",
+        "parent": "1:12",
+        "options": {
+            "bands": 4,
+            "strict": 2,
+            "quanta": [ 900,600 ],
+            "priomap": [ 3,3,2,1,0,1,1,1,1,1,1,1,1,1,1,1 ]
+        },
+        "bytes": 533182,
+        "packets": 503,
+        "drops": 0,
+        "overlimits": 0,
+        "requeues": 0,
+        "backlog": 0,
+        "qlen": 0
+    },{
+        "kind": "netem",
+        "handle": "121:",
+        "parent": "12:1",
+        "options": {
+            "limit": 1000,
+            "delay": {
+                "delay": 0.005,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
+        },
+        "bytes": 106600,
+        "packets": 100,
+        "drops": 0,
+        "overlimits": 0,
+        "requeues": 0,
+        "backlog": 0,
+        "qlen": 0
+    },{
+        "kind": "netem",
+        "handle": "123:",
+        "parent": "12:3",
+        "options": {
+            "limit": 1000,
+            "delay": {
+                "delay": 0.005,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
+        },
+        "bytes": 106600,
+        "packets": 100,
+        "drops": 0,
+        "overlimits": 0,
+        "requeues": 0,
+        "backlog": 0,
+        "qlen": 0
+    },{
+        "kind": "netem",
+        "handle": "112:",
+        "parent": "11:2",
+        "options": {
+            "limit": 1000,
+            "delay": {
+                "delay": 0.005,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
+        },
+        "bytes": 1066,
+        "packets": 1,
+        "drops": 0,
+        "overlimits": 0,
+        "requeues": 0,
+        "backlog": 105534,
+        "qlen": 99
+    },{
+        "kind": "netem",
+        "handle": "114:",
+        "parent": "11:4",
+        "options": {
+            "limit": 1000,
+            "delay": {
+                "delay": 0.005,
+                "jitter": 0,
+                "correlation": 0
+            },
+            "ecn": false,
+            "gap": 0
+        },
+        "bytes": 0,
+        "packets": 0,
+        "drops": 0,
+        "overlimits": 0,
+        "requeues": 0,
+        "backlog": 213200,
+        "qlen": 200
+    },{
+        "kind": "ets",
+        "handle": "11:",
+        "parent": "1:11",
+        "options": {
+            "bands": 4,
+            "strict": 2,
+            "quanta": [ 900,600 ],
+            "priomap": [ 3,3,2,1,0,1,1,1,1,1,1,1,1,1,1,1 ]
+        },
+        "bytes": 28782,
+        "packets": 27,
+        "drops": 0,
+        "overlimits": 0,
+        "requeues": 0,
+        "backlog": 504218,
+        "qlen": 473
+    } ]

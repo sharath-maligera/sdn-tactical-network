@@ -12,7 +12,7 @@ library(wesanderson)
 #display.brewer.all(type="div")
 
 
-data_df <- read.csv(file = 'C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/data/with_shaping_and_ets_scheduling/data_with_ets_qdiscs_9_6_kbps.csv')
+data_df <- read.csv(file = 'C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/data-old/with_shaping_and_ets_scheduling/data_with_ets_qdiscs_9_6_kbps.csv')
 
 data_df$flow_id <- factor(data_df$flow_id, levels = c("1", "2", "3", "4", "5"), 
                           labels = c("Medical Evacuation", "Obstacle Alert", "Picture", "Chat", "FFT"))

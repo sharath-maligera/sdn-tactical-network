@@ -104,6 +104,7 @@ gg1 <- gg1 + theme(axis.text.x = element_text(size = 23, angle = 45, vjust = 0.5
                  strip.text = element_text(face = "bold", size = 20),
                  legend.position =  "none")
 
+print(gg1)
 
 gg2 <- ggplot()
 gg2 <- gg2 + geom_line(data = data_df_1_2, mapping = aes(x = packet_delay_in_secs, y = packet_seq_no, color=Messages, linetype=Messages))

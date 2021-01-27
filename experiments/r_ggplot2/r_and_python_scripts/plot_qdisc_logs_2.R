@@ -95,19 +95,21 @@ data_df$ets_handle <- factor(data_df$ets_handle, levels = c("VHF", "UHF"))
 #data_df[which(data_df$ets_handle=="UHF"),]$data_rate <- factor(data_df[which(data_df$ets_handle=="VHF"),]$data_rate, 
 #                                                             levels = c("0.6kbps", "1.2kbps", "2.4kbps", "4.8kbps", "9.6kbps"))
 
+df_sample <- data_df %>% sample_frac(0.30)
 
-df_VHF <- data_df[which(data_df$ets_handle=="VHF"),]
+#df_VHF <- data_df[which(data_df$ets_handle=="VHF"),]
+#df_UHF <- data_df[which(data_df$ets_handle=="UHF"),]
 
-df_UHF <- data_df[which(data_df$ets_handle=="UHF"),]
+
 
 gg <- ggplot()
 #gg <- gg + geom_line(data = data_df,aes(x = duration_in_secs, y = packets, color=Bands, linetype=Bands))
-gg <- gg + geom_point(data = data_df, mapping = aes(x =duration_in_secs, y = packets, color=Bands, shape=Bands), 
+gg <- gg + geom_point(data = df_sample, mapping = aes(x =duration_in_secs, y = packets, color=Bands, shape=Bands), 
                       size = 0.8, stroke=1, alpha = .8)
 #gg <- gg + coord_cartesian(xlim=c(0,200))
 #gg <- gg + scale_linetype_manual(values=c("longdash", "twodash", "dashed","dotdash"))
 #gg <- gg + scale_shape_manual(values=c(0, 1, 2, 3))
-gg <- gg + scale_color_manual(values=c('#1e2240','#607dab', '#96abff', '#b5c9d5'))
+gg <- gg + scale_color_manual(values=c('grey25','tomato4', 'tomato', 'goldenrod'))#c('#1e2240','#607dab', '#96abff', '#b5c9d5'))
 gg <- gg + facet_wrap( ets_handle ~ data_rate, nrow = 2, scales = "free_x")
 gg <- gg + coord_cartesian()
 gg <- gg + xlab("Time (sec)")
@@ -127,10 +129,10 @@ gg <- gg + guides(shape = guide_legend(override.aes = list(size = 2)))
 gg <- gg + theme(legend.position="bottom",axis.text.x = element_text(angle = 30),
       axis.text=element_text(size=12),
       axis.title=element_text(size=12),legend.title=element_text(size=12), 
-      legend.text=element_text(size=12),strip.text.x = element_text(size = 12))
+      legend.text=element_text(size=12),strip.text.x = element_text(size = 10))
 theme_get()
 theme_set(theme_bw())
 print(gg)
 
-ggsave(filename = "../plots/with_ets_qdisc_wo_timeout.png",plot=last_plot(), device="png", units = "mm", width = 400, height = 300, dpi = 600)
-ggsave(filename = "../plots/with_ets_qdisc_wo_timeout.eps",plot=last_plot(), device="eps", units = "mm", width = 400, height = 300, dpi = 600)
+#ggsave(filename = "../plots/with_ets_qdisc_wo_timeout.png",plot=last_plot(), device="png", units = "mm", width = 400, height = 300, dpi = 600)
+#ggsave(filename = "../plots/with_ets_qdisc_wo_timeout.eps",plot=last_plot(), device="eps", units = "mm", width = 400, height = 300, dpi = 600)

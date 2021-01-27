@@ -77,8 +77,8 @@ def myNet():
     """
     h1.cmd('/sbin/tc qdisc add dev h1-eth0 root handle 1: htb default 11 && '
            '/sbin/tc class add dev h1-eth0 parent 1: classid 1:1 htb rate 250kbit ceil 250kbit burst 250kb && '
-           '/sbin/tc class add dev h1-eth0 parent 1:1 classid 1:11 htb rate 1.2kbit ceil 1.2kbit burst 10kb && '
-           '/sbin/tc class add dev h1-eth0 parent 1:1 classid 1:12 htb rate 30kbit ceil 30kbit burst 240kb && '
+           '/sbin/tc class add dev h1-eth0 parent 1:1 classid 1:11 htb rate 0.6kbit ceil 0.6kbit burst 10kb && '
+           '/sbin/tc class add dev h1-eth0 parent 1:1 classid 1:12 htb rate 15kbit ceil 15kbit burst 240kb && '
            '/sbin/tc qdisc add dev h1-eth0 parent 1:11 handle 11: prio bands 4 priomap 3 3 2 3 0 3 1 3 3 3 3 3 3 3 3 3 && '
            '/sbin/tc qdisc add dev h1-eth0 parent 1:12 handle 12: prio bands 4 priomap 3 3 2 3 0 3 1 3 3 3 3 3 3 3 3 3 && '
            '/sbin/tc qdisc add dev h1-eth0 parent 11:1 handle 111: netem limit 1000 delay 5ms && '

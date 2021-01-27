@@ -27,6 +27,9 @@ data_df <- rbind(data_df_0_6,data_df_1_2,data_df_2_4,data_df_4_8,data_df_9_6)
 
 data_df$flow_id <- factor(data_df$flow_id, levels = c("1", "2", "3", "4", "5"), 
                           labels = c("Medical Evacuation", "Obstacle Alert", "Picture", "Chat", "FFT"))
+
+data_df$data_rate_f = factor(data_df$data_rate, levels=c("9.6 kbps", "4.8 kbps", "2.4 kbps", "1.2 kbps", "0.6 kbps"))
+
 colnames(data_df)[which(names(data_df) == "flow_id")] <- "Messages"
 
 
@@ -36,7 +39,7 @@ gg <- gg + geom_point(data = data_df, mapping = aes(x = packet_delay_in_secs, y 
 gg <- gg + scale_linetype_manual(values=c("longdash", "twodash", "dashed","dotdash","dotted"))
 gg <- gg + scale_shape_manual(values=c(1, 2, 3, 4, 5))
 gg <- gg + scale_color_manual(values=c('grey25','tomato4', 'tomato', 'goldenrod', 'khaki4'))
-gg <- gg + facet_grid(  ~ data_rate, scales = "free")
+gg <- gg + facet_grid( data_rate_f ~ ., scales = "free")
 gg <- gg + coord_cartesian()
 gg <- gg + xlab("Packet")
 gg <- gg + ylab("End-to-End Delay (sec)")
@@ -56,5 +59,5 @@ theme_get()
 theme_set(theme_bw())
 print(gg)
 
-ggsave(filename = "C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/plots/with_ets_qdisc_delay_vhf.png",plot=last_plot(), device="png", units = "mm", width = 400, height = 200, dpi = 600)
-ggsave(filename = "C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/plots/with_ets_qdisc_delay_vhf.eps",plot=last_plot(), device="eps", units = "mm", width = 400, height = 200, dpi = 600)
+ggsave(filename = "C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/plots/with_ets_qdisc_delay_vhf.png",plot=last_plot(), device="png", units = "mm", width = 400, height = 800, dpi = 600)
+ggsave(filename = "C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/plots/with_ets_qdisc_delay_vhf.eps",plot=last_plot(), device="eps", units = "mm", width = 400, height = 800, dpi = 600)

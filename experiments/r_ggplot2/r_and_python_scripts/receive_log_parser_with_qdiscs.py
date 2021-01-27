@@ -43,7 +43,7 @@ def end_to_end_delay_with_qdisc(receive_events_with_qdisc=None):
         data_with_qdisc['packet_seq_no'] += 1
 
         df_with_qdisc = pd.DataFrame(data_with_qdisc, columns=['packet_seq_no', 'packet_delay_in_secs', 'flow_id'])
-        df_with_qdisc.to_csv(os.path.join(os.path.dirname(__file__), 'plot_ets_qdisc_0_6_kbps.csv'), index=False, header=True)
+        df_with_qdisc.to_csv(os.path.join(os.path.dirname(__file__), 'plot_ets_qdisc_15_kbps.csv'), index=False, header=True)
 
 def parse_protocol_string(protocol_str=None):
     if protocol_str is not None:
@@ -113,7 +113,7 @@ def parse_packet_size(packet_size_str=None):
 
 def plot_with_qdiscs():
     experiments_folder = Path(__file__).resolve().parents[1]
-    receive_log_with_qdisc = os.path.join(experiments_folder, os.path.join('data', os.path.join('with_shaping_and_ets_scheduling_no_timeout','receive_log_0_6_kbps.txt')))
+    receive_log_with_qdisc = os.path.join(experiments_folder, os.path.join('data', os.path.join('with_shaping_and_ets_scheduling_with_timeout','receive_log_15_kbps.txt')))
     receive_events_with_qdisc = []
 
     with open(receive_log_with_qdisc, 'r', encoding='utf-8') as fin:

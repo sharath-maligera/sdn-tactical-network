@@ -31,12 +31,12 @@ colnames(data_df)[which(names(data_df) == "flow_id")] <- "Messages"
 
 
 gg <- ggplot()
-gg <- gg + geom_line(data = data_df, mapping = aes(x = packet_seq_no, y = packet_delay_in_secs, color=Messages, linetype=Messages))
-gg <- gg + geom_point(data = data_df, mapping = aes(x = packet_seq_no, y = packet_delay_in_secs, color=Messages, shape=Messages), size = 3, stroke=1.3, alpha = 1)
+gg <- gg + geom_line(data = data_df, mapping = aes(x = packet_delay_in_secs, y = packet_seq_no, color=Messages, linetype=Messages))
+gg <- gg + geom_point(data = data_df, mapping = aes(x = packet_delay_in_secs, y = packet_seq_no, color=Messages, shape=Messages), size = 3, stroke=1.3, alpha = 1)
 gg <- gg + scale_linetype_manual(values=c("longdash", "twodash", "dashed","dotdash","dotted"))
 gg <- gg + scale_shape_manual(values=c(1, 2, 3, 4, 5))
 gg <- gg + scale_color_manual(values=c('grey25','tomato4', 'tomato', 'goldenrod', 'khaki4'))
-gg <- gg + facet_grid( ~ data_rate, scales = "free")
+gg <- gg + facet_grid(  ~ data_rate, scales = "free")
 gg <- gg + coord_cartesian()
 gg <- gg + xlab("Packet")
 gg <- gg + ylab("End-to-End Delay (sec)")

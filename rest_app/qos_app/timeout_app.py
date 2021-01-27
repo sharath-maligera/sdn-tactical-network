@@ -20,12 +20,12 @@ def define_timeout_for_flow_1():
             packet_count = data_response['16'][0]['packet_count']
             if packet_count > 0:
                 data = '{"dpid": 16, "table_id": 0, "idle_timeout": 0, "hard_timeout": 0, "priority": 100, ' \
-                       '"match":{"ipv4_src": "192.168.0.1", "ipv4_dst": "192.168.0.2", "ip_dscp": 30, "ip_proto": 17, "eth_type": 2048}, "actions":[{"type":"GOTO_TABLE", "table_id": 1}]}'
+                       '"match":{"ipv4_src": "192.168.0.1", "ipv4_dst": "192.168.0.2", "ip_dscp": 30, "ip_proto": 17, "eth_type": 2048}, "actions":[{"type":"GOTO_TABLE", "table_id": 1}, {"type":"METER", "meter_id": 10}]}'
                 delete_response = requests.post('http://192.168.1.101:8080/stats/flowentry/delete_strict', data=data)
                 if delete_response.status_code == 200:
                     timeout_set = True
                     data = '{"dpid": 16, "table_id": 0, "idle_timeout": 0, "hard_timeout": 300, "priority": 100, ' \
-                           '"match":{"ipv4_src": "192.168.0.1", "ipv4_dst": "192.168.0.2", "ip_dscp": 30, "ip_proto": 17, "eth_type": 2048}, "actions":[{"type":"GOTO_TABLE", "table_id": 1}]}'
+                           '"match":{"ipv4_src": "192.168.0.1", "ipv4_dst": "192.168.0.2", "ip_dscp": 30, "ip_proto": 17, "eth_type": 2048}, "actions":[{"type":"GOTO_TABLE", "table_id": 1}, {"type":"METER", "meter_id": 10}]}'
                     requests.post('http://192.168.1.101:8080/stats/flowentry/add', data=data)
 
 def define_timeout_for_flow_2():
@@ -38,13 +38,13 @@ def define_timeout_for_flow_2():
             data_response = response.json()
             packet_count = data_response['16'][0]['packet_count']
             if packet_count > 0:
-                data = '{"dpid": 16, "table_id": 0, "idle_timeout": 0, "hard_timeout": 0, "priority": 99, ' \
-                       '"match":{"ipv4_src": "192.168.0.1", "ipv4_dst": "192.168.0.2", "ip_dscp": 20, "ip_proto": 17, "eth_type": 2048}, "actions":[{"type":"GOTO_TABLE", "table_id": 1}]}'
+                data = '{"dpid": 16, "table_id": 0, "idle_timeout": 0, "hard_timeout": 0, "priority": 100, ' \
+                       '"match":{"ipv4_src": "192.168.0.1", "ipv4_dst": "192.168.0.2", "ip_dscp": 20, "ip_proto": 17, "eth_type": 2048}, "actions":[{"type":"GOTO_TABLE", "table_id": 1}, {"type":"METER", "meter_id": 10}]}'
                 delete_response = requests.post('http://192.168.1.101:8080/stats/flowentry/delete_strict', data=data)
                 if delete_response.status_code == 200:
                     timeout_set = True
-                    data = '{"dpid": 16, "table_id": 0, "idle_timeout": 0, "hard_timeout": 150, "priority": 99, ' \
-                           '"match":{"ipv4_src": "192.168.0.1", "ipv4_dst": "192.168.0.2", "ip_dscp": 20, "ip_proto": 17, "eth_type": 2048}, "actions":[{"type":"GOTO_TABLE", "table_id": 1}]}'
+                    data = '{"dpid": 16, "table_id": 0, "idle_timeout": 0, "hard_timeout": 150, "priority": 100, ' \
+                           '"match":{"ipv4_src": "192.168.0.1", "ipv4_dst": "192.168.0.2", "ip_dscp": 20, "ip_proto": 17, "eth_type": 2048}, "actions":[{"type":"GOTO_TABLE", "table_id": 1}, {"type":"METER", "meter_id": 10}]}'
                     requests.post('http://192.168.1.101:8080/stats/flowentry/add', data=data)
 
 def define_timeout_for_flow_3():
@@ -57,13 +57,13 @@ def define_timeout_for_flow_3():
             data_response = response.json()
             packet_count = data_response['16'][0]['packet_count']
             if packet_count > 0:
-                data = '{"dpid": 16, "table_id": 0, "idle_timeout": 0, "hard_timeout": 0, "priority": 98, ' \
-                       '"match":{"ipv4_src": "192.168.0.1", "ipv4_dst": "192.168.0.2", "ip_dscp": 10, "ip_proto": 17, "eth_type": 2048}, "actions":[{"type":"GOTO_TABLE", "table_id": 1}]}'
+                data = '{"dpid": 16, "table_id": 0, "idle_timeout": 0, "hard_timeout": 0, "priority": 100, ' \
+                       '"match":{"ipv4_src": "192.168.0.1", "ipv4_dst": "192.168.0.2", "ip_dscp": 10, "ip_proto": 17, "eth_type": 2048}, "actions":[{"type":"GOTO_TABLE", "table_id": 1}, {"type":"METER", "meter_id": 10}]}'
                 delete_response = requests.post('http://192.168.1.101:8080/stats/flowentry/delete_strict', data=data)
                 if delete_response.status_code == 200:
                     timeout_set = True
-                    data = '{"dpid": 16, "table_id": 0, "idle_timeout": 0, "hard_timeout": 3600, "priority": 98, ' \
-                           '"match":{"ipv4_src": "192.168.0.1", "ipv4_dst": "192.168.0.2", "ip_dscp": 10, "ip_proto": 17, "eth_type": 2048}, "actions":[{"type":"GOTO_TABLE", "table_id": 1}]}'
+                    data = '{"dpid": 16, "table_id": 0, "idle_timeout": 0, "hard_timeout": 3600, "priority": 100, ' \
+                           '"match":{"ipv4_src": "192.168.0.1", "ipv4_dst": "192.168.0.2", "ip_dscp": 10, "ip_proto": 17, "eth_type": 2048}, "actions":[{"type":"GOTO_TABLE", "table_id": 1}, {"type":"METER", "meter_id": 10}]}'
                     requests.post('http://192.168.1.101:8080/stats/flowentry/add', data=data)
 
 def define_timeout_for_flow_4():
@@ -76,13 +76,13 @@ def define_timeout_for_flow_4():
             data_response = response.json()
             packet_count = data_response['16'][0]['packet_count']
             if packet_count > 0:
-                data = '{"dpid": 16, "table_id": 0, "idle_timeout": 0, "hard_timeout": 0, "priority": 97, ' \
-                       '"match":{"ipv4_src": "192.168.0.1", "ipv4_dst": "192.168.0.2", "ip_dscp": 1, "ip_proto": 17, "eth_type": 2048}, "actions":[{"type":"GOTO_TABLE", "table_id": 1}]}'
+                data = '{"dpid": 16, "table_id": 0, "idle_timeout": 0, "hard_timeout": 0, "priority": 100, ' \
+                       '"match":{"ipv4_src": "192.168.0.1", "ipv4_dst": "192.168.0.2", "ip_dscp": 1, "ip_proto": 17, "eth_type": 2048}, "actions":[{"type":"GOTO_TABLE", "table_id": 1}, {"type":"METER", "meter_id": 10}]}'
                 delete_response = requests.post('http://192.168.1.101:8080/stats/flowentry/delete_strict', data=data)
                 if delete_response.status_code == 200:
                     timeout_set = True
-                    data = '{"dpid": 16, "table_id": 0, "idle_timeout": 0, "hard_timeout": 120, "priority": 97, ' \
-                           '"match":{"ipv4_src": "192.168.0.1", "ipv4_dst": "192.168.0.2", "ip_dscp": 1, "ip_proto": 17, "eth_type": 2048}, "actions":[{"type":"GOTO_TABLE", "table_id": 1}]}'
+                    data = '{"dpid": 16, "table_id": 0, "idle_timeout": 0, "hard_timeout": 120, "priority": 100, ' \
+                           '"match":{"ipv4_src": "192.168.0.1", "ipv4_dst": "192.168.0.2", "ip_dscp": 1, "ip_proto": 17, "eth_type": 2048}, "actions":[{"type":"GOTO_TABLE", "table_id": 1}, {"type":"METER", "meter_id": 10}]}'
                     requests.post('http://192.168.1.101:8080/stats/flowentry/add', data=data)
 
 def define_timeout_for_flow_5():
@@ -95,13 +95,13 @@ def define_timeout_for_flow_5():
             data_response = response.json()
             packet_count = data_response['16'][0]['packet_count']
             if packet_count > 0:
-                data = '{"dpid": 16, "table_id": 0, "idle_timeout": 0, "hard_timeout": 0, "priority": 96, ' \
-                       '"match":{"ipv4_src": "192.168.0.1", "ipv4_dst": "192.168.0.2", "ip_dscp": 0, "ip_proto": 17, "eth_type": 2048}, "actions":[{"type":"GOTO_TABLE", "table_id": 1}]}'
+                data = '{"dpid": 16, "table_id": 0, "idle_timeout": 0, "hard_timeout": 0, "priority": 100, ' \
+                       '"match":{"ipv4_src": "192.168.0.1", "ipv4_dst": "192.168.0.2", "ip_dscp": 0, "ip_proto": 17, "eth_type": 2048}, "actions":[{"type":"GOTO_TABLE", "table_id": 1}, {"type":"METER", "meter_id": 10}]}'
                 delete_response = requests.post('http://192.168.1.101:8080/stats/flowentry/delete_strict', data=data)
                 if delete_response.status_code == 200:
                     timeout_set = True
-                    data = '{"dpid": 16, "table_id": 0, "idle_timeout": 0, "hard_timeout": 120, "priority": 96, ' \
-                           '"match":{"ipv4_src": "192.168.0.1", "ipv4_dst": "192.168.0.2", "ip_dscp": 0, "ip_proto": 17, "eth_type": 2048}, "actions":[{"type":"GOTO_TABLE", "table_id": 1}]}'
+                    data = '{"dpid": 16, "table_id": 0, "idle_timeout": 0, "hard_timeout": 120, "priority": 100, ' \
+                           '"match":{"ipv4_src": "192.168.0.1", "ipv4_dst": "192.168.0.2", "ip_dscp": 0, "ip_proto": 17, "eth_type": 2048}, "actions":[{"type":"GOTO_TABLE", "table_id": 1}, {"type":"METER", "meter_id": 10}]}'
                     requests.post('http://192.168.1.101:8080/stats/flowentry/add', data=data)
 
 def define_timeout_for_flow_6():
@@ -115,12 +115,12 @@ def define_timeout_for_flow_6():
             packet_count = data_response['16'][0]['packet_count']
             if packet_count > 0:
                 data = '{"dpid": 16, "table_id": 0, "idle_timeout": 0, "hard_timeout": 0, "priority": 100, ' \
-                       '"match":{"ipv4_src": "192.168.0.1", "ipv4_dst": "192.168.0.3", "ip_dscp": 30, "ip_proto": 17, "eth_type": 2048}, "actions":[{"type":"GOTO_TABLE", "table_id": 1}]}'
+                       '"match":{"ipv4_src": "192.168.0.1", "ipv4_dst": "192.168.0.3", "ip_dscp": 30, "ip_proto": 17, "eth_type": 2048}, "actions":[{"type":"GOTO_TABLE", "table_id": 1}, {"type":"METER", "meter_id": 5}]}'
                 delete_response = requests.post('http://192.168.1.101:8080/stats/flowentry/delete_strict', data=data)
                 if delete_response.status_code == 200:
                     timeout_set = True
                     data = '{"dpid": 16, "table_id": 0, "idle_timeout": 0, "hard_timeout": 300, "priority": 100, ' \
-                           '"match":{"ipv4_src": "192.168.0.1", "ipv4_dst": "192.168.0.3", "ip_dscp": 30, "ip_proto": 17, "eth_type": 2048}, "actions":[{"type":"GOTO_TABLE", "table_id": 1}]}'
+                           '"match":{"ipv4_src": "192.168.0.1", "ipv4_dst": "192.168.0.3", "ip_dscp": 30, "ip_proto": 17, "eth_type": 2048}, "actions":[{"type":"GOTO_TABLE", "table_id": 1}, {"type":"METER", "meter_id": 5}]}'
                     requests.post('http://192.168.1.101:8080/stats/flowentry/add', data=data)
 
 def define_timeout_for_flow_7():
@@ -133,13 +133,13 @@ def define_timeout_for_flow_7():
             data_response = response.json()
             packet_count = data_response['16'][0]['packet_count']
             if packet_count > 0:
-                data = '{"dpid": 16, "table_id": 0, "idle_timeout": 0, "hard_timeout": 0, "priority": 99, ' \
-                       '"match":{"ipv4_src": "192.168.0.1", "ipv4_dst": "192.168.0.3", "ip_dscp": 20, "ip_proto": 17, "eth_type": 2048}, "actions":[{"type":"GOTO_TABLE", "table_id": 1}]}'
+                data = '{"dpid": 16, "table_id": 0, "idle_timeout": 0, "hard_timeout": 0, "priority": 100, ' \
+                       '"match":{"ipv4_src": "192.168.0.1", "ipv4_dst": "192.168.0.3", "ip_dscp": 20, "ip_proto": 17, "eth_type": 2048}, "actions":[{"type":"GOTO_TABLE", "table_id": 1}, {"type":"METER", "meter_id": 5}]}'
                 delete_response = requests.post('http://192.168.1.101:8080/stats/flowentry/delete_strict', data=data)
                 if delete_response.status_code == 200:
                     timeout_set = True
-                    data = '{"dpid": 16, "table_id": 0, "idle_timeout": 0, "hard_timeout": 150, "priority": 99, ' \
-                           '"match":{"ipv4_src": "192.168.0.1", "ipv4_dst": "192.168.0.3", "ip_dscp": 20, "ip_proto": 17, "eth_type": 2048}, "actions":[{"type":"GOTO_TABLE", "table_id": 1}]}'
+                    data = '{"dpid": 16, "table_id": 0, "idle_timeout": 0, "hard_timeout": 150, "priority": 100, ' \
+                           '"match":{"ipv4_src": "192.168.0.1", "ipv4_dst": "192.168.0.3", "ip_dscp": 20, "ip_proto": 17, "eth_type": 2048}, "actions":[{"type":"GOTO_TABLE", "table_id": 1}, {"type":"METER", "meter_id": 5}]}'
                     requests.post('http://192.168.1.101:8080/stats/flowentry/add', data=data)
 
 def define_timeout_for_flow_8():
@@ -152,13 +152,13 @@ def define_timeout_for_flow_8():
             data_response = response.json()
             packet_count = data_response['16'][0]['packet_count']
             if packet_count > 0:
-                data = '{"dpid": 16, "table_id": 0, "idle_timeout": 0, "hard_timeout": 0, "priority": 98, ' \
-                       '"match":{"ipv4_src": "192.168.0.1", "ipv4_dst": "192.168.0.3", "ip_dscp": 10, "ip_proto": 17, "eth_type": 2048}, "actions":[{"type":"GOTO_TABLE", "table_id": 1}]}'
+                data = '{"dpid": 16, "table_id": 0, "idle_timeout": 0, "hard_timeout": 0, "priority": 100, ' \
+                       '"match":{"ipv4_src": "192.168.0.1", "ipv4_dst": "192.168.0.3", "ip_dscp": 10, "ip_proto": 17, "eth_type": 2048}, "actions":[{"type":"GOTO_TABLE", "table_id": 1}, {"type":"METER", "meter_id": 5}]}'
                 delete_response = requests.post('http://192.168.1.101:8080/stats/flowentry/delete_strict', data=data)
                 if delete_response.status_code == 200:
                     timeout_set = True
-                    data = '{"dpid": 16, "table_id": 0, "idle_timeout": 0, "hard_timeout": 3600, "priority": 98, ' \
-                           '"match":{"ipv4_src": "192.168.0.1", "ipv4_dst": "192.168.0.3", "ip_dscp": 10, "ip_proto": 17, "eth_type": 2048}, "actions":[{"type":"GOTO_TABLE", "table_id": 1}]}'
+                    data = '{"dpid": 16, "table_id": 0, "idle_timeout": 0, "hard_timeout": 3600, "priority": 100, ' \
+                           '"match":{"ipv4_src": "192.168.0.1", "ipv4_dst": "192.168.0.3", "ip_dscp": 10, "ip_proto": 17, "eth_type": 2048}, "actions":[{"type":"GOTO_TABLE", "table_id": 1}, {"type":"METER", "meter_id": 5}]}'
                     requests.post('http://192.168.1.101:8080/stats/flowentry/add', data=data)
 
 def define_timeout_for_flow_9():
@@ -171,13 +171,13 @@ def define_timeout_for_flow_9():
             data_response = response.json()
             packet_count = data_response['16'][0]['packet_count']
             if packet_count > 0:
-                data = '{"dpid": 16, "table_id": 0, "idle_timeout": 0, "hard_timeout": 0, "priority": 97, ' \
-                       '"match":{"ipv4_src": "192.168.0.1", "ipv4_dst": "192.168.0.3", "ip_dscp": 1, "ip_proto": 17, "eth_type": 2048}, "actions":[{"type":"GOTO_TABLE", "table_id": 1}]}'
+                data = '{"dpid": 16, "table_id": 0, "idle_timeout": 0, "hard_timeout": 0, "priority": 100, ' \
+                       '"match":{"ipv4_src": "192.168.0.1", "ipv4_dst": "192.168.0.3", "ip_dscp": 1, "ip_proto": 17, "eth_type": 2048}, "actions":[{"type":"GOTO_TABLE", "table_id": 1}, {"type":"METER", "meter_id": 5}]}'
                 delete_response = requests.post('http://192.168.1.101:8080/stats/flowentry/delete_strict', data=data)
                 if delete_response.status_code == 200:
                     timeout_set = True
-                    data = '{"dpid": 16, "table_id": 0, "idle_timeout": 0, "hard_timeout": 120, "priority": 97, ' \
-                           '"match":{"ipv4_src": "192.168.0.1", "ipv4_dst": "192.168.0.3", "ip_dscp": 1, "ip_proto": 17, "eth_type": 2048}, "actions":[{"type":"GOTO_TABLE", "table_id": 1}]}'
+                    data = '{"dpid": 16, "table_id": 0, "idle_timeout": 0, "hard_timeout": 120, "priority": 100, ' \
+                           '"match":{"ipv4_src": "192.168.0.1", "ipv4_dst": "192.168.0.3", "ip_dscp": 1, "ip_proto": 17, "eth_type": 2048}, "actions":[{"type":"GOTO_TABLE", "table_id": 1}, {"type":"METER", "meter_id": 5}]}'
                     requests.post('http://192.168.1.101:8080/stats/flowentry/add', data=data)
 
 def define_timeout_for_flow_10():
@@ -190,13 +190,13 @@ def define_timeout_for_flow_10():
             data_response = response.json()
             packet_count = data_response['16'][0]['packet_count']
             if packet_count > 0:
-                data = '{"dpid": 16, "table_id": 0, "idle_timeout": 0, "hard_timeout": 0, "priority": 96, ' \
-                       '"match":{"ipv4_src": "192.168.0.1", "ipv4_dst": "192.168.0.3", "ip_dscp": 0, "ip_proto": 17, "eth_type": 2048}, "actions":[{"type":"GOTO_TABLE", "table_id": 1}]}'
+                data = '{"dpid": 16, "table_id": 0, "idle_timeout": 0, "hard_timeout": 0, "priority": 100, ' \
+                       '"match":{"ipv4_src": "192.168.0.1", "ipv4_dst": "192.168.0.3", "ip_dscp": 0, "ip_proto": 17, "eth_type": 2048}, "actions":[{"type":"GOTO_TABLE", "table_id": 1}, {"type":"METER", "meter_id": 5}]}'
                 delete_response = requests.post('http://192.168.1.101:8080/stats/flowentry/delete_strict', data=data)
                 if delete_response.status_code == 200:
                     timeout_set = True
-                    data = '{"dpid": 16, "table_id": 0, "idle_timeout": 0, "hard_timeout": 120, "priority": 96, ' \
-                           '"match":{"ipv4_src": "192.168.0.1", "ipv4_dst": "192.168.0.3", "ip_dscp": 0, "ip_proto": 17, "eth_type": 2048}, "actions":[{"type":"GOTO_TABLE", "table_id": 1}]}'
+                    data = '{"dpid": 16, "table_id": 0, "idle_timeout": 0, "hard_timeout": 120, "priority": 100, ' \
+                           '"match":{"ipv4_src": "192.168.0.1", "ipv4_dst": "192.168.0.3", "ip_dscp": 0, "ip_proto": 17, "eth_type": 2048}, "actions":[{"type":"GOTO_TABLE", "table_id": 1}, {"type":"METER", "meter_id": 5}]}'
                     requests.post('http://192.168.1.101:8080/stats/flowentry/add', data=data)
 
 

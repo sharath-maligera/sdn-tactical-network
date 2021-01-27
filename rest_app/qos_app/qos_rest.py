@@ -49,52 +49,52 @@ requests.post('http://192.168.1.101:8080/qos/meter/0000000000000010', data=data)
 ####################################################################################################################################################################
 
 data = '{"dpid": 16, "table_id": 0, "idle_timeout": 0, "hard_timeout": 0, "priority": 100, ' \
-       '"match":{"ipv4_src": "192.168.0.1", "ipv4_dst": "192.168.0.2", "ip_dscp": 30, "ip_proto": 17, "eth_type": 2048}, "actions":[{"type":"GOTO_TABLE", "table_id": 1}, {"type":"METER", "meter_id": 10}]}'
+       '"match":{"ipv4_src": "192.168.0.1", "ipv4_dst": "192.168.0.3", "ip_dscp": 30, "ip_proto": 17, "eth_type": 2048}, "actions":[{"type":"GOTO_TABLE", "table_id": 1}, {"type":"METER", "meter_id": 4}]}'
 requests.post('http://192.168.1.101:8080/stats/flowentry/add', data=data)
 
 data = '{"dpid": 16, "table_id": 0, "idle_timeout": 0, "hard_timeout": 0, "priority": 100, ' \
-       '"match":{"ipv4_src": "192.168.0.1", "ipv4_dst": "192.168.0.2", "ip_dscp": 20, "ip_proto": 17, "eth_type": 2048}, "actions":[{"type":"GOTO_TABLE", "table_id": 1}, {"type":"METER", "meter_id": 10}]}'
+       '"match":{"ipv4_src": "192.168.0.1", "ipv4_dst": "192.168.0.3", "ip_dscp": 20, "ip_proto": 17, "eth_type": 2048}, "actions":[{"type":"GOTO_TABLE", "table_id": 1}, {"type":"METER", "meter_id": 4}]}'
 requests.post('http://192.168.1.101:8080/stats/flowentry/add', data=data)
 
 data = '{"dpid": 16, "table_id": 0, "idle_timeout": 0, "hard_timeout": 0, "priority": 100, ' \
-       '"match":{"ipv4_src": "192.168.0.1", "ipv4_dst": "192.168.0.2", "ip_dscp": 10, "ip_proto": 17, "eth_type": 2048}, "actions":[{"type":"GOTO_TABLE", "table_id": 1}, {"type":"METER", "meter_id": 10}]}'
+       '"match":{"ipv4_src": "192.168.0.1", "ipv4_dst": "192.168.0.3", "ip_dscp": 10, "ip_proto": 17, "eth_type": 2048}, "actions":[{"type":"GOTO_TABLE", "table_id": 1}, {"type":"METER", "meter_id": 4}]}'
 requests.post('http://192.168.1.101:8080/stats/flowentry/add', data=data)
 
 data = '{"dpid": 16, "table_id": 0, "idle_timeout": 0, "hard_timeout": 0, "priority": 100, ' \
-       '"match":{"ipv4_src": "192.168.0.1", "ipv4_dst": "192.168.0.2","ip_dscp": 1, "ip_proto": 17, "eth_type": 2048}, "actions":[{"type":"GOTO_TABLE", "table_id": 1}, {"type":"METER", "meter_id": 10}]}'
+       '"match":{"ipv4_src": "192.168.0.1", "ipv4_dst": "192.168.0.3","ip_dscp": 1, "ip_proto": 17, "eth_type": 2048}, "actions":[{"type":"GOTO_TABLE", "table_id": 1}, {"type":"METER", "meter_id": 4}]}'
 requests.post('http://192.168.1.101:8080/stats/flowentry/add', data=data)
 
 data = '{"dpid": 16, "table_id": 0, "idle_timeout": 0, "hard_timeout": 0, "priority": 100, ' \
-       '"match":{"ipv4_src": "192.168.0.1", "ipv4_dst": "192.168.0.2", "ip_dscp": 0, "ip_proto": 17, "eth_type": 2048}, "actions":[{"type":"GOTO_TABLE", "table_id": 1}, {"type":"METER", "meter_id": 10}]}'
-requests.post('http://192.168.1.101:8080/stats/flowentry/add', data=data)
-
-############################################################################################################################################################################
-
-data = '{"dpid": 16, "table_id": 0, "idle_timeout": 0, "hard_timeout": 0, "priority": 100, ' \
-       '"match":{"ipv4_src": "192.168.0.1", "ipv4_dst": "192.168.0.3", "ip_dscp": 30, "ip_proto": 17, "eth_type": 2048}, "actions":[{"type":"GOTO_TABLE", "table_id": 1}, {"type":"METER", "meter_id": 5}]}'
-requests.post('http://192.168.1.101:8080/stats/flowentry/add', data=data)
-
-data = '{"dpid": 16, "table_id": 0, "idle_timeout": 0, "hard_timeout": 0, "priority": 100, ' \
-       '"match":{"ipv4_src": "192.168.0.1", "ipv4_dst": "192.168.0.3", "ip_dscp": 20, "ip_proto": 17, "eth_type": 2048}, "actions":[{"type":"GOTO_TABLE", "table_id": 1}, {"type":"METER", "meter_id": 5}]}'
-requests.post('http://192.168.1.101:8080/stats/flowentry/add', data=data)
-
-data = '{"dpid": 16, "table_id": 0, "idle_timeout": 0, "hard_timeout": 0, "priority": 100, ' \
-       '"match":{"ipv4_src": "192.168.0.1", "ipv4_dst": "192.168.0.3", "ip_dscp": 10, "ip_proto": 17, "eth_type": 2048}, "actions":[{"type":"GOTO_TABLE", "table_id": 1}, {"type":"METER", "meter_id": 5}]}'
-requests.post('http://192.168.1.101:8080/stats/flowentry/add', data=data)
-
-data = '{"dpid": 16, "table_id": 0, "idle_timeout": 0, "hard_timeout": 0, "priority": 100, ' \
-       '"match":{"ipv4_src": "192.168.0.1", "ipv4_dst": "192.168.0.3","ip_dscp": 1, "ip_proto": 17, "eth_type": 2048}, "actions":[{"type":"GOTO_TABLE", "table_id": 1}, {"type":"METER", "meter_id": 5}]}'
-requests.post('http://192.168.1.101:8080/stats/flowentry/add', data=data)
-
-data = '{"dpid": 16, "table_id": 0, "idle_timeout": 0, "hard_timeout": 0, "priority": 100, ' \
-       '"match":{"ipv4_src": "192.168.0.1", "ipv4_dst": "192.168.0.3", "ip_dscp": 0, "ip_proto": 17, "eth_type": 2048}, "actions":[{"type":"GOTO_TABLE", "table_id": 1}, {"type":"METER", "meter_id": 5}]}'
+       '"match":{"ipv4_src": "192.168.0.1", "ipv4_dst": "192.168.0.3", "ip_dscp": 0, "ip_proto": 17, "eth_type": 2048}, "actions":[{"type":"GOTO_TABLE", "table_id": 1}, {"type":"METER", "meter_id": 4}]}'
 requests.post('http://192.168.1.101:8080/stats/flowentry/add', data=data)
 
 data = '{"dpid": 16, "table_id": 0, "idle_timeout": 0, "hard_timeout": 0, "priority": 0, ' \
        '"match":{}, "actions":[{"type":"GOTO_TABLE", "table_id": 1}]}'
 requests.post('http://192.168.1.101:8080/stats/flowentry/delete_strict', data=data)
 
+####################################################################################################################################################################
 
+data = '{"dpid": 16, "table_id": 0, "idle_timeout": 0, "hard_timeout": 0, "priority": 100, ' \
+       '"match":{"ipv4_src": "192.168.0.1", "ipv4_dst": "192.168.0.2", "ip_dscp": 30, "ip_proto": 17, "eth_type": 2048}, "actions":[{"type":"GOTO_TABLE", "table_id": 1}, {"type":"METER", "meter_id": 9}]}'
+requests.post('http://192.168.1.101:8080/stats/flowentry/add', data=data)
+
+data = '{"dpid": 16, "table_id": 0, "idle_timeout": 0, "hard_timeout": 0, "priority": 100, ' \
+       '"match":{"ipv4_src": "192.168.0.1", "ipv4_dst": "192.168.0.2", "ip_dscp": 20, "ip_proto": 17, "eth_type": 2048}, "actions":[{"type":"GOTO_TABLE", "table_id": 1}, {"type":"METER", "meter_id": 9}]}'
+requests.post('http://192.168.1.101:8080/stats/flowentry/add', data=data)
+
+data = '{"dpid": 16, "table_id": 0, "idle_timeout": 0, "hard_timeout": 0, "priority": 100, ' \
+       '"match":{"ipv4_src": "192.168.0.1", "ipv4_dst": "192.168.0.2", "ip_dscp": 10, "ip_proto": 17, "eth_type": 2048}, "actions":[{"type":"GOTO_TABLE", "table_id": 1}, {"type":"METER", "meter_id": 9}]}'
+requests.post('http://192.168.1.101:8080/stats/flowentry/add', data=data)
+
+data = '{"dpid": 16, "table_id": 0, "idle_timeout": 0, "hard_timeout": 0, "priority": 100, ' \
+       '"match":{"ipv4_src": "192.168.0.1", "ipv4_dst": "192.168.0.2","ip_dscp": 1, "ip_proto": 17, "eth_type": 2048}, "actions":[{"type":"GOTO_TABLE", "table_id": 1}, {"type":"METER", "meter_id": 9}]}'
+requests.post('http://192.168.1.101:8080/stats/flowentry/add', data=data)
+
+data = '{"dpid": 16, "table_id": 0, "idle_timeout": 0, "hard_timeout": 0, "priority": 100, ' \
+       '"match":{"ipv4_src": "192.168.0.1", "ipv4_dst": "192.168.0.2", "ip_dscp": 0, "ip_proto": 17, "eth_type": 2048}, "actions":[{"type":"GOTO_TABLE", "table_id": 1}, {"type":"METER", "meter_id": 9}]}'
+requests.post('http://192.168.1.101:8080/stats/flowentry/add', data=data)
+
+############################################################################################################################################################################
 
 data = '{"dpid": 16, "table_id": 1, "idle_timeout": 0, "hard_timeout": 0, "priority": 1, ' \
        '"match":{"eth_dst": "01:00:00:00:02:00", "in_port":1}, "actions":[{"type":"OUTPUT", "port": 2}]}'

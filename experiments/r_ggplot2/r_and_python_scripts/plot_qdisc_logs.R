@@ -13,27 +13,27 @@ library(wesanderson)
 #display.brewer.all(type="div")
 
 
-data_df_9_6 <- read.csv(file = 'C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/data/with_shaping_and_ets_scheduling_no_timeout/plot_qdisc_log_9_6_240_kbps.csv')
+data_df_9_6 <- read.csv(file = '../data/with_shaping_and_ets_scheduling_no_timeout/plot_qdisc_log_9_6_240_kbps.csv')
 data_df_9_6$data_rate <- "1:11 = 9.6kbps\n and\n 1:12 = 240kbps"
 data_df_9_6$ets_bands <- data_df_9_6$handle
 data_df_9_6$ets_handle <- data_df_9_6$handle
 
-data_df_4_8 <- read.csv(file = 'C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/data/with_shaping_and_ets_scheduling_no_timeout/plot_qdisc_log_4_8_120_kbps.csv')
+data_df_4_8 <- read.csv(file = '../data/with_shaping_and_ets_scheduling_no_timeout/plot_qdisc_log_4_8_120_kbps.csv')
 data_df_4_8$data_rate <- "1:11 = 4.8kbps\n and\n 1:12 = 120kbps"
 data_df_4_8$ets_bands <- data_df_4_8$handle
 data_df_4_8$ets_handle <- data_df_4_8$handle
 
-data_df_2_4 <- read.csv(file = 'C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/data/with_shaping_and_ets_scheduling_no_timeout/plot_qdisc_log_2_4_60_kbps.csv')
+data_df_2_4 <- read.csv(file = '../data/with_shaping_and_ets_scheduling_no_timeout/plot_qdisc_log_2_4_60_kbps.csv')
 data_df_2_4$data_rate <- "1:11 = 2.4kbps\n and\n 1:12 = 60kbps"
 data_df_2_4$ets_bands <- data_df_2_4$handle
 data_df_2_4$ets_handle <- data_df_2_4$handle
 
-data_df_1_2 <- read.csv(file = 'C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/data/with_shaping_and_ets_scheduling_no_timeout/plot_qdisc_log_1_2_30_kbps.csv')
+data_df_1_2 <- read.csv(file = '../data/with_shaping_and_ets_scheduling_no_timeout/plot_qdisc_log_1_2_30_kbps.csv')
 data_df_1_2$data_rate <- "1:11 = 1.2kbps\n and\n 1:12 = 30kbps"
 data_df_1_2$ets_bands <- data_df_1_2$handle
 data_df_1_2$ets_handle <- data_df_1_2$handle
 
-data_df_0_6 <- read.csv(file = 'C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/data/with_shaping_and_ets_scheduling_no_timeout/plot_qdisc_log_0_6_15_kbps.csv')
+data_df_0_6 <- read.csv(file = '../data/with_shaping_and_ets_scheduling_no_timeout/plot_qdisc_log_0_6_15_kbps.csv')
 data_df_0_6$data_rate <- "1:11 = 0.6kbps\n and\n 1:12 = 15kbps"
 data_df_0_6$ets_bands <- data_df_0_6$handle
 data_df_0_6$ets_handle <- data_df_0_6$handle
@@ -52,6 +52,7 @@ data_df$ets_handle <- factor(data_df$ets_handle, levels = c("111:", "112:", "113
 data_df <- data_df[!(data_df$handle=="1:"),]
 data_df <- data_df[!(data_df$handle=="11:"),]
 data_df <- data_df[!(data_df$handle=="12:"),]
+
 
 gg <- ggplot()
 gg <- gg + geom_line(data = data_df, mapping = aes(x = packets, y = duration_in_secs, color=Bands, linetype=Bands))
@@ -80,5 +81,5 @@ theme_get()
 theme_set(theme_bw())
 print(gg)
 
-ggsave(filename = "C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/plots/with_ets_qdisc_wo_timeout.png",plot=last_plot(), device="png", units = "mm", width = 400, height = 300, dpi = 600)
-ggsave(filename = "C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/plots/with_ets_qdisc_wo_timeout.eps",plot=last_plot(), device="eps", units = "mm", width = 400, height = 300, dpi = 600)
+ggsave(filename = "../plots/with_ets_qdisc_wo_timeout.png",plot=last_plot(), device="png", units = "mm", width = 400, height = 300, dpi = 600)
+ggsave(filename = "../plots/with_ets_qdisc_wo_timeout.eps",plot=last_plot(), device="eps", units = "mm", width = 400, height = 300, dpi = 600)

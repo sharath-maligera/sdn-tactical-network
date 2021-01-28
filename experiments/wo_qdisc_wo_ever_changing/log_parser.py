@@ -46,16 +46,20 @@ def end_to_end_delay(event_list):
     # data["color"] = np.select(conditions, colors, default=np.nan)
 
     #colors = {'1': "#8E7CC3", '2': "#76A5AF", '3': "#FFD966", '4': "#C27BA0", '5': "#E06666" }
-    colors = {'1': "#6D6969", '2': "#8E7CC3", '3': "#76A5AF", '4': "#C27BA0", '5': "#EAAAAA"}
+    #colors = {'1': "#340000", '2': "#B40101", '3': "#BF9000" , '4': "#F4D679",'5': "#E5ADAD" }
+    #data_sorted = data[data[:, 2].argsort()]
+    colors = ["#340000", "#B40101", "#BF9000", "#F4D679", "#E5ADAD"]
     sns.set_style("darkgrid")
+    customPalette = sns.set_palette(sns.color_palette(colors))
     markers = {"4": "*", "3": "*", "2": '*', "1": '*'}
 
-    ax = sns.relplot(x=duration_in_secs, y=packet_delay_in_secs, data=data, hue='flow_id', size="flow_id", dashes=True, kind='scatter', palette=colors).set(ylim=(0))
+    ax = sns.relplot(x=duration_in_secs, y=packet_delay_in_secs, data=data, hue='flow_id', dashes=True, kind='scatter',
+                     palette={1: "#340000", 2: "#B40101", 3: "#BF9000", 4: "#F4D679", 5: "#E5ADAD"}).set(ylim=(0)) #size="flow_id", palette=colors
     ax.set(xlabel='Time (sec)', ylabel='End-to-End delay (sec)')
 
     ax.fig.suptitle("End-to-End delay in non-QoS", y=1)
     ax._legend.set_title("Priority")
-    new_labels = ['FFT (Routine-0)', 'Picture (Priority-1)', 'Video (Immediate-2)', 'Obstacle Alert (Immediate-2)', 'Medical Evacuation (Flash-3)']
+    new_labels = ['Medical Evacuation (Flash-0)', 'Obstacle Alert (Immediate-1)', 'Video (Immediate-1)', 'Picture (Priority-2)', 'FFT (Routine-3)']
     for t, l in zip(ax._legend.texts, new_labels): t.set_text(l)
 
     ax._legend.set_bbox_to_anchor([0.9, 0.83])
@@ -81,7 +85,7 @@ def parse_flow_id(flow_id_str=None):
         if re.search("flow", flow_id_str) is not None:
             match = re.search(r'\d', flow_id_str)
             if match:
-                flow_id = match.group()
+                flow_id = int(match.group())
         return flow_id
 
 def parse_sequence_id(seq_id_str=None):
@@ -123,7 +127,7 @@ def parse_timestamp(timestamp_str=None):
 
 def init():
     base_folder = os.path.dirname(__file__)
-    filename = os.path.join(base_folder, 'mgenlog_output.txt')
+    filename = os.path.join(base_folder, 'receive_log_copy.txt')
 
     with open(filename, 'r', encoding='utf-8') as fin:
         lines = fin.readlines()

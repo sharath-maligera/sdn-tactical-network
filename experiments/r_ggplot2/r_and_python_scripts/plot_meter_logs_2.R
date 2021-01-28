@@ -105,7 +105,7 @@ gg <- gg + facet_wrap(.~ experiment, ncol = 5,strip.position = "top")
 #gg <- gg + coord_cartesian()
 gg <- gg + xlab("Meters")
 gg <- gg + ylab("Packet")
-gg <- gg + guides(shape = guide_legend(override.aes = list(size = 2)))
+gg <- gg + guides(shape = guide_legend(override.aes = list(size = 3)))
 gg <- gg + theme(legend.position = "bottom",axis.text.x = element_text(angle = 30), #legend.position = c(.7, 0.1)
                  axis.text=element_text(size=12),
                  axis.title=element_text(size=12),legend.title=element_text(size=12), 
@@ -119,32 +119,32 @@ print(gg)
 
 
 
-gg <- ggplot(data = data_df_grouped, mapping = aes(x = Meters,y = packets, fill=Meters))
-#gg <- gg + geom_line(data = data_df, mapping = aes(x = packets, y = duration_in_secs, color=Meters, linetype=Meters))
-#gg <- gg + geom_point(data = data_df, mapping = aes(x = duration_in_secs, y = packets, color=Meters, shape=Meters), 
-#                      size = .8, stroke=1, alpha = .8)
-gg <- gg +  geom_histogram(stat="identity")
-scale_shape_identity()
-#gg <- gg + coord_cartesian(xlim=c(1,499))
-#gg <- scale_shape_identity()
-#gg <- gg + scale_linetype_manual(values=c("longdash", "twodash", "dashed","dotdash", "dotted", "longdash", "twodash", "dashed","dotdash", "dotted"))
-gg <- gg + scale_shape_manual(values=c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10))
-#gg <- gg + scale_fill_manual(values=c('grey25','tomato4', 'tomato', 'goldenrod', 'khaki4','grey25','tomato4', 'tomato', 'goldenrod', 'khaki4'))#c('coral3','cadetblue4', 'tan3', 'darkgoldenrod3', 'pink3', 'lavenderblush3', 'lightsteelblue1', 'thistle1', 'mistyrose1', 'slategray2'))
-gg <- gg + scale_fill_grey(start = 0.8, end = 0)
-#gg <- gg + facet_grid(experiment ~ data_rate,  switch = "y")
-gg <- gg + facet_wrap(experiment ~ data_rate, drop=TRUE, nrow = 2,strip.position = "top")
-gg <- gg + coord_cartesian()
-gg <- gg + xlab("Meters")
-gg <- gg + ylab("Packet")
-gg <- gg + guides(shape = guide_legend(override.aes = list(size = 2)))
-gg <- gg + theme(legend.position="none",axis.text.x = element_text(angle = 30),
-                 axis.text=element_text(size=12),
-                 axis.title=element_text(size=12),legend.title=element_text(size=12), 
-                 legend.text=element_text(size=12),strip.text.x = element_text(size = 10),
-                 strip.background = element_blank(), strip.placement = "outside")
-theme_get()
-theme_set(theme_bw())
-print(gg)
+# gg <- ggplot(data = data_df_grouped, mapping = aes(x = Meters,y = packets, fill=Meters))
+# #gg <- gg + geom_line(data = data_df, mapping = aes(x = packets, y = duration_in_secs, color=Meters, linetype=Meters))
+# #gg <- gg + geom_point(data = data_df, mapping = aes(x = duration_in_secs, y = packets, color=Meters, shape=Meters), 
+# #                      size = .8, stroke=1, alpha = .8)
+# gg <- gg +  geom_histogram(stat="identity")
+# scale_shape_identity()
+# #gg <- gg + coord_cartesian(xlim=c(1,499))
+# #gg <- scale_shape_identity()
+# #gg <- gg + scale_linetype_manual(values=c("longdash", "twodash", "dashed","dotdash", "dotted", "longdash", "twodash", "dashed","dotdash", "dotted"))
+# gg <- gg + scale_shape_manual(values=c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10))
+# #gg <- gg + scale_fill_manual(values=c('grey25','tomato4', 'tomato', 'goldenrod', 'khaki4','grey25','tomato4', 'tomato', 'goldenrod', 'khaki4'))#c('coral3','cadetblue4', 'tan3', 'darkgoldenrod3', 'pink3', 'lavenderblush3', 'lightsteelblue1', 'thistle1', 'mistyrose1', 'slategray2'))
+# gg <- gg + scale_fill_grey(start = 0.8, end = 0)
+# #gg <- gg + facet_grid(experiment ~ data_rate,  switch = "y")
+# gg <- gg + facet_wrap(experiment ~ data_rate, drop=TRUE, nrow = 2,strip.position = "top")
+# gg <- gg + coord_cartesian()
+# gg <- gg + xlab("Meters")
+# gg <- gg + ylab("Packet")
+# gg <- gg + guides(shape = guide_legend(override.aes = list(size = 2)))
+# gg <- gg + theme(legend.position="none",axis.text.x = element_text(angle = 30),
+#                  axis.text=element_text(size=12),
+#                  axis.title=element_text(size=12),legend.title=element_text(size=12), 
+#                  legend.text=element_text(size=12),strip.text.x = element_text(size = 10),
+#                  strip.background = element_blank(), strip.placement = "outside")
+# theme_get()
+# theme_set(theme_bw())
+# print(gg)
 
 
 

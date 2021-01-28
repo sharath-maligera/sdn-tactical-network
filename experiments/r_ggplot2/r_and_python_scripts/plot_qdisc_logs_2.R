@@ -124,7 +124,7 @@ gg <- gg + ylab("Packet")
 #                 legend.title = element_text(size = 16, face = "bold", colour = "black"),
 #                 legend.text=element_text(size=18, colour = "black"),
 #                 legend.title.align = 0.5)
-gg <- gg + guides(shape = guide_legend(override.aes = list(size = 2)))
+gg <- gg + guides(shape = guide_legend(override.aes = list(size = 3)))
 gg <- gg + theme(legend.position="bottom",axis.text.x = element_text(angle = 30),
       axis.text=element_text(size=12),
       axis.title=element_text(size=12),legend.title=element_text(size=12), 

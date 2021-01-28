@@ -1,6 +1,3 @@
-rm(list = ls())
-graphics.off()
-
 library(ggplot2)
 library(dplyr)
 library(tidyr)
@@ -110,7 +107,8 @@ gg <- gg + geom_point(data = df_sample, mapping = aes(x =duration_in_secs, y = p
 #gg <- gg + scale_linetype_manual(values=c("longdash", "twodash", "dashed","dotdash"))
 #gg <- gg + scale_shape_manual(values=c(0, 1, 2, 3))
 #gg <- gg + scale_color_manual(values=c('grey25','tomato4', 'tomato', 'goldenrod'))#c('#1e2240','#607dab', '#96abff', '#b5c9d5'))
-gg <- gg + scale_color_grey(start = 0.7, end = .2)
+gg <- gg + scale_color_manual(values=c('#1e2240','#607dab', '#96abff', '#b5c9d5'))
+#gg <- gg + scale_color_grey(start = 0.7, end = .2)
 gg <- gg + facet_wrap( ets_handle ~ data_rate, nrow = 2, scales = "free_x")
 gg <- gg + coord_cartesian()
 gg <- gg + xlab("Time (sec)")
@@ -135,6 +133,8 @@ gg <- gg + theme(legend.position="bottom",axis.text.x = element_text(angle = 30)
 theme_get()
 theme_set(theme_bw())
 print(gg)
+
+# dimission 7x5
 
 #ggsave(filename = "../plots/with_ets_qdisc_wo_timeout.png",plot=last_plot(), device="png", units = "mm", width = 400, height = 300, dpi = 600)
 #ggsave(filename = "../plots/with_ets_qdisc_wo_timeout.eps",plot=last_plot(), device="eps", units = "mm", width = 400, height = 300, dpi = 600)

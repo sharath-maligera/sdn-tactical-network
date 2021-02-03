@@ -177,24 +177,27 @@ gg5 <- gg5 + theme(plot.title = element_text(margin = margin(t = 0, r = 0, b = 1
                    legend.position =  "none")
 
 
-prow <- plot_grid(gg1, gg2, gg3, gg4, gg5, align = "hv", ncol = 5, nrow = 1, rel_heights = c(1,1), rel_widths = c(1,1))
-
+four_grids <- plot_grid(gg1, gg2, gg3, gg4, ncol = 2, nrow = 2)
+print(four_grids)
 
 legend <- get_legend(
-  gg5 + theme(legend.position = "bottom",
+  gg5 + theme(legend.position = "right",
                  legend.background = element_rect(fill="transparent"),
                  legend.title = element_blank(),
                  legend.text=element_text(size=28, colour = "black"))
 )
 
-plot <- plot_grid(prow, legend, ncol = 1, nrow = 2, rel_heights = c(1, 0.1))
+gg5_grid <- plot_grid(gg5, legend, ncol = 2, nrow = 1, rel_widths = c(1, 1))
+print(gg5_grid)
 
+plot <- plot_grid(four_grids, gg5_grid, ncol = 1, nrow = 2, rel_heights = c(1, 0.5))
+print(plot)
 
 x.grob <- textGrob("Messages", gp=gpar(fontface="bold", col="black", fontsize=28))
 grid <- grid.arrange(arrangeGrob(plot, bottom = x.grob))
 print(grid)
 
 
-ggsave(filename = "C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/plots/with_ets_qdisc_timeout_bar_plot.png",plot=grid, device="png", units = "mm", width = 900, height = 200, dpi = 600)
-ggsave(filename = "C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/plots/with_ets_qdisc_timeout_bar_plot.eps",plot=grid, device="eps", units = "mm", width = 900, height = 200, dpi = 600)
+ggsave(filename = "C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/plots/with_ets_qdisc_timeout_bar_plot.png",plot=grid, device="png", units = "mm", width = 400, height = 500, dpi = 600)
+ggsave(filename = "C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/plots/with_ets_qdisc_timeout_bar_plot.eps",plot=grid, device="eps", units = "mm", width = 400, height = 500, dpi = 600)
 

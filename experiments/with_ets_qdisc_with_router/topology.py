@@ -26,21 +26,42 @@ def myNet():
     net = Mininet( topo=None, link=TCLink, build=False)
 
     # Create nodes
-    h1 = net.addHost( 'h1', mac='01:00:00:00:01:00', ip='192.168.0.1/24' )
-    h2 = net.addHost( 'h2', mac='01:00:00:00:02:00', ip='192.168.0.2/24' )
-    h3 = net.addHost( 'h3', mac='01:00:00:00:03:00', ip='192.168.0.3/24')
+    # h1 = net.addHost('h1', mac='01:00:00:00:01:00', ip='192.168.1.10/24')
+    # h2 = net.addHost('h2', mac='01:00:00:00:02:00', ip='192.168.2.10/24')
+    # h3 = net.addHost('h3', mac='01:00:00:00:03:00', ip='192.168.3.10/24')
+
+    h1 = net.addHost('h1', ip='192.168.1.10/24')
+    h2 = net.addHost('h2', ip='192.168.2.10/24')
+    h3 = net.addHost('h3', ip='192.168.3.10/24')
+    r1 = net.addHost('r1', ip='192.168.1.1/24')
 
     # Create switches
-    s1 = net.addSwitch( 's1', listenPort=6634, dpid='0000000000000010' )
-    s2 = net.addSwitch( 's2', listenPort=6634, dpid='0000000000000020' )
-    s3 = net.addSwitch( 's3', listenPort=6634, dpid='0000000000000030')
+    s1 = net.addSwitch('s1', listenPort=6634, dpid='0000000000000010')
+    s2 = net.addSwitch('s2', listenPort=6634, dpid='0000000000000020')
+    s3 = net.addSwitch('s3', listenPort=6634, dpid='0000000000000030')
 
     print "*** Creating links"
     net.addLink(h1, s1, )
     net.addLink(h2, s2, )
     net.addLink(h3, s3, )
-    net.addLink(s1, s2, )
-    net.addLink(s1, s3, )
+    net.addLink(s1, r1, )
+    net.addLink(s2, r1, )
+    net.addLink(s3, r1, )
+
+    h1.intf('h1-eth0').setMAC('01:00:00:00:01:00')
+    h2.intf('h2-eth0').setMAC('01:00:00:00:02:00')
+    h3.intf('h3-eth0').setMAC('01:00:00:00:03:00')
+    r1.intf('r1-eth0').setMAC('00:00:00:00:01:01')
+
+    r1.intf('r1-eth1').setIP('192.168.2.1/24')
+    r1.intf('r1-eth1').setMAC('00:00:00:00:01:02')
+
+    r1.intf('r1-eth2').setIP('192.168.3.1/24')
+    r1.intf('r1-eth2').setMAC('00:00:00:00:01:03')
+
+    r1.cmd("echo 1 > /proc/sys/net/ipv4/ip_forward")
+
+
 
     # Add Controllers
     ctrl = net.addController( 'c1', controller=RemoteController, ip=ctl, port=6633)
@@ -52,12 +73,17 @@ def myNet():
     s2.start([ctrl])
     s3.start([ctrl])
 
+
     print "Testing network connectivity\n"
     net.pingAll()
     print "Dumping host connections\n"
     dumpNodeConnections(net.hosts)
 
     h1, h2, h3, s1, s2, s3 = net.getNodeByName('h1', 'h2', 'h3', 's1', 's2', 's3')
+
+    h1.cmd("ip route add default via 192.168.1.1")
+    h2.cmd("ip route add default via 192.168.2.1")
+    h3.cmd("ip route add default via 192.168.3.1")
 
     s1.cmdPrint('ovs-vsctl show')
 
@@ -77,8 +103,8 @@ def myNet():
     """
     h1.cmd('/sbin/tc qdisc add dev h1-eth0 root handle 1: htb default 11 && '
            '/sbin/tc class add dev h1-eth0 parent 1: classid 1:1 htb rate 250kbit ceil 250kbit burst 250kb && '
-           '/sbin/tc class add dev h1-eth0 parent 1:1 classid 1:11 htb rate 0.6kbit ceil 0.6kbit burst 10kb && '
-           '/sbin/tc class add dev h1-eth0 parent 1:1 classid 1:12 htb rate 15kbit ceil 15kbit burst 240kb && '
+           '/sbin/tc class add dev h1-eth0 parent 1:1 classid 1:11 htb rate 9.6kbit ceil 9.6kbit burst 10kb && '
+           '/sbin/tc class add dev h1-eth0 parent 1:1 classid 1:12 htb rate 240kbit ceil 240kbit burst 240kb && '
            '/sbin/tc qdisc add dev h1-eth0 parent 1:11 handle 11: ets strict 2 quanta 900 600 priomap 3 3 2 1 0 1 1 1 1 1 1 1 1 1 1 1 && '
            '/sbin/tc qdisc add dev h1-eth0 parent 1:12 handle 12: ets strict 2 quanta 900 600 priomap 3 3 2 1 0 1 1 1 1 1 1 1 1 1 1 1 && '
            '/sbin/tc qdisc add dev h1-eth0 parent 11:1 handle 111: netem limit 1000 delay 5ms && '
@@ -97,7 +123,7 @@ def myNet():
     ssh_to_ctrl_1 = paramiko.SSHClient()
     ssh_to_ctrl_1.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     ssh_to_ctrl_1.connect(hostname=ctl, username='vagrant', password='vagrant', allow_agent=False, look_for_keys=False)
-    stdin, stdout, stderr = ssh_to_ctrl_1.exec_command('python ~/sdn-tactical-network/rest_app/qos_app/qos_rest_icmcis.py')
+    stdin, stdout, stderr = ssh_to_ctrl_1.exec_command('python ~/sdn-tactical-network/rest_app/qos_app/qos_rest.py')
     print "STDOUT:\n%s\n\nSTDERR:\n%s\n" % (stdout.read(), stderr.read())
     CLI(net)
     sleep(3)
@@ -113,22 +139,22 @@ def myNet():
     # s1_s2_interface = s1.intf(intf='s1-eth2')
     # s1_s3_interface = s1.intf(intf='s1-eth3')
     # # target_bw_s1_to_s2 = 0.0006  # 0.6 kbps => 0.0006 Mbit/s
-    # target_bw_s1_to_s2 = 0.0012  # 1.2 kbps => 0.0012 Mbit/s
+    target_bw_s1_to_s2 = 0.0012  # 1.2 kbps => 0.0012 Mbit/s
     # # target_bw_s1_to_s2 = 0.0024  # 2.4 kbps => 0.0024 Mbit/s
     # # target_bw_s1_to_s2 = 0.0048  # 4.8 kbps => 0.0048 Mbit/s
     # # target_bw_s1_to_s2 = 0.0096  # 9.6 kbps => 0.0096 Mbit/s
     # # target_bw_s1_to_s3 = 0.015  # 15 kbps => 0.015 Mbit/s
-    # target_bw_s1_to_s3 = 0.03  # 30 kbps => 0.03 Mbit/s
+    target_bw_s1_to_s3 = 0.03  # 30 kbps => 0.03 Mbit/s
     # # target_bw_s1_to_s3 = 0.06  # 60 kbps => 0.06 Mbit/s
     # # target_bw_s1_to_s3 = 0.12  # 120 kbps => 0.12 Mbit/s
     # # target_bw_s1_to_s3 = 0.24  # 240 kbps => 0.24 Mbit/s
     # info("Setting BW Limit for Interface " + str(s1_s2_interface) + " to " + str(target_bw_s1_to_s2) + "\n")
     # info("Setting BW Limit for Interface " + str(s1_s3_interface) + " to " + str(target_bw_s1_to_s3) + "\n")
-    # # change the bandwidth of link to target bandwidth
+    # change the bandwidth of link to target bandwidth
     # s1_s2_interface.config(bw=target_bw_s1_to_s2, smooth_change=True)
     # sleep(1)
     # s1_s3_interface.config(bw=target_bw_s1_to_s3, smooth_change=True)
-    sleep(2)
+    # sleep(2)
     makeTerm(h1, title='mgen sender to h2', cmd="mgen input send.mgn")
     #makeTerm(h1, title='mgen sender to h3', cmd="mgen input send_h3.mgn")
     sleep(1)

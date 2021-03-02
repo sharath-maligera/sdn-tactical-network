@@ -12,10 +12,10 @@ library(wesanderson)
 #display.brewer.all(type="div")
 
 
-data_df_vhf <- read.csv(file = '../data/without_qdiscs/plot_wo_qdisc_vhf_exp_1.csv')
+data_df_vhf <- read.csv(file = 'C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/data/without_qdiscs/plot_wo_qdisc_vhf_exp_1.csv')
 data_df_vhf$data_rate <- "VHF"
 
-data_df_uhf <- read.csv(file = '../data/without_qdiscs/plot_wo_qdisc_uhf_exp_1.csv')
+data_df_uhf <- read.csv(file = 'C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/data/without_qdiscs/plot_wo_qdisc_uhf_exp_1.csv')
 data_df_uhf$data_rate <- "UHF"
 
 data_df_vhf$flow_id <- factor(data_df_vhf$flow_id, levels = c("1", "2", "3", "4", "5"),
@@ -35,7 +35,7 @@ gg <- gg + geom_point(data = data_df, mapping = aes(x = packet_seq_no, y = packe
 gg <- gg + scale_linetype_manual(values=c("longdash", "twodash", "dashed","dotdash","dotted"))
 gg <- gg + scale_shape_manual(values=c(1, 2, 3, 4, 5))
 gg <- gg + scale_color_manual(values=c('#1e2240', '#607dab','#b5c9d5', '#FFE77AFF', '#2C5F2DFF'))
-gg <- gg + facet_grid( data_rate_f ~ ., scales = "free")
+gg <- gg + facet_grid(  ~ data_rate_f, scales = "free")
 gg <- gg + coord_cartesian()
 gg <- gg + xlab("Packet")
 gg <- gg + ylab("End-to-End Delay (sec)")
@@ -52,10 +52,10 @@ gg <- gg + ylab("End-to-End Delay (sec)")
 #                    legend.text=element_text(size=20, colour = "black"),
 #                    legend.title.align = 0.5)
 gg <- gg + guides(shape = guide_legend(override.aes = list(size = 3)))
-gg <- gg + theme(legend.position = c(0.17,0.8),axis.text.x = element_text(angle = 0),
-                 axis.text=element_text(size=12),legend.background = element_rect(fill="transparent"),
-                 axis.title=element_text(size=12),legend.title=element_text(size=12), 
-                 legend.text=element_text(size=12),strip.text.x = element_text(size = 10),strip.text.y = element_text(size = 12),
+gg <- gg + theme(legend.position = "bottom", axis.text.x = element_text(angle = 0),
+                 axis.text=element_text(size=15),legend.background = element_rect(fill="transparent"),
+                 axis.title=element_text(size=13),legend.title=element_text(size=14), 
+                 legend.text=element_text(size=14),strip.text.x = element_text(size = 14),strip.text.y = element_text(size = 14),
                  strip.background = element_blank(), strip.placement = "outside")
 gg <- gg + theme(legend.title=element_blank())
 
@@ -63,8 +63,8 @@ theme_get()
 theme_set(theme_bw())
 print(gg)
 
-#7x3.5
+#3.0*7.9in
 
-#ggsave(filename = "../plots/wo_qdisc_vhf_uhf.png",plot=last_plot(), device="png", units = "mm", width = 400, height = 160, dpi = 600)
-#ggsave(filename = "../plots/wo_qdisc_vhf_uhf.eps",plot=last_plot(), device="eps", units = "mm", width = 400, height = 160, dpi = 600)
+#ggsave(filename = "C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/plots/wo_qdisc_vhf_uhf.png",plot=last_plot(), device="png", units = "mm", width = 400, height = 160, dpi = 600)
+#ggsave(filename = "C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/plots/wo_qdisc_vhf_uhf.eps",plot=last_plot(), device="eps", units = "mm", width = 400, height = 160, dpi = 600)
 

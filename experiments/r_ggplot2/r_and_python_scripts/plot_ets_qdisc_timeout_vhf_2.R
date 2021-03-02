@@ -15,28 +15,28 @@ library(grid)
 #display.brewer.all(type="div")
 
 
-data_df_0_6_wo_timeout <- read.csv(file = '../data/with_shaping_and_ets_scheduling_no_timeout/plot_ets_qdisc_0_6_kbps.csv')
-data_df_0_6_wo_timeout$timeout <- "Without timeout"
-data_df_1_2_wo_timeout <- read.csv(file = '../data/with_shaping_and_ets_scheduling_no_timeout/plot_ets_qdisc_1_2_kbps.csv')
-data_df_1_2_wo_timeout$timeout <- "Without timeout"
-data_df_2_4_wo_timeout <- read.csv(file = '../data/with_shaping_and_ets_scheduling_no_timeout/plot_ets_qdisc_2_4_kbps.csv')
-data_df_2_4_wo_timeout$timeout <- "Without timeout"
-data_df_4_8_wo_timeout <- read.csv(file = '../data/with_shaping_and_ets_scheduling_no_timeout/plot_ets_qdisc_4_8_kbps.csv')
-data_df_4_8_wo_timeout$timeout <- "Without timeout"
-data_df_9_6_wo_timeout <- read.csv(file = '../data/with_shaping_and_ets_scheduling_no_timeout/plot_ets_qdisc_9_6_kbps.csv')
-data_df_9_6_wo_timeout$timeout <- "Without timeout"
+data_df_0_6_wo_timeout <- read.csv(file = 'C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/data/with_shaping_and_ets_scheduling_no_timeout/plot_ets_qdisc_0_6_kbps.csv')
+data_df_0_6_wo_timeout$timeout <- "Without ToE QoS"
+data_df_1_2_wo_timeout <- read.csv(file = 'C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/data/with_shaping_and_ets_scheduling_no_timeout/plot_ets_qdisc_1_2_kbps.csv')
+data_df_1_2_wo_timeout$timeout <- "Without ToE QoS"
+data_df_2_4_wo_timeout <- read.csv(file = 'C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/data/with_shaping_and_ets_scheduling_no_timeout/plot_ets_qdisc_2_4_kbps.csv')
+data_df_2_4_wo_timeout$timeout <- "Without ToE QoS"
+data_df_4_8_wo_timeout <- read.csv(file = 'C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/data/with_shaping_and_ets_scheduling_no_timeout/plot_ets_qdisc_4_8_kbps.csv')
+data_df_4_8_wo_timeout$timeout <- "Without ToE QoS"
+data_df_9_6_wo_timeout <- read.csv(file = 'C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/data/with_shaping_and_ets_scheduling_no_timeout/plot_ets_qdisc_9_6_kbps.csv')
+data_df_9_6_wo_timeout$timeout <- "Without ToE QoS"
 
 
-data_df_0_6_with_timeout <- read.csv(file = '../data/with_shaping_and_ets_scheduling_with_timeout/plot_ets_qdisc_0_6_kbps.csv')
-data_df_0_6_with_timeout$timeout <- "With timeout"
-data_df_1_2_with_timeout <- read.csv(file = '../data/with_shaping_and_ets_scheduling_with_timeout/plot_ets_qdisc_1_2_kbps.csv')
-data_df_1_2_with_timeout$timeout <- "With timeout"
-data_df_2_4_with_timeout <- read.csv(file = '../data/with_shaping_and_ets_scheduling_with_timeout/plot_ets_qdisc_2_4_kbps.csv')
-data_df_2_4_with_timeout$timeout <- "With timeout"
-data_df_4_8_with_timeout <- read.csv(file = '../data/with_shaping_and_ets_scheduling_with_timeout/plot_ets_qdisc_4_8_kbps.csv')
-data_df_4_8_with_timeout$timeout <- "With timeout"
-data_df_9_6_with_timeout <- read.csv(file = '../data/with_shaping_and_ets_scheduling_with_timeout/plot_ets_qdisc_9_6_kbps.csv')
-data_df_9_6_with_timeout$timeout <- "With timeout"
+data_df_0_6_with_timeout <- read.csv(file = 'C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/data/with_shaping_and_ets_scheduling_with_timeout/plot_ets_qdisc_0_6_kbps.csv')
+data_df_0_6_with_timeout$timeout <- "With ToE QoS"
+data_df_1_2_with_timeout <- read.csv(file = 'C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/data/with_shaping_and_ets_scheduling_with_timeout/plot_ets_qdisc_1_2_kbps.csv')
+data_df_1_2_with_timeout$timeout <- "With ToE QoS"
+data_df_2_4_with_timeout <- read.csv(file = 'C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/data/with_shaping_and_ets_scheduling_with_timeout/plot_ets_qdisc_2_4_kbps.csv')
+data_df_2_4_with_timeout$timeout <- "With ToE QoS"
+data_df_4_8_with_timeout <- read.csv(file = 'C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/data/with_shaping_and_ets_scheduling_with_timeout/plot_ets_qdisc_4_8_kbps.csv')
+data_df_4_8_with_timeout$timeout <- "With ToE QoS"
+data_df_9_6_with_timeout <- read.csv(file = 'C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/data/with_shaping_and_ets_scheduling_with_timeout/plot_ets_qdisc_9_6_kbps.csv')
+data_df_9_6_with_timeout$timeout <- "With ToE QoS"
 
 
 data_df_0_6_wo_timeout$datarate <- "0.6 kbps"
@@ -52,19 +52,19 @@ data_df_9_6_with_timeout$datarate <- "9.6 kbps"
 
 
 data_df_0_6 <- rbind(data_df_0_6_wo_timeout,data_df_0_6_with_timeout)
-data_df_0_6$timeout_f = factor(data_df_0_6$timeout, levels=c('Without timeout','With timeout'))
+data_df_0_6$timeout_f = factor(data_df_0_6$timeout, levels=c('Without ToE QoS','With ToE QoS'))
 
 data_df_1_2 <- rbind(data_df_1_2_wo_timeout,data_df_1_2_with_timeout)
-data_df_1_2$timeout_f = factor(data_df_1_2$timeout, levels=c('Without timeout','With timeout'))
+data_df_1_2$timeout_f = factor(data_df_1_2$timeout, levels=c('Without ToE QoS','With ToE QoS'))
 
 data_df_2_4 <- rbind(data_df_2_4_wo_timeout,data_df_2_4_with_timeout)
-data_df_2_4$timeout_f = factor(data_df_2_4$timeout, levels=c('Without timeout','With timeout'))
+data_df_2_4$timeout_f = factor(data_df_2_4$timeout, levels=c('Without ToE QoS','With ToE QoS'))
 
 data_df_4_8 <- rbind(data_df_4_8_wo_timeout,data_df_4_8_with_timeout)
-data_df_4_8$timeout_f = factor(data_df_4_8$timeout, levels=c('Without timeout','With timeout'))
+data_df_4_8$timeout_f = factor(data_df_4_8$timeout, levels=c('Without ToE QoS','With ToE QoS'))
 
 data_df_9_6 <- rbind(data_df_9_6_wo_timeout,data_df_9_6_with_timeout)
-data_df_9_6$timeout_f = factor(data_df_9_6$timeout, levels=c('Without timeout','With timeout'))
+data_df_9_6$timeout_f = factor(data_df_9_6$timeout, levels=c('Without ToE QoS','With ToE QoS'))
 
 
 data_df_0_6$flow_id <- factor(data_df_0_6$flow_id, levels = c("1", "2", "3", "4", "5"), labels = c("Medical Evac.", "Obstacle Alert", "Picture", "Chat", "FFT"))
@@ -91,7 +91,7 @@ data_df <- rbind(data_df_0_6,data_df_1_2,data_df_2_4,data_df_4_8,data_df_9_6)
 gg1 <- ggplot()
 #gg1 <- gg1 + geom_line(data = data_df, mapping = aes(x = packet_delay_in_secs, y = packet_seq_no, color=Messages, linetype=Messages))
 gg1 <- gg1 + geom_point(data = data_df, mapping = aes(x = packet_delay_in_secs, y = packet_seq_no, color=Messages, shape=Messages), size = 0.8, stroke=1, alpha = .8)
-gg1 <- gg1 + scale_x_continuous(n.breaks = 20)
+gg1 <- gg1 + scale_x_continuous(n.breaks = 5)
 gg1 <- gg1 + scale_y_continuous(n.breaks = 7)
 gg1 <- gg1 + scale_linetype_manual(values=c("longdash", "twodash", "dashed","dotdash","dotted"))
 gg1 <- gg1 + scale_shape_manual(values=c(16, 17, 18,4,5))
@@ -122,6 +122,6 @@ print(gg1)
 
 #7x4
 
-#ggsave(filename = "../plots/with_ets_with_vs_wo_timeout_all_vhf.png",plot=last_plot(), device="png", units = "mm", width = 400, height = 800, dpi = 600)
-#ggsave(filename = "../plots/with_ets_with_vs_wo_timeout_all_vhf.eps",plot=last_plot(), device="eps", units = "mm", width = 400, height = 800)
+ggsave(filename = "C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/plots/with_ets_with_vs_wo_timeout_all_vhf.png",plot=gg1, device="png", units = "mm", width = 400, height = 300, dpi = 600)
+ggsave(filename = "C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/plots/with_ets_with_vs_wo_timeout_all_vhf.eps",plot=gg1, device="eps", units = "mm", width = 400, height = 300)
 

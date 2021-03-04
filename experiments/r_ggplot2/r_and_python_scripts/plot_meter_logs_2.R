@@ -13,35 +13,35 @@ library(wesanderson)
 data_df_9_6 <- read.csv(file = '../data/with_shaping_and_ets_scheduling_no_timeout/plot_meter_log_9_6_240_kbps.csv')
 #data_df_9_6$data_rate <- "10kbps\n and\n 240kbps"
 data_df_9_6$data_rate <- rename_labels(data_df_9_6,'meter_id',c(1,2,3,4,5,6,7,8,9,10),
-                                       c("240kbps","120kbps","60kbps","30kbps","15kbps","9.6kbps",  "4.8kbps", "2.4kbps","1.2kbps","0.6kbps"))$meter_id
+                                       c("240 kbps","120 kbps","60 kbps","30 kbps","15 kbps","10 kbps",  "5 kbps", "3 kbps","2 kbps","1 kbps"))$meter_id
 data_df_9_6$experiment <- "Experiment 1"
   
 
 data_df_4_8 <- read.csv(file = '../data/with_shaping_and_ets_scheduling_no_timeout/plot_meter_log_4_8_120_kbps.csv')
 #data_df_4_8$data_rate <- "5kbps\n and\n 120kbps"
 data_df_4_8$data_rate <- rename_labels(data_df_4_8,'meter_id',c(1,2,3,4,5,6,7,8,9,10), 
-                                       c("240kbps","120kbps","60kbps","30kbps","15kbps","9.6kbps",  "4.8kbps", "2.4kbps","1.2kbps","0.6kbps"))$meter_id
+                                       c("240 kbps","120 kbps","60 kbps","30 kbps","15 kbps","10 kbps",  "5 kbps", "3 kbps","2 kbps","1 kbps"))$meter_id
 data_df_4_8$experiment <- "Experiment 2"
 
 
 data_df_2_4 <- read.csv(file = '../data/with_shaping_and_ets_scheduling_no_timeout/plot_meter_log_2_4_60_kbps.csv')
 #data_df_2_4$data_rate <- "3kbps\n and\n 60kbps"
 data_df_2_4$data_rate <- rename_labels(data_df_2_4,'meter_id',c(1,2,3,4,5,6,7,8,9,10),
-                                       c("240kbps","120kbps","60kbps","30kbps","15kbps","9.6kbps",  "4.8kbps", "2.4kbps","1.2kbps","0.6kbps"))$meter_id
+                                       c("240 kbps","120 kbps","60 kbps","30 kbps","15 kbps","10 kbps",  "5 kbps", "3 kbps","2 kbps","1 kbps"))$meter_id
 data_df_2_4$experiment <- "Experiment 3"
 
 
 data_df_1_2 <- read.csv(file = '../data/with_shaping_and_ets_scheduling_no_timeout/plot_meter_log_1_2_30_kbps.csv')
 #data_df_1_2$data_rate <- "2kbps\n and\n 30kbps"
 data_df_1_2$data_rate <- rename_labels(data_df_1_2,'meter_id',c(1,2,3,4,5,6,7,8,9,10),
-                                       c("240kbps","120kbps","60kbps","30kbps","15kbps","9.6kbps",  "4.8kbps", "2.4kbps","1.2kbps","0.6kbps"))$meter_id
+                                       c("240 kbps","120 kbps","60 kbps","30 kbps","15 kbps","10 kbps",  "5 kbps", "3 kbps","2 kbps","1 kbps"))$meter_id
 data_df_1_2$experiment <- "Experiment 4"
 
 
 data_df_0_6 <- read.csv(file = '../data/with_shaping_and_ets_scheduling_no_timeout/plot_meter_log_0_6_15_kbps.csv')
 #data_df_0_6$data_rate <- "1kbps\n and\n 15kbps"
 data_df_0_6$data_rate <- rename_labels(data_df_0_6,'meter_id',c(1,2,3,4,5,6,7,8,9,10),
-                                       c("240kbps","120kbps","60kbps","30kbps","15kbps","9.6kbps",  "4.8kbps", "2.4kbps","1.2kbps","0.6kbps"))$meter_id
+                                       c("240 kbps","120 kbps","60 kbps","30 kbps","15 kbps","10 kbps",  "5 kbps", "3 kbps","2 kbps","1 kbps"))$meter_id
 data_df_0_6$experiment <- "Experiment 5"
 
 
@@ -60,7 +60,7 @@ data_df$Network <- rename_labels(data_df,'meter_id',c(1,2,3,4,5,6,7,8,9,10),
 
 data_df$data_rate <- factor(data_df$data_rate,
                             #levels = c("9.6kbps", "4.8kbps", "2.4kbps","1.2kbps","0.6kbps","240kbps","120kbps","60kbps","30kbps","15kbps"))
-                            levels = c("0.6kbps","1.2kbps","2.4kbps","4.8kbps","9.6kbps","15kbps","30kbps","60kbps","120kbps","240kbps"))
+                            levels = c("1 kbps","2 kbps","3 kbps","5 kbps","10 kbps","15 kbps","30 kbps","60 kbps","120 kbps","240 kbps"))
 
 data_df$Network <- factor(data_df$Network, levels = c("VHF", "UHF"))
 
@@ -106,7 +106,7 @@ gg <- gg + facet_wrap(.~ experiment, ncol = 5,strip.position = "top")
 gg <- gg + xlab("Meters")
 gg <- gg + ylab("Packet")
 gg <- gg + guides(shape = guide_legend(override.aes = list(size = 3)))
-gg <- gg + theme(legend.position = "bottom",axis.text.x = element_text(angle = 30), #legend.position = c(.7, 0.1)
+gg <- gg + theme(legend.position = "bottom",axis.text.x = element_text(angle = 45), #legend.position = c(.7, 0.1)
                  axis.text=element_text(size=12),
                  axis.title=element_text(size=12),legend.title=element_text(size=12), 
                  legend.text=element_text(size=12),strip.text.x = element_text(size = 10),
@@ -148,7 +148,7 @@ print(gg)
 
 
 
-
+#7x3
 
 
 

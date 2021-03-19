@@ -67,7 +67,7 @@ def capture_live_packets(config_dict=None):
     if config_dict is not None:
         packet_data_dict = defaultdict(list)
         try:
-            cap = pyshark.LiveCapture(interface=config_dict.get('from_interface'),bpf_filter='host 192.168.1.10 and not arp',only_summaries=False,use_json=False)#bpf_filter='host 192.168.0.2 and not arp',,capture_filter='host 192.168.0.2 and not arp'
+            cap = pyshark.LiveCapture(interface=config_dict.get('from_interface'),bpf_filter='host 192.168.10.10 and not arp',only_summaries=False,use_json=False)#bpf_filter='host 192.168.0.2 and not arp',,capture_filter='host 192.168.0.2 and not arp'
 
             cap.set_debug()
             while True:
@@ -110,7 +110,7 @@ if __name__ == '__main__':
     try:
         init_logging()
         parser = argparse.ArgumentParser(description="Packet Capture App!")
-        parser.add_argument("-i", "--interface", help="The interface from which the packets have to be captured", type=str, default='r1-eth0')
+        parser.add_argument("-i", "--interface", help="The interface from which the packets have to be captured", type=str, default='h2-eth0')
         args = parser.parse_args()
         if args.interface:
             msg = "Packet will be captured with interface: {interface} \n".format(interface=args.interface)

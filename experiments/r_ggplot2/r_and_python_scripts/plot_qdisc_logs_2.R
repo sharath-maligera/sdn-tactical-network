@@ -24,7 +24,7 @@ data_df_9_6$handle <- as.character(data_df_9_6$handle)
 data_df_9_6$ets_bands <- data_df_9_6$handle
 data_df_9_6$ets_handle <- data_df_9_6$handle
 data_df_9_6$data_rate <- rename_labels(data_df_9_6,'handle',c("11:","111:", "112:", "113:", "114:", "12:","121:", "122:", "123:", "124:"),
-                                       c(rep("9.6kbps",5),rep("240kbps",5)))$handle
+                                       c(rep("9.6 kbps",5),rep("240 kbps",5)))$handle
 
 data_df_4_8 <- read.csv(file = 'C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/data/with_shaping_and_ets_scheduling_no_timeout/plot_qdisc_log_4_8_120_kbps.csv')
 #data_df_4_8$data_rate <- "1:11 = 4.8kbps\n and\n 1:12 = 120kbps"
@@ -32,7 +32,7 @@ data_df_4_8$handle <- as.character(data_df_4_8$handle)
 data_df_4_8$ets_bands <- data_df_4_8$handle
 data_df_4_8$ets_handle <- data_df_4_8$handle
 data_df_4_8$data_rate <- rename_labels(data_df_4_8,'handle',c("11:","111:", "112:", "113:", "114:", "12:","121:", "122:", "123:", "124:"),
-                                       c(rep("4.8kbps",5),rep("120kbps",5)))$handle
+                                       c(rep("4.8 kbps",5),rep("120 kbps",5)))$handle
 
 
 data_df_2_4 <- read.csv(file = 'C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/data/with_shaping_and_ets_scheduling_no_timeout/plot_qdisc_log_2_4_60_kbps.csv')
@@ -41,7 +41,7 @@ data_df_2_4$handle <- as.character(data_df_2_4$handle)
 data_df_2_4$ets_bands <- data_df_2_4$handle
 data_df_2_4$ets_handle <- data_df_2_4$handle
 data_df_2_4$data_rate <- rename_labels(data_df_2_4,'handle',c("11:","111:", "112:", "113:", "114:", "12:","121:", "122:", "123:", "124:"),
-                                       c(rep("2.4kbps",5),rep("60kbps",5)))$handle
+                                       c(rep("2.4 kbps",5),rep("60 kbps",5)))$handle
 
 
 data_df_1_2 <- read.csv(file = 'C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/data/with_shaping_and_ets_scheduling_no_timeout/plot_qdisc_log_1_2_30_kbps.csv')
@@ -50,7 +50,7 @@ data_df_1_2$handle <- as.character(data_df_1_2$handle)
 data_df_1_2$ets_bands <- data_df_1_2$handle
 data_df_1_2$ets_handle <- data_df_1_2$handle
 data_df_1_2$data_rate <- rename_labels(data_df_1_2,'handle',c("11:","111:", "112:", "113:", "114:", "12:","121:", "122:", "123:", "124:"),
-                                       c(rep("1.2kbps",5),rep("30kbps",5)))$handle
+                                       c(rep("1.2 kbps",5),rep("30 kbps",5)))$handle
 
 
 data_df_0_6 <- read.csv(file = 'C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/data/with_shaping_and_ets_scheduling_no_timeout/plot_qdisc_log_0_6_15_kbps.csv')
@@ -59,7 +59,7 @@ data_df_0_6$handle <- as.character(data_df_0_6$handle)
 data_df_0_6$ets_bands <- data_df_0_6$handle
 data_df_0_6$ets_handle <- data_df_0_6$handle
 data_df_0_6$data_rate <- rename_labels(data_df_0_6,'handle',c("11:","111:", "112:", "113:", "114:", "12:","121:", "122:", "123:", "124:"),
-                                       c(rep("0.6kbps",5),rep("15kbps",5)))$handle
+                                       c(rep("0.6 kbps",5),rep("15 kbps",5)))$handle
 
 
 
@@ -84,7 +84,7 @@ data_df <- data_df[!(data_df$handle=="11:"),]
 data_df <- data_df[!(data_df$handle=="12:"),]
 
 data_df$data_rate <- factor(data_df$data_rate,
-                            levels = c("0.6kbps", "1.2kbps", "2.4kbps", "4.8kbps", "9.6kbps","15kbps","30kbps","60kbps","120kbps","240kbps"))
+                            levels = c("0.6 kbps", "1.2 kbps", "2.4 kbps", "4.8 kbps", "9.6 kbps","15 kbps","30 kbps","60 kbps","120 kbps","240 kbps"))
 
 data_df$ets_handle <- factor(data_df$ets_handle, levels = c("VHF", "UHF"))
 

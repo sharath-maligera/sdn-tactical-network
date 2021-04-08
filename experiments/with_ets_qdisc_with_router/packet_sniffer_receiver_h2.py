@@ -8,6 +8,7 @@ import os
 from datetime import datetime
 from pprint import pprint
 import pandas as pd
+import csv
 
 packet_log = logbook.Logger('Packet Capture App!')
 
@@ -65,45 +66,52 @@ def parse_string(string):
 def capture_live_packets(config_dict=None):
     function_logger = '[capture_live_packets]'
     if config_dict is not None:
-        packet_data_dict = defaultdict(list)
         try:
             cap = pyshark.LiveCapture(interface=config_dict.get('from_interface'),bpf_filter='host 192.168.10.10 and not arp',only_summaries=False,use_json=False)#bpf_filter='host 192.168.0.2 and not arp',,capture_filter='host 192.168.0.2 and not arp'
-
             cap.set_debug()
-            while True:
-                for packet in cap.sniff_continuously():
-                    if 'ipv6' in packet:
-                        pass
-                    else:
-                        try:
-                            packet_log.trace(function_logger + ' Packet Just arrived:')
-                            packet_data_dict['packet_id'].append(packet.number)
-                            packet_sniff_time = packet.sniff_time.strftime('%b %d, %Y %H:%M:%S.%f')
-                            packet_data_dict['packet_timestamp'].append(packet_sniff_time)
-                            packet_data_dict['source_ip'].append(parse_string(packet.ip.src_host))
-                            packet_data_dict['destination_ip'].append(parse_string(packet.ip.dst_host))
-                            packet_data_dict['protocol'].append(parse_string(packet.transport_layer))
-                            packet_data_dict['dsfield'].append(packet.ip.dsfield)
-                            packet_data_dict['packet_length'].append(packet.length)
 
-                            packet_msg = '\nPacket Data:\t' \
-                                         + 'packet_id: ' + str(packet.number) + '\n\t\t' \
-                                         + 'packet_timestamp: ' + packet_sniff_time + '\n\t\t' \
-                                         + 'source_ip: ' + str(packet.ip.src_host) + '\n\t\t' \
-                                         + 'destination_ip: ' + str(packet.ip.dst_host) + '\n\t\t' \
-                                         + 'protocol: ' + str(packet.transport_layer) + '\n\t\t' \
-                                         + 'dsfield: ' + str(packet.ip.dsfield) + '\n\t\t' \
-                                         + 'packet_length: ' + str(packet.length)
-                            packet_log.trace(function_logger + packet_msg)
-                        except Exception as exception:
+            with open(r's1_to_r1_sniffer.csv', 'a') as csvfile:
+                fieldnames = ['packet_id', 'packet_timestamp', 'source_ip', 'destination_ip','protocol','dsfield','packet_length']
+                writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+                writer.writeheader()
+                while True:
+                    for packet in cap.sniff_continuously():
+                        if 'ipv6' in packet:
                             pass
-                            packet_log.trace(exception)
-                #data = pd.DataFrame.from_dict(packet_data_dict)
-                #data.to_csv(os.path.join(os.path.dirname(__file__), 'packet_sniffer_sender.csv'), index=False, header=True)
+                        else:
+                            try:
+                                packet_data_dict = dict()
+                                packet_log.trace(function_logger + ' Packet Just arrived:')
+                                packet_data_dict['packet_id'] = packet.number
+                                packet_sniff_time = packet.sniff_time.strftime('%b %d, %Y %H:%M:%S.%f')
+                                packet_data_dict['packet_timestamp'] = packet_sniff_time
+                                packet_data_dict['source_ip'] = parse_string(packet.ip.src_host)
+                                packet_data_dict['destination_ip'] = parse_string(packet.ip.dst_host)
+                                packet_data_dict['protocol'] = parse_string(packet.transport_layer)
+                                packet_data_dict['dsfield'] = packet.ip.dsfield
+                                packet_data_dict['packet_length'] = packet.length
+                                writer.writerow(packet_data_dict)
+
+                                packet_msg = '\nPacket Data:\t' \
+                                             + 'packet_id: ' + str(packet.number) + '\n\t\t' \
+                                             + 'packet_timestamp: ' + packet_sniff_time + '\n\t\t' \
+                                             + 'source_ip: ' + str(packet.ip.src_host) + '\n\t\t' \
+                                             + 'destination_ip: ' + str(packet.ip.dst_host) + '\n\t\t' \
+                                             + 'protocol: ' + str(packet.transport_layer) + '\n\t\t' \
+                                             + 'dsfield: ' + str(packet.ip.dsfield) + '\n\t\t' \
+                                             + 'packet_length: ' + str(packet.length)
+                                packet_log.trace(function_logger + packet_msg)
+                            except Exception as exception:
+                                pass
+                                packet_log.trace(exception)
+                    #data = pd.DataFrame.from_dict(packet_data_dict)
+                    #data.to_csv(os.path.join(os.path.dirname(__file__), 'packet_sniffer_sender.csv'), index=False, header=True)
+
 
         except Exception as exception:
             pass
             packet_log.trace(exception)
+
 
 
 if __name__ == '__main__':

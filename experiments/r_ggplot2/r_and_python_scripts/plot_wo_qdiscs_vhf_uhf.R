@@ -12,10 +12,10 @@ library(wesanderson)
 #display.brewer.all(type="div")
 
 
-data_df_vhf <- read.csv(file = 'C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/data/without_qdiscs/plot_wo_qdisc_vhf_exp_1.csv')
+data_df_vhf <- read.csv(file = 'C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/data_icmcis/without_qdiscs/plot_wo_qdisc_vhf_exp_1.csv')
 data_df_vhf$data_rate <- "VHF"
 
-data_df_uhf <- read.csv(file = 'C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/data/without_qdiscs/plot_wo_qdisc_uhf_exp_1.csv')
+data_df_uhf <- read.csv(file = 'C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/data_icmcis/without_qdiscs/plot_wo_qdisc_uhf_exp_1.csv')
 data_df_uhf$data_rate <- "UHF"
 
 data_df_vhf$flow_id <- factor(data_df_vhf$flow_id, levels = c("1", "2", "3", "4", "5"),
@@ -34,7 +34,7 @@ gg <- gg + geom_line(data = data_df, mapping = aes(x = packet_seq_no, y = packet
 gg <- gg + geom_point(data = data_df, mapping = aes(x = packet_seq_no, y = packet_delay_in_secs, color=Messages, shape=Messages), size = 3, stroke=1.3, alpha = 1)
 gg <- gg + scale_linetype_manual(values=c("longdash", "twodash", "dashed","dotdash","dotted"))
 gg <- gg + scale_shape_manual(values=c(1, 2, 3, 4, 5))
-gg <- gg + scale_color_manual(values=c('#1e2240', '#607dab','#b5c9d5', '#FFE77AFF', '#2C5F2DFF'))
+gg <- gg + scale_color_manual(values=c('grey40', 'tomato4','tomato', 'goldenrod', '#2C5F2DFF'))
 gg <- gg + facet_grid( data_rate_f ~ ., scales = "free")
 gg <- gg + coord_cartesian()
 gg <- gg + xlab("Packet")
@@ -46,7 +46,8 @@ gg <- gg + theme(axis.text.x = element_text(size = 24),
                    axis.title.x = element_text(margin = margin(t = 15, r = 0, b = 0, l = 0)),
                    strip.background = element_rect(colour = "black", fill = "#f0f0f0"),
                    strip.text = element_text(face = "bold", size = 23),
-                   legend.position =  c(0.17,0.8),
+                   #legend.position =  c(0.17,0.8),
+                   legend.position = "bottom",
                    legend.background = element_rect(fill="transparent"),
                    legend.title = element_text(size = 24, face = "bold", colour = "black"),
                    legend.text=element_text(size=20, colour = "black"),

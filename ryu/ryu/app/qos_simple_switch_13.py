@@ -46,6 +46,19 @@ class SimpleSwitch13(app_manager.RyuApp):
         actions = [parser.OFPActionOutput(ofproto.OFPP_CONTROLLER,
                                           ofproto.OFPCML_NO_BUFFER)]
         self.add_flow(datapath, 0, match, actions)
+        if 1 == 1:
+            # Add flow that installs meter
+            bands = []
+            dropband = parser.OFPMeterBandDscpRemark(rate=200, burst_size=10, prec_level=1)
+            #dropband = parser.OFPMeterBandDrop(rate=200, burst_size=0)
+            bands.append(dropband)
+            request = parser.OFPMeterMod(datapath=datapath,
+                                         command=ofproto.OFPMC_ADD,
+                                         flags=ofproto.OFPMF_KBPS,  # ofproto.OFPMF_PKTPS
+                                         meter_id=1,
+                                         bands=bands)
+            print("Creating new meter")
+            datapath.send_msg(request)
 
     def add_flow(self, datapath, priority, match, actions, buffer_id=None):
         ofproto = datapath.ofproto

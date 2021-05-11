@@ -9,50 +9,51 @@ library(wesanderson)
 #display.brewer.all(type="seq")
 #display.brewer.all(type="div")
 
+# fuction to rename labels in data frame columns
+rename_labels <-  function(df,column,raw_names,new_names){
 
-data_df_9_6 <- read.csv(file = '../data/with_shaping_and_ets_scheduling_no_timeout/plot_meter_log_9_6_240_kbps.csv')
+  for(i in 1:length(raw_names)){
+    df[,column] <- replace(df[,column], df[,column]==raw_names[i], new_names[i])
+  }
+  return(df)
+}
+
+data_df_9_6 <- read.csv(file = 'C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/data_icmcis/with_shaping_and_ets_scheduling_no_timeout/plot_meter_log_9_6_240_kbps.csv')
 #data_df_9_6$data_rate <- "10kbps\n and\n 240kbps"
 data_df_9_6$data_rate <- rename_labels(data_df_9_6,'meter_id',c(1,2,3,4,5,6,7,8,9,10),
                                        c("240 kbps","120 kbps","60 kbps","30 kbps","15 kbps","10 kbps",  "5 kbps", "3 kbps","2 kbps","1 kbps"))$meter_id
 data_df_9_6$experiment <- "Experiment 1"
   
 
-data_df_4_8 <- read.csv(file = '../data/with_shaping_and_ets_scheduling_no_timeout/plot_meter_log_4_8_120_kbps.csv')
+data_df_4_8 <- read.csv(file = 'C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/data_icmcis/with_shaping_and_ets_scheduling_no_timeout/plot_meter_log_4_8_120_kbps.csv')
 #data_df_4_8$data_rate <- "5kbps\n and\n 120kbps"
 data_df_4_8$data_rate <- rename_labels(data_df_4_8,'meter_id',c(1,2,3,4,5,6,7,8,9,10), 
                                        c("240 kbps","120 kbps","60 kbps","30 kbps","15 kbps","10 kbps",  "5 kbps", "3 kbps","2 kbps","1 kbps"))$meter_id
 data_df_4_8$experiment <- "Experiment 2"
 
 
-data_df_2_4 <- read.csv(file = '../data/with_shaping_and_ets_scheduling_no_timeout/plot_meter_log_2_4_60_kbps.csv')
+data_df_2_4 <- read.csv(file = 'C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/data_icmcis/with_shaping_and_ets_scheduling_no_timeout/plot_meter_log_2_4_60_kbps.csv')
 #data_df_2_4$data_rate <- "3kbps\n and\n 60kbps"
 data_df_2_4$data_rate <- rename_labels(data_df_2_4,'meter_id',c(1,2,3,4,5,6,7,8,9,10),
                                        c("240 kbps","120 kbps","60 kbps","30 kbps","15 kbps","10 kbps",  "5 kbps", "3 kbps","2 kbps","1 kbps"))$meter_id
 data_df_2_4$experiment <- "Experiment 3"
 
 
-data_df_1_2 <- read.csv(file = '../data/with_shaping_and_ets_scheduling_no_timeout/plot_meter_log_1_2_30_kbps.csv')
+data_df_1_2 <- read.csv(file = 'C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/data_icmcis/with_shaping_and_ets_scheduling_no_timeout/plot_meter_log_1_2_30_kbps.csv')
 #data_df_1_2$data_rate <- "2kbps\n and\n 30kbps"
 data_df_1_2$data_rate <- rename_labels(data_df_1_2,'meter_id',c(1,2,3,4,5,6,7,8,9,10),
                                        c("240 kbps","120 kbps","60 kbps","30 kbps","15 kbps","10 kbps",  "5 kbps", "3 kbps","2 kbps","1 kbps"))$meter_id
 data_df_1_2$experiment <- "Experiment 4"
 
 
-data_df_0_6 <- read.csv(file = '../data/with_shaping_and_ets_scheduling_no_timeout/plot_meter_log_0_6_15_kbps.csv')
+data_df_0_6 <- read.csv(file = 'C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/data_icmcis/with_shaping_and_ets_scheduling_no_timeout/plot_meter_log_0_6_15_kbps.csv')
 #data_df_0_6$data_rate <- "1kbps\n and\n 15kbps"
 data_df_0_6$data_rate <- rename_labels(data_df_0_6,'meter_id',c(1,2,3,4,5,6,7,8,9,10),
                                        c("240 kbps","120 kbps","60 kbps","30 kbps","15 kbps","10 kbps",  "5 kbps", "3 kbps","2 kbps","1 kbps"))$meter_id
 data_df_0_6$experiment <- "Experiment 5"
 
 
-# fuction to rename labels in data frame columns
-rename_labels <-  function(df,column,raw_names,new_names){
-  
-  for(i in 1:length(raw_names)){
-    df[,column] <- replace(df[,column], df[,column]==raw_names[i], new_names[i])
-  }
-  return(df)
-}
+
 
 data_df <- rbind(data_df_0_6,data_df_1_2,data_df_2_4,data_df_4_8,data_df_9_6)
 data_df$Network <- rename_labels(data_df,'meter_id',c(1,2,3,4,5,6,7,8,9,10),
@@ -152,5 +153,5 @@ print(gg)
 
 
 
-#ggsave(filename = "../plots/with_meter_wo_timeout.png",plot=last_plot(), device="png", units = "mm", width = 400, height = 300, dpi = 600)
+ggsave(filename = "C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/plots/with_meter_wo_timeout.png",plot=last_plot(), device="png", units = "mm", width = 400, height = 200, dpi = 600)
 #ggsave(filename = "../plots/with_meter_wo_timeout.eps",plot=last_plot(), device="eps", units = "mm", width = 400, height = 300, dpi = 600)

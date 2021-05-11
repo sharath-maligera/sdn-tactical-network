@@ -12,7 +12,7 @@ from mininet.link import TCLink
 #import matplotlib
 #matplotlib.use('Agg')
 import matplotlib.pyplot as plt
-from mininet.node import RemoteController
+from mininet.node import RemoteController, OVSSwitch
 from mininet.util import dumpNodeConnections
 from mn_wifi.cli import CLI
 import pandas as pd
@@ -37,10 +37,10 @@ def myNet():
     r1 = net.addHost('r1', ip='192.168.10.1/24', inNamespace=False) #, inNamespace=True
 
     # Create switches
-    s1 = net.addSwitch('s1', listenPort=6634, dpid='0000000000000010')
-    s2 = net.addSwitch('s2', listenPort=6634, dpid='0000000000000020')
-    s3 = net.addSwitch('s3', listenPort=6634, dpid='0000000000000030')
-    s4 = net.addSwitch('s4', listenPort=6634, dpid='0000000000000040')
+    s1 = net.addSwitch('s1', cls = OVSSwitch, protocols='OpenFlow13', listenPort=6634, dpid='0000000000000010')
+    s2 = net.addSwitch('s2', cls = OVSSwitch, protocols='OpenFlow13', listenPort=6634, dpid='0000000000000020')
+    s3 = net.addSwitch('s3', cls = OVSSwitch, protocols='OpenFlow13', listenPort=6634, dpid='0000000000000030')
+    s4 = net.addSwitch('s4', cls = OVSSwitch, protocols='OpenFlow13', listenPort=6634, dpid='0000000000000040')
 
     print "*** Creating links"
     net.addLink(h1, s1, )
@@ -99,10 +99,15 @@ def myNet():
     sleep(3)
     h1.cmd('ifconfig h1-eth0 txqueuelen 5000')
     s1.cmd('ifconfig s1-eth2 txqueuelen 5000')
-    r1.cmd('ifconfig r1-eth0 txqueuelen 5000')
     r1.cmd('ifconfig r1-eth1 txqueuelen 5000')
     r1.cmd('ifconfig r1-eth2 txqueuelen 5000')
     r1.cmd('ifconfig r1-eth3 txqueuelen 5000')
+    sleep(2)
+
+    s1.cmd('ovs-vsctl set bridge s1 protocols=OpenFlow13')
+    s2.cmd('ovs-vsctl set bridge s2 protocols=OpenFlow13')
+    s3.cmd('ovs-vsctl set bridge s3 protocols=OpenFlow13')
+    s4.cmd('ovs-vsctl set bridge s4 protocols=OpenFlow13')
     sleep(2)
 
     """
@@ -116,9 +121,9 @@ def myNet():
     """
     h1.cmd('/sbin/tc qdisc add dev h1-eth0 root handle 1: htb default 11 && '
            '/sbin/tc class add dev h1-eth0 parent 1: classid 1:1 htb rate 762kbit ceil 762kbit burst 762kb && '
-           '/sbin/tc class add dev h1-eth0 parent 1:1 classid 1:11 htb rate 0.6kbit ceil 0.6kbit burst 10kb && '
-           '/sbin/tc class add dev h1-eth0 parent 1:1 classid 1:12 htb rate 15kbit ceil 15kbit burst 240kb && '
-           '/sbin/tc class add dev h1-eth0 parent 1:1 classid 1:13 htb rate 32kbit ceil 32kbit burst 512kb && '
+           '/sbin/tc class add dev h1-eth0 parent 1:1 classid 1:11 htb rate 9.6kbit ceil 9.6kbit burst 10kb && '
+           '/sbin/tc class add dev h1-eth0 parent 1:1 classid 1:12 htb rate 240kbit ceil 240kbit burst 240kb && '
+           '/sbin/tc class add dev h1-eth0 parent 1:1 classid 1:13 htb rate 512kbit ceil 512kbit burst 512kb && '
            '/sbin/tc qdisc add dev h1-eth0 parent 1:11 handle 11: ets strict 2 quanta 900 600 priomap 3 3 2 1 0 1 1 1 1 1 1 1 1 1 1 1 && '
            '/sbin/tc qdisc add dev h1-eth0 parent 1:12 handle 12: ets strict 2 quanta 900 600 priomap 3 3 2 1 0 1 1 1 1 1 1 1 1 1 1 1 && '
            '/sbin/tc qdisc add dev h1-eth0 parent 1:13 handle 13: ets strict 2 quanta 900 600 priomap 3 3 2 1 0 1 1 1 1 1 1 1 1 1 1 1 && '
@@ -138,6 +143,17 @@ def myNet():
            '/sbin/tc filter add dev h1-eth0 parent 1:1 protocol ip prio 1 u32 match ip dst 192.168.20.10 match ip protocol 17 0xff flowid 1:11 && '
            '/sbin/tc filter add dev h1-eth0 parent 1:1 protocol ip prio 1 u32 match ip dst 192.168.30.10 match ip protocol 17 0xff flowid 1:12 && '
            '/sbin/tc filter add dev h1-eth0 parent 1:1 protocol ip prio 1 u32 match ip dst 192.168.40.10 match ip protocol 17 0xff flowid 1:13'
+           )
+
+    s1.cmd('/sbin/tc qdisc add dev s1-eth2 root handle 1: htb default 1 && '
+           '/sbin/tc class add dev s1-eth2 parent 1: classid 1:1 htb rate 762kbit ceil 762kbit burst 762kb && '
+           '/sbin/tc class add dev s1-eth2 parent 1:1 classid 1:11 htb rate 9.6kbit ceil 9.6kbit burst 10kb && '
+           '/sbin/tc class add dev s1-eth2 parent 1:1 classid 1:12 htb rate 240kbit ceil 240kbit burst 240kb && '
+           '/sbin/tc class add dev s1-eth2 parent 1:1 classid 1:13 htb rate 512kbit ceil 512kbit burst 512kb && '
+           '/sbin/tc filter add dev s1-eth2 parent 1:0 protocol ip prio 1 u32 match ip src 192.168.10.10 match ip protocol 17 0xff flowid 1:1 && '
+           '/sbin/tc filter add dev s1-eth2 parent 1:1 protocol ip prio 1 u32 match ip dst 192.168.20.10 match ip protocol 17 0xff flowid 1:11 && '
+           '/sbin/tc filter add dev s1-eth2 parent 1:1 protocol ip prio 1 u32 match ip dst 192.168.30.10 match ip protocol 17 0xff flowid 1:12 && '
+           '/sbin/tc filter add dev s1-eth2 parent 1:1 protocol ip prio 1 u32 match ip dst 192.168.40.10 match ip protocol 17 0xff flowid 1:13'
            )
 
     # h1.cmd('/sbin/tc qdisc add dev h1-eth0 root handle 1: htb default 11 && '
@@ -184,12 +200,12 @@ def myNet():
     makeTerm(s1, title='packet sniffer receiver s1-r1', cmd="sudo python packet_sniffer_s1-r1_intf.py")
     sleep(2)
     makeTerm(h2, title='packet sniffer receiver h2', cmd="sudo python packet_sniffer_receiver_h2.py")
+    #sleep(2)
+    #makeTerm(h3, title='packet sniffer receiver h3', cmd="sudo python packet_sniffer_receiver_h3.py")
+    #sleep(2)
+    #makeTerm(h4, title='packet sniffer receiver h4', cmd="sudo python packet_sniffer_receiver_h4.py")
     sleep(2)
-    makeTerm(h3, title='packet sniffer receiver h3', cmd="sudo python packet_sniffer_receiver_h3.py")
-    sleep(2)
-    makeTerm(h4, title='packet sniffer receiver h4', cmd="sudo python packet_sniffer_receiver_h4.py")
-    sleep(2)
-    makeTerm(h1, title='packet sniffer sender', cmd="sudo python packet_sniffer_sender.py")
+    #makeTerm(h1, title='packet sniffer sender', cmd="sudo python packet_sniffer_sender.py")
     #makeTerm(r1, title='radio stats server', cmd="python radio_stats_server.py")
     #makeTerm(h1, title='qdisc logger', cmd="python query_qdisc_log.py")
 
@@ -198,7 +214,7 @@ def myNet():
     sleep(1)
 
     r1.cmd('/sbin/tc qdisc add dev r1-eth1 root handle 1: htb default 1 && '
-           '/sbin/tc class add dev r1-eth1 parent 1: classid 1:1 htb rate 0.6kbit ceil 0.6kbit burst 10kb && '
+           '/sbin/tc class add dev r1-eth1 parent 1: classid 1:1 htb rate 9.6kbit ceil 9.6kbit burst 10kb && '
            '/sbin/tc filter add dev r1-eth1 parent 1: protocol ip prio 1 u32 match ip dst 192.168.20.10 match ip protocol 17 0xff flowid 1:1'
            )
     info("Setting vhf data rate to 9.6kbps \n\n\n")
@@ -206,7 +222,7 @@ def myNet():
     sleep(1)
 
     r1.cmd('/sbin/tc qdisc add dev r1-eth2 root handle 1: htb default 1 && '
-           '/sbin/tc class add dev r1-eth2 parent 1: classid 1:1 htb rate 15kbit ceil 15kbit burst 240kb && '
+           '/sbin/tc class add dev r1-eth2 parent 1: classid 1:1 htb rate 240kbit ceil 240kbit burst 240kb && '
            '/sbin/tc filter add dev r1-eth2 parent 1: protocol ip prio 1 u32 match ip dst 192.168.30.10 match ip protocol 17 0xff flowid 1:1'
            )
     info("Setting uhf data rate to 240kbps \n\n\n")
@@ -214,7 +230,7 @@ def myNet():
     sleep(1)
 
     r1.cmd('/sbin/tc qdisc add dev r1-eth3 root handle 1: htb default 1 && '
-           '/sbin/tc class add dev r1-eth3 parent 1: classid 1:1 htb rate 32kbit ceil 32kbit burst 512kb && '
+           '/sbin/tc class add dev r1-eth3 parent 1: classid 1:1 htb rate 512kbit ceil 512kbit burst 512kb && '
            '/sbin/tc filter add dev r1-eth3 parent 1: protocol ip prio 1 u32 match ip dst 192.168.40.10 match ip protocol 17 0xff flowid 1:1'
            )
     info("Setting SatComm data rate to 512kbps \n\n\n")
@@ -222,41 +238,41 @@ def myNet():
     sleep(2)
     makeTerm(h1, title='mgen sender to h2', cmd="mgen input send.mgn")
 
-    # sleep(40)
-    #
-    # r1.cmd('/sbin/tc class change dev r1-eth1 parent 1: classid 1:1 htb rate 4.8kbit')
-    # info("Setting vhf data rate to 4.8kbps \n\n\n")
-    # r1.cmd('/sbin/tc class change dev r1-eth2 parent 1: classid 1:1 htb rate 120kbit')
-    # info("Setting uhf data rate to 120kbps \n\n\n")
-    # r1.cmd('/sbin/tc class change dev r1-eth3 parent 1: classid 1:1 htb rate 256kbit')
-    # info("Setting SatComm data rate to 256kbps \n\n\n")
-    #
-    # sleep(40)
-    #
-    # r1.cmd('/sbin/tc class change dev r1-eth1 parent 1: classid 1:1 htb rate 2.4kbit')
-    # info("Setting vhf data rate to 2.4kbps \n\n\n")
-    # r1.cmd('/sbin/tc class change dev r1-eth2 parent 1: classid 1:1 htb rate 60kbit')
-    # info("Setting uhf data rate to 60kbps \n\n\n")
-    # r1.cmd('/sbin/tc class change dev r1-eth3 parent 1: classid 1:1 htb rate 128kbit')
-    # info("Setting SatComm data rate to 128kbps \n\n\n")
-    #
-    # sleep(40)
-    #
-    # r1.cmd('/sbin/tc class change dev r1-eth1 parent 1: classid 1:1 htb rate 1.2kbit')
-    # info("Setting vhf data rate to 1.2kbps \n\n\n")
-    # r1.cmd('/sbin/tc class change dev r1-eth2 parent 1: classid 1:1 htb rate 30kbit')
-    # info("Setting uhf data rate to 30kbps \n\n\n")
-    # r1.cmd('/sbin/tc class change dev r1-eth3 parent 1: classid 1:1 htb rate 64kbit')
-    # info("Setting SatComm data rate to 64kbps \n\n\n")
-    #
-    # sleep(40)
-    #
-    # r1.cmd('/sbin/tc class change dev r1-eth1 parent 1: classid 1:1 htb rate 0.6kbit')
-    # info("Setting vhf data rate to 0.6kbps \n\n\n")
-    # r1.cmd('/sbin/tc class change dev r1-eth2 parent 1: classid 1:1 htb rate 15kbit')
-    # info("Setting uhf data rate to 15kbps \n\n\n")
-    # r1.cmd('/sbin/tc class change dev r1-eth3 parent 1: classid 1:1 htb rate 32kbit')
-    # info("Setting SatComm data rate to 32kbps \n\n\n")
+    sleep(15)
+
+    r1.cmd('/sbin/tc class change dev r1-eth1 parent 1: classid 1:1 htb rate 4.8kbit')
+    info("Setting vhf data rate to 4.8kbps \n\n\n")
+    r1.cmd('/sbin/tc class change dev r1-eth2 parent 1: classid 1:1 htb rate 120kbit')
+    info("Setting uhf data rate to 120kbps \n\n\n")
+    r1.cmd('/sbin/tc class change dev r1-eth3 parent 1: classid 1:1 htb rate 256kbit')
+    info("Setting SatComm data rate to 256kbps \n\n\n")
+
+    sleep(15)
+
+    r1.cmd('/sbin/tc class change dev r1-eth1 parent 1: classid 1:1 htb rate 2.4kbit')
+    info("Setting vhf data rate to 2.4kbps \n\n\n")
+    r1.cmd('/sbin/tc class change dev r1-eth2 parent 1: classid 1:1 htb rate 60kbit')
+    info("Setting uhf data rate to 60kbps \n\n\n")
+    r1.cmd('/sbin/tc class change dev r1-eth3 parent 1: classid 1:1 htb rate 128kbit')
+    info("Setting SatComm data rate to 128kbps \n\n\n")
+
+    sleep(15)
+
+    r1.cmd('/sbin/tc class change dev r1-eth1 parent 1: classid 1:1 htb rate 1.2kbit')
+    info("Setting vhf data rate to 1.2kbps \n\n\n")
+    r1.cmd('/sbin/tc class change dev r1-eth2 parent 1: classid 1:1 htb rate 30kbit')
+    info("Setting uhf data rate to 30kbps \n\n\n")
+    r1.cmd('/sbin/tc class change dev r1-eth3 parent 1: classid 1:1 htb rate 64kbit')
+    info("Setting SatComm data rate to 64kbps \n\n\n")
+
+    sleep(15)
+
+    r1.cmd('/sbin/tc class change dev r1-eth1 parent 1: classid 1:1 htb rate 0.6kbit')
+    info("Setting vhf data rate to 0.6kbps \n\n\n")
+    r1.cmd('/sbin/tc class change dev r1-eth2 parent 1: classid 1:1 htb rate 15kbit')
+    info("Setting uhf data rate to 15kbps \n\n\n")
+    r1.cmd('/sbin/tc class change dev r1-eth3 parent 1: classid 1:1 htb rate 32kbit')
+    info("Setting SatComm data rate to 32kbps \n\n\n")
 
     sleep(5)
     CLI(net)

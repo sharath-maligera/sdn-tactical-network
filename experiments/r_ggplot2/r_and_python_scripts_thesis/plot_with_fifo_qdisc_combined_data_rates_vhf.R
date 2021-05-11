@@ -12,34 +12,34 @@ library(wesanderson)
 #display.brewer.all(type="div")
 
 
-data_df_1 <- read.csv(file = 'C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/data/no_adaptive_no_changing_FIFO/h2_data_9_6_kbps.csv')
+data_df_1 <- read.csv(file = 'C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/data/no_adaptive_no_changing_ETS/h2_data_9_6_kbps.csv')
 data_df_1$data_rate <- "9.6 kbps"
 data_df_1$shaping <- "Without Shaping"
-data_df_1_1 <- read.csv(file = 'C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/data/no_adaptive_no_changing_FIFO_both_end/h2_data_9_6_kbps.csv')
+data_df_1_1 <- read.csv(file = 'C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/data/no_adaptive_no_changing_ETS_both_end/h2_data_9_6_kbps.csv')
 data_df_1_1$data_rate <- "9.6 kbps"
 data_df_1_1$shaping <- "With Shaping"
-data_df_2 <- read.csv(file = 'C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/data/no_adaptive_no_changing_FIFO/h2_data_4_8_kbps.csv')
+data_df_2 <- read.csv(file = 'C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/data/no_adaptive_no_changing_ETS/h2_data_4_8_kbps.csv')
 data_df_2$data_rate <- "4.8 kbps"
 data_df_2$shaping <- "Without Shaping"
-data_df_2_1 <- read.csv(file = 'C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/data/no_adaptive_no_changing_FIFO_both_end/h2_data_4_8_kbps.csv')
+data_df_2_1 <- read.csv(file = 'C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/data/no_adaptive_no_changing_ETS_both_end/h2_data_4_8_kbps.csv')
 data_df_2_1$data_rate <- "4.8 kbps"
 data_df_2_1$shaping <- "With Shaping"
-data_df_3 <- read.csv(file = 'C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/data/no_adaptive_no_changing_FIFO/h2_data_2_4_kbps.csv')
+data_df_3 <- read.csv(file = 'C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/data/no_adaptive_no_changing_ETS/h2_data_2_4_kbps.csv')
 data_df_3$data_rate <- "2.4 kbps"
 data_df_3$shaping <- "Without Shaping"
-data_df_3_1 <- read.csv(file = 'C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/data/no_adaptive_no_changing_FIFO_both_end/h2_data_2_4_kbps.csv')
+data_df_3_1 <- read.csv(file = 'C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/data/no_adaptive_no_changing_ETS_both_end/h2_data_2_4_kbps.csv')
 data_df_3_1$data_rate <- "2.4 kbps"
 data_df_3_1$shaping <- "With Shaping"
-data_df_4 <- read.csv(file = 'C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/data/no_adaptive_no_changing_FIFO/h2_data_1_2_kbps.csv')
+data_df_4 <- read.csv(file = 'C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/data/no_adaptive_no_changing_ETS/h2_data_1_2_kbps.csv')
 data_df_4$data_rate <- "1.2 kbps"
 data_df_4$shaping <- "Without Shaping"
-data_df_4_1 <- read.csv(file = 'C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/data/no_adaptive_no_changing_FIFO_both_end/h2_data_1_2_kbps.csv')
+data_df_4_1 <- read.csv(file = 'C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/data/no_adaptive_no_changing_ETS_both_end/h2_data_1_2_kbps.csv')
 data_df_4_1$data_rate <- "1.2 kbps"
 data_df_4_1$shaping <- "With Shaping"
-data_df_5 <- read.csv(file = 'C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/data/no_adaptive_no_changing_FIFO/h2_data_0_6_kbps.csv')
+data_df_5 <- read.csv(file = 'C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/data/no_adaptive_no_changing_ETS/h2_data_0_6_kbps.csv')
 data_df_5$data_rate <- "0.6 kbps"
 data_df_5$shaping <- "Without Shaping"
-data_df_5_1 <- read.csv(file = 'C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/data/no_adaptive_no_changing_FIFO_both_end/h2_data_0_6_kbps.csv')
+data_df_5_1 <- read.csv(file = 'C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/data/no_adaptive_no_changing_ETS_both_end/h2_data_0_6_kbps.csv')
 data_df_5_1$data_rate <- "0.6 kbps"
 data_df_5_1$shaping <- "With Shaping"
 
@@ -69,7 +69,7 @@ gg <- gg + theme(axis.text.x = element_text(size = 23, angle = 45, vjust = 0.5, 
                  axis.title.y = element_text(margin = margin(t = 0, r = 10, b = 0, l = 0)),
                  axis.title.x = element_text(margin = margin(t = 15, r = 0, b = 0, l = 0)),
                  strip.background = element_rect(colour = "black", fill = "#f0f0f0"),
-                 strip.text = element_text(face = "bold", size = 23),
+                 strip.text = element_text(face = "bold", size = 22),
                  legend.position = "bottom",
                  legend.background = element_rect(fill="transparent"),
                  legend.title = element_text(size = 23, face = "bold", colour = "black"),
@@ -80,5 +80,5 @@ theme_get()
 theme_set(theme_bw())
 print(gg)
 
-#ggsave(filename = "C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/plots/with_fifo_qdisc_no_timeout.png",plot=last_plot(), device="png", units = "mm", width = 400, height = 200, dpi = 600)
-ggsave(filename = "C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/thesis_plots/host_h2_fifo_with_wo_shaping.eps",plot=last_plot(), device="eps", units = "mm", width = 400, height = 300, dpi = 600)
+ggsave(filename = "C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/plots/with_fifo_qdisc_no_timeout.png",plot=last_plot(), device="png", units = "mm", width = 400, height = 200, dpi = 600)
+#ggsave(filename = "C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/thesis_plots/host_h2_ets_with_wo_shaping.eps",plot=last_plot(), device="eps", units = "mm", width = 400, height = 220, dpi = 600)

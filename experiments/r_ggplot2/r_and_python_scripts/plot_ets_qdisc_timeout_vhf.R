@@ -199,6 +199,6 @@ plot_grid(gg1, gg2, gg3, gg4, gg5, align = "v", ncol = 1, nrow = 5, rel_heights 
 theme_get()
 theme_set(theme_bw())
 
-ggsave(filename = "C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/plots/with_ets_with_vs_wo_timeout_all_vhf.png",plot=last_plot(), device="png", units = "mm", width = 400, height = 400, dpi = 600)
+ggsave(filename = "C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/plots/with_ets_with_vs_wo_timeout_all_vhf.png",plot=last_plot(), device="png", units = "mm", width = 400, height = 800, dpi = 600)
 #ggsave(filename = "C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/plots/with_ets_with_vs_wo_timeout_all_vhf.eps",plot=last_plot(), device="eps", units = "mm", width = 400, height = 400)
 

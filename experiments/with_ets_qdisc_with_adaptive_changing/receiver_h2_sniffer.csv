@@ -1,0 +1,2 @@
+packet_id,packet_timestamp,source_ip,destination_ip,protocol,dsfield,packet_length
+packet_id,packet_timestamp,source_ip,destination_ip,protocol,dsfield,packet_length

@@ -12,7 +12,7 @@ library(wesanderson)
 #display.brewer.all(type="div")
 
 
-data_df<- read.csv(file = 'C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/data/without_qdiscs/plot_wo_qdisc_no_delay_old.csv')
+data_df<- read.csv(file = 'C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/data_icmcis/without_qdiscs/plot_wo_qdisc_no_delay_old.csv')
 
 data_df$flow_id <- factor(data_df$flow_id, levels = c("1", "2", "3", "4", "5"),
                           labels = c("Medical Evacuation", "Obstacle Alert", "Picture", "Chat", "FFT"))
@@ -44,6 +44,6 @@ theme_get()
 theme_set(theme_bw())
 print(gg)
 
-ggsave(filename = "C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/plots/wo_qdisc_no_delay.png",plot=last_plot(), device="png", units = "mm", width = 400, height = 150, dpi = 600)
-ggsave(filename = "C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/plots/wo_qdisc_no_delay.eps",plot=last_plot(), device="eps", units = "mm", width = 400, height = 150, dpi = 600)
+#ggsave(filename = "C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/plots/wo_qdisc_no_delay.png",plot=last_plot(), device="png", units = "mm", width = 400, height = 150, dpi = 600)
+#ggsave(filename = "C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/plots/wo_qdisc_no_delay.eps",plot=last_plot(), device="eps", units = "mm", width = 400, height = 150, dpi = 600)
 

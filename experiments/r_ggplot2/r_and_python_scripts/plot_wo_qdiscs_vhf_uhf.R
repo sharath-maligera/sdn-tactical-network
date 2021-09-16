@@ -35,7 +35,7 @@ gg <- gg + geom_point(data = data_df, mapping = aes(x = packet_seq_no, y = packe
 gg <- gg + scale_linetype_manual(values=c("longdash", "twodash", "dashed","dotdash","dotted"))
 gg <- gg + scale_shape_manual(values=c(1, 2, 3, 4, 5))
 gg <- gg + scale_color_manual(values=c('grey40', 'tomato4','tomato', 'goldenrod', '#2C5F2DFF'))
-gg <- gg + facet_grid( data_rate_f ~ ., scales = "free")
+gg <- gg + facet_grid(  ~ data_rate_f, scales = "free")
 gg <- gg + coord_cartesian()
 gg <- gg + xlab("Packet")
 gg <- gg + ylab("End-to-End Delay (sec)")
@@ -57,6 +57,6 @@ theme_get()
 theme_set(theme_bw())
 print(gg)
 
-ggsave(filename = "C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/plots/wo_qdisc_vhf_uhf.png",plot=last_plot(), device="png", units = "mm", width = 400, height = 160, dpi = 600)
+#ggsave(filename = "C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/plots/wo_qdisc_vhf_uhf.png",plot=last_plot(), device="png", units = "mm", width = 400, height = 160, dpi = 600)
 ggsave(filename = "C:/Users/Sharath/PycharmProjects/mininet-wifi/sdn-tactical-network/experiments/r_ggplot2/plots/wo_qdisc_vhf_uhf.eps",plot=last_plot(), device="eps", units = "mm", width = 400, height = 160, dpi = 600)
 
